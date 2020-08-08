@@ -1,0 +1,6 @@
+1 # initial state
+[2] # terminal state
+(0,0,'!f',ConstantRewardFunction(0))
+(0,2,'f',ConstantRewardFunction(1))
+(1,1,'!e',ConstantRewardFunction(0))
+(1,0,'e',ConstantRewardFunction(0))

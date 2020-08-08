@@ -1,0 +1,6 @@
+0   # initial state
+[]  # terminal state
+(0,0,'!a',RewardForward())
+(0,1,'a',RewardForward())
+(1,1,'!b',RewardBackwards())
+(1,0,'b',RewardBackwards())
