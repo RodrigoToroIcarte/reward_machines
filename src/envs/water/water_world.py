@@ -1,6 +1,4 @@
-
-
-from worlds.game_objects import Actions
+from enum import Enum
 import random, math, os, pickle
 import numpy as np
 
@@ -36,8 +34,8 @@ class WaterWorld:
         # Setting the position and velocity of the agent and balls
         if self.agent_info is None:
             self._load_map()
-            if params.state_file is not None:
-                self.load_state(params.state_file)
+            if self.params.state_file is not None:
+                self.load_state(self.params.state_file)
             self.agent_info = self.agent.get_info()
             self.balls_info = [b.get_info() for b in self.balls]
         else:
@@ -125,7 +123,7 @@ class WaterWorld:
             features[2:4] = agent.vel/float(self.params.a_vel_max)
             for i in range(len(balls)):
                 # If the balls are colliding, I'll not include them 
-                # (because there us nothing that the agent can do about it)
+                # (because there is nothing that the agent can do about it)
                 b = balls[i]
                 if not self.params.ball_disappear or not agent.is_colliding(b):
                     init = 4*(i+1)
@@ -143,7 +141,7 @@ class WaterWorld:
             features[2:4] = agent.vel/float(self.params.a_vel_max)
             for i in range(len(balls)):
                 # If the balls are colliding, I'll not include them 
-                # (because there us nothing that the agent can do about it)
+                # (because there is nothing that the agent can do about it)
                 b = balls[i]
                 if not self.params.ball_disappear or not agent.is_colliding(b):
                     init = 2*i + 4
@@ -339,7 +337,6 @@ def get_colors():
 def play():
     import pygame, time
 
-    task = "reward_machines/t1.txt"
     state_file = "maps/world_0.pkl"
     max_x = 400
     max_y = 400
@@ -357,9 +354,6 @@ def play():
 
     game = WaterWorld(params)    
     game.reset()
-    rm = RewardMachine(task) 
-
-    print("actions", game.get_actions())
 
     pygame.init()
     
@@ -406,7 +400,15 @@ def play():
         else: a = random.choice(list(actions))
 
         # Executing the action
-        game.execute_action(a.value, t_delta)
+        #game.execute_action(a.value, t_delta)
+        game.execute_action(a.value)
+
+        feat = game.get_features()
+        if np.max(feat) > 1 or np.min(feat) < -1:
+            print(game.get_features().shape)
+            print(np.max(game.get_features()))
+            print(np.min(game.get_features()))
+            exit()
 
         events = game.get_true_propositions()
 
