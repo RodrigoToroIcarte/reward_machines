@@ -282,6 +282,7 @@ def learn(env,
             # Store transition in the replay buffer.
             for _obs, _action, _r, _new_obs, _done in info["qrm-experience"]:
                 replay_buffer.add(_obs, _action, _r, _new_obs, _done)
+            # replay_buffer.add(obs, action, rew, new_obs, float(done))
             
             obs = new_obs
 

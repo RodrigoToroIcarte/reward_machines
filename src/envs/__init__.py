@@ -1,5 +1,6 @@
 from gym.envs.registration import register
 
+# ----------------------------------------- ANT
 
 register(
     id='Ant-RM1-v0',
@@ -7,17 +8,12 @@ register(
     max_episode_steps=1000,
     reward_threshold=6000.0,
 )
-
-
-
 register(
     id='Ant-RM4-v0',
     entry_point='envs.ant.ant_environment:MyAntEnvRM4',
     max_episode_steps=1000,
     reward_threshold=6000.0,
 )
-
-
 register(
     id='Ant-RM5-v0',
     entry_point='envs.ant.ant_environment:MyAntEnvRM5',
@@ -25,3 +21,13 @@ register(
     reward_threshold=6000.0,
 )
 
+# ----------------------------------------- WATER
+
+for i in range(11):
+    w_id = 'Water-M%d-v0'%i
+    w_en = 'envs.water.water_environment:WaterRMEnvM%d'%i
+    register(
+        id=w_id,
+        entry_point=w_en,
+        max_episode_steps=600
+    )

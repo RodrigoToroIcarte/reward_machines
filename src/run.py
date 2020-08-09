@@ -16,6 +16,7 @@ from importlib import import_module
 
 # Importing our environments
 import envs
+from envs.water.water_world import Ball, BallAgent
 
 try:
     from mpi4py import MPI
@@ -104,8 +105,8 @@ def build_env(args):
             frame_stack_size = 4
             env = make_vec_env(env_id, env_type, nenv, seed, gamestate=args.gamestate, reward_scale=args.reward_scale)
             env = VecFrameStack(env, frame_stack_size)
-    elif alg == 'deepq':
-        env = make_env(env_id, env_type, seed=seed)
+    elif alg == 'qrm-deepq' or alg == 'deepq':
+        env = make_env(env_id, env_type, seed=seed, logger_dir=logger.get_dir())
     else:
         config = tf.ConfigProto(allow_soft_placement=True,
                                intra_op_parallelism_threads=1,
@@ -258,4 +259,8 @@ if __name__ == '__main__':
     # python run.py --alg=qrm-ddpg --env=Ant-RM5-v0 --num_timesteps=1e6 --network=mlp --num_layers=4 --num_hidden=128 --activation=tf.nn.relu
     # python run.py --alg=qrm-ddpg --env=Ant-RM5-v0 --num_timesteps=1e8 --log_path=./results/ant_rm5/qrm --save_path=./results/ant_rm5/qrm/models --network=mlp --num_layers=4 --num_hidden=128
     # python run.py --alg=ddpg --env=Ant-RM5-v0 --num_timesteps=1e8 --log_path=./results/ant_rm5/ddpg --save_path=./results/ant_rm5/ddpg/models --network=mlp --num_layers=4 --num_hidden=128
+
+
+    # python run.py --alg=deepq --env=Water-M0-v0 --num_timesteps=1e8 --network=mlp --num_layers=6 --num_hidden=64 --gamma=0.9
+    # python run.py --alg=qrm-deepq --env=Water-M0-v0 --num_timesteps=1e8 --log_path=./results/water/0/qrm --network=mlp --num_layers=6 --num_hidden=64 --gamma=0.9 --lr=1e-5
     main(sys.argv)

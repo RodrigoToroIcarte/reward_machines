@@ -43,6 +43,7 @@ class RewardMachineEnv(gym.Wrapper):
         super().__init__(env)
 
         # Loading the reward machines
+        self.rm_files = rm_files
         self.reward_machines = []
         self.num_rm_states = 0
         for rm_file in rm_files:

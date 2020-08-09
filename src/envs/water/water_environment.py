@@ -2,10 +2,10 @@
 This code add event detectors to the Ant3 Environment
 """
 import gym
+from gym import spaces
 import numpy as np
-from gym.envs.mujoco.ant_v3 import AntEnv
 from reward_machines.rm_environment import RewardMachineEnv
-from water_world import WaterWorld, WaterWorldParams, play
+from envs.water.water_world import WaterWorld, WaterWorldParams, play
 
 class WaterEnv(gym.Env):
     def __init__(self, state_file):
