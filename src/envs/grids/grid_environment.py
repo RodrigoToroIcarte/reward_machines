@@ -10,7 +10,7 @@ class GridEnv(gym.Env):
         self.env = env
         N,M      = self.env.map_height, self.env.map_width
         self.action_space = spaces.Discrete(4) # up, right, down, left
-        self.observation_space = spaces.Box(low=0, high=np.array([N,M]), shape=(2,), dtype=np.uint8)
+        self.observation_space = spaces.Box(low=0, high=max([N,M]), shape=(2,), dtype=np.uint8)
 
     def get_events(self):
         return self.env.get_true_propositions()

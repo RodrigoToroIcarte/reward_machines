@@ -105,7 +105,7 @@ def build_env(args):
             frame_stack_size = 4
             env = make_vec_env(env_id, env_type, nenv, seed, gamestate=args.gamestate, reward_scale=args.reward_scale)
             env = VecFrameStack(env, frame_stack_size)
-    elif alg == 'qrm-deepq' or alg == 'deepq':
+    elif alg == 'qrm-deepq' or alg == 'deepq' or alg == 'qrm-qlearning':
         env = make_env(env_id, env_type, seed=seed, logger_dir=logger.get_dir())
     else:
         config = tf.ConfigProto(allow_soft_placement=True,
@@ -263,4 +263,10 @@ if __name__ == '__main__':
 
     # python run.py --alg=deepq --env=Water-M0-v0 --num_timesteps=1e8 --network=mlp --num_layers=6 --num_hidden=64 --gamma=0.9
     # python run.py --alg=qrm-deepq --env=Water-M0-v0 --num_timesteps=1e8 --log_path=./results/water/0/qrm --network=mlp --num_layers=6 --num_hidden=64 --gamma=0.9 --lr=1e-5
+
+
+
+    # python3 run.py --alg=qrm-qlearning --env=Office-v0 --num_timesteps=1e8 --log_path=./results/office/qlearning
+
+
     main(sys.argv)
