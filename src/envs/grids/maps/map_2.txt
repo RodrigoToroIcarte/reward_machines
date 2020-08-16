@@ -1,0 +1,41 @@
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+X                                       X
+X           f           f               X
+X                                     e X
+X     b                                 X
+X                                       X
+X                       c               X
+X                                       X
+X                                       X
+X                                d      X
+X                                       X
+X                   e       a           X
+X                            h          X
+X                                       X
+X                                      cX
+X                                       X
+X              d                        X
+X                                      bX
+X  d                                    X
+X                                       X
+X                   A                   X
+X           a                           X
+X                                       X
+X                                       X
+X                                  f  h X
+X                           d           X
+X                                d      X
+X                                 g     X
+X                                       X
+X                                a      X
+X                    a                  X
+X                                       X
+X                                       X
+X                       f           g   X
+X          f                            X
+X                                       X
+X           a                           X
+X                                       X
+X                                       X
+X                                       X
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

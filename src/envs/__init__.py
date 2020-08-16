@@ -22,7 +22,6 @@ register(
 )
 
 # ----------------------------------------- WATER
-
 for i in range(11):
     w_id = 'Water-M%d-v0'%i
     w_en = 'envs.water.water_environment:WaterRMEnvM%d'%i
@@ -30,4 +29,21 @@ for i in range(11):
         id=w_id,
         entry_point=w_en,
         max_episode_steps=600
+    )
+
+# ----------------------------------------- OFFICE
+register(
+    id='Office-v0',
+    entry_point='envs.grids.grid_environment:OfficeRMEnv',
+    max_episode_steps=1000
+)
+
+# ----------------------------------------- CRAFT
+for i in range(1):
+    w_id = 'Craft-M%d-v0'%i
+    w_en = 'envs.grids.grid_environment:CraftRMEnvM%d'%i
+    register(
+        id=w_id,
+        entry_point=w_en,
+        max_episode_steps=1000
     )

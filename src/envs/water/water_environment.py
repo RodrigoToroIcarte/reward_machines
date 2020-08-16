@@ -1,6 +1,3 @@
-"""
-This code add event detectors to the Ant3 Environment
-"""
 import gym
 from gym import spaces
 import numpy as np
@@ -10,6 +7,7 @@ from envs.water.water_world import WaterWorld, WaterWorldParams, play
 class WaterEnv(gym.Env):
     def __init__(self, state_file):
         params = WaterWorldParams(state_file, b_radius=15, max_x=400, max_y=400, b_num_per_color=2, use_velocities=True, ball_disappear=False)
+        self.params = params
 
         self.action_space = spaces.Discrete(5) # noop, up, right, down, left
         self.observation_space = spaces.Box(low=-2, high=2, shape=(52,), dtype=np.float)
@@ -30,12 +28,6 @@ class WaterEnv(gym.Env):
         self.env.reset()
         return self.env.get_features()
 
-    def render(self, mode='human'):
-        if mode == 'human':
-            play()
-        else:
-            raise NotImplementedError
-
 
 class WaterRMEnv(RewardMachineEnv):
     def __init__(self, state_file):
@@ -45,6 +37,11 @@ class WaterRMEnv(RewardMachineEnv):
         rs_gamma = 0.9
         super().__init__(env, rm_files, use_reward_shaping, rs_gamma)
 
+    def render(self, mode='human'):
+        if mode == 'human':
+            play(self)
+        else:
+            raise NotImplementedError
 
 class WaterRMEnvM0(WaterRMEnv):
     def __init__(self):
