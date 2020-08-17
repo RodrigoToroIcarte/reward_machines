@@ -25,8 +25,9 @@ def learn(env,
           print_freq=10000,
           gamma=0.9,
           q_init=1.0,
-          use_qrm=False):
-    """Train a deepq model.
+          use_qrm=False,
+          use_rs=False):
+    """Train a tabular q-learning model.
 
     Parameters
     -------
@@ -49,6 +50,10 @@ def learn(env,
         discount factor
     q_init: float
         initial q-value for unseen states
+    use_qrm: bool
+        use counterfactual experience to train the policy
+    use_rs: bool
+        use reward shaping
     """
 
     # Running Q-Learning
@@ -69,9 +74,12 @@ def learn(env,
             # Updating the q-values
             experiences = []
             if use_qrm:
-                # Adding counterfactual experience
+                # Adding counterfactual experience (this will alrady include shaped rewards if use_rs=True)
                 for _s,_a,_r,_sn,_done in info["qrm-experience"]:
                     experiences.append((tuple(_s),_a,_r,tuple(_sn),_done))
+            elif use_rs:
+                # Include only the current experince but shape the reward
+                experiences = [info["rs-experience"]]
             else:
                 # Include only the current experience (standard q-learning)
                 experiences = [(s,a,r,sn,done)]

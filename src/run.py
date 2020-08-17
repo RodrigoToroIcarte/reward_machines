@@ -9,14 +9,17 @@ import numpy as np
 
 from baselines.common.vec_env import VecFrameStack, VecNormalize, VecEnv
 from baselines.common.vec_env.vec_video_recorder import VecVideoRecorder
-from baselines.common.cmd_util import common_arg_parser, parse_unknown_args, make_vec_env, make_env
+from baselines.common.cmd_util import parse_unknown_args
 from baselines.common.tf_util import get_session
 from baselines import logger
 from importlib import import_module
 
-# Importing our environments
+
+# Importing our environments and auxiliary functions
 import envs
 from envs.water.water_world import Ball, BallAgent
+from reward_machines.rm_environment import RewardMachineWrapper
+from cmd_util import make_vec_env, make_env, common_arg_parser
 
 try:
     from mpi4py import MPI
@@ -96,17 +99,8 @@ def build_env(args):
 
     env_type, env_id = get_env_type(args)
 
-    if env_type in {'atari', 'retro'}:
-        if alg == 'deepq':
-            env = make_env(env_id, env_type, seed=seed, wrapper_kwargs={'frame_stack': True})
-        elif alg == 'trpo_mpi':
-            env = make_env(env_id, env_type, seed=seed)
-        else:
-            frame_stack_size = 4
-            env = make_vec_env(env_id, env_type, nenv, seed, gamestate=args.gamestate, reward_scale=args.reward_scale)
-            env = VecFrameStack(env, frame_stack_size)
-    elif alg == 'qrm-deepq' or alg == 'deepq' or alg == 'qrm-qlearning':
-        env = make_env(env_id, env_type, seed=seed, logger_dir=logger.get_dir())
+    if alg == 'qrm-deepq' or alg == 'deepq' or alg == 'qrm-qlearning':
+        env = make_env(env_id, env_type, args, seed=seed, logger_dir=logger.get_dir())
     else:
         config = tf.ConfigProto(allow_soft_placement=True,
                                intra_op_parallelism_threads=1,
@@ -115,9 +109,9 @@ def build_env(args):
         get_session(config=config)
 
         flatten_dict_observations = alg not in {'her'}
-        env = make_vec_env(env_id, env_type, args.num_env or 1, seed, reward_scale=args.reward_scale, flatten_dict_observations=flatten_dict_observations)
+        env = make_vec_env(env_id, env_type, args.num_env or 1, seed, args, reward_scale=args.reward_scale, flatten_dict_observations=flatten_dict_observations)
 
-        if env_type == 'mujoco':# or env_type == 'ant_environment':
+        if env_type == 'mujoco':
             env = VecNormalize(env, use_tf=True)
 
     return env
@@ -266,7 +260,10 @@ if __name__ == '__main__':
 
 
 
-    # python3 run.py --alg=qrm-qlearning --env=Office-v0 --num_timesteps=1e8 --log_path=./results/office/qlearning
+    # python3 run.py --alg=qrm-qlearning --env=Craft-M0-v0 --num_timesteps=1e6 --log_path=./results/craft/0/qlearning
+    # python3 run.py --alg=qrm-qlearning --env=Craft-M0-v0 --num_timesteps=1e6 --log_path=./results/craft/0/qlearning-rs --use_rs
+    # python3 run.py --alg=qrm-qlearning --env=Craft-M0-v0 --num_timesteps=1e6 --log_path=./results/craft/0/qrm --use_qrm
+    # python3 run.py --alg=qrm-qlearning --env=Craft-M0-v0 --num_timesteps=1e6 --log_path=./results/craft/0/qrm-rs --use_qrm --use_rs
 
 
     main(sys.argv)

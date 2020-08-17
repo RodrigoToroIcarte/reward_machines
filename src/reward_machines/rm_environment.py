@@ -18,7 +18,7 @@ from reward_machines.reward_machine import RewardMachine
 
 
 class RewardMachineEnv(gym.Wrapper):
-    def __init__(self, env, rm_files, use_reward_shaping, rs_gamma):
+    def __init__(self, env, rm_files):
         """
         RM environment
         --------------------
@@ -33,12 +33,6 @@ class RewardMachineEnv(gym.Wrapper):
             - env: original environment. It must implement the following function:
                 - get_events(...): Returns the propositions that currently hold on the environment.
             - rm_files: list of strings with paths to the RM files.
-            - use_reward_shaping: when True, it will add shape the rewards in the RM as explained in the paper.
-            - rs_gamma: Auxiliary value (<1) to shape the rewards if needed
-
-        NOTES
-        --------------------
-            - Do not use reward shaping in the evaluation environments
         """
         super().__init__(env)
 
@@ -47,7 +41,7 @@ class RewardMachineEnv(gym.Wrapper):
         self.reward_machines = []
         self.num_rm_states = 0
         for rm_file in rm_files:
-            rm = RewardMachine(rm_file, use_reward_shaping, rs_gamma)
+            rm = RewardMachine(rm_file)
             self.num_rm_states += len(rm.get_states())
             self.reward_machines.append(rm)
         self.num_rms = len(self.reward_machines)
@@ -77,7 +71,7 @@ class RewardMachineEnv(gym.Wrapper):
         self.current_rm    = self.reward_machines[self.current_rm_id]
         self.current_u_id  = self.current_rm.reset()
 
-        # Adding the ltl goal to the observation
+        # Adding the RM state to the observation
         return self._get_observation(self.obs, self.current_rm_id, self.current_u_id, False)
 
     def step(self, action):
@@ -86,7 +80,7 @@ class RewardMachineEnv(gym.Wrapper):
 
         # getting the output of the detectors and saving information for generating counterfactual experiences
         true_props = self.env.get_events()
-        qrm_experience = self.get_qrm_experience(self.obs, action, next_obs, env_done, true_props, info)
+        self.qrm_params = self.obs, action, next_obs, env_done, true_props, info
         self.obs = next_obs
 
         # update the RM state
@@ -96,8 +90,55 @@ class RewardMachineEnv(gym.Wrapper):
         done = rm_done or env_done
         rm_obs = self._get_observation(next_obs, self.current_rm_id, self.current_u_id, done)
 
-        # adding qrm experience to the information
-        info["qrm-experience"] = qrm_experience
+        return rm_obs, rm_rew, done, info
+
+    def _get_observation(self, next_obs, rm_id, u_id, done):
+        rm_feat = self.rm_done_feat if done else self.rm_state_features[(rm_id,u_id)]
+        rm_obs = {'features': next_obs,'rm-state': rm_feat}
+        return gym.spaces.flatten(self.observation_dict, rm_obs)           
+
+
+class RewardMachineWrapper(gym.Wrapper):
+    def __init__(self, env, add_qrm, add_rs, gamma, rs_gamma):
+        """
+        RM wrapper
+        --------------------
+        It adds qrm (counterfactual experience) and/or reward shaping to *info* in the step function
+
+        Parameters
+        --------------------
+            - env(RewardMachineEnv): It must be an RM environment
+            - add_qrm(bool):   if True, it will add a set of counterfactual experiences to info
+            - add_rs(bool):    if True, it will add reward shaping to info
+            - gamma(float):    Discount factor for the environment
+            - rs_gamma(float): Discount factor for shaping the rewards in the RM
+        """
+        super().__init__(env)
+        self.add_qrm = add_qrm
+        self.add_rs  = add_rs
+        if add_rs:
+            for rm in env.reward_machines:
+                rm.add_reward_shaping(gamma, rs_gamma)
+
+    def reset(self):
+        return self.env.reset()
+
+    def step(self, action):
+        # RM and RM state before executing the action
+        rm_id = self.env.current_rm_id
+        rm    = self.env.current_rm
+        u_id  = self.env.current_u_id
+
+        # executing the action in the environment
+        rm_obs, rm_rew, done, info = self.env.step(action)
+
+        # adding qrm if needed
+        if self.add_qrm:
+            qrm_experience = self._get_qrm_experience(*self.qrm_params)
+            info["qrm-experience"] = qrm_experience
+        elif self.add_rs:
+            rs_experience  = self._get_rm_experience(rm_id, rm, u_id, *self.qrm_params)
+            info["rs-experience"] = rs_experience
 
         return rm_obs, rm_rew, done, info
 
@@ -106,7 +147,14 @@ class RewardMachineEnv(gym.Wrapper):
         rm_obs = {'features': next_obs,'rm-state': rm_feat}
         return gym.spaces.flatten(self.observation_dict, rm_obs)
 
-    def get_qrm_experience(self, obs, action, next_obs, env_done, true_props, info):
+    def _get_rm_experience(self, rm_id, rm, u_id, obs, action, next_obs, env_done, true_props, info):
+        rm_obs = self._get_observation(obs, rm_id, u_id, False)
+        next_u_id, rm_rew, rm_done = rm.step(u_id, true_props, info, self.add_rs, env_done)
+        done = rm_done or env_done
+        rm_next_obs = self._get_observation(next_obs, rm_id, next_u_id, done)
+        return rm_obs,action,rm_rew,rm_next_obs,done
+
+    def _get_qrm_experience(self, obs, action, next_obs, env_done, true_props, info):
         """
         Returns a list of counterfactual experiences generated per each RM state.
         Format: [..., (obs, action, r, new_obs, done), ...]
@@ -114,10 +162,6 @@ class RewardMachineEnv(gym.Wrapper):
         experiences = []
         for rm_id, rm in enumerate(self.reward_machines):
             for u_id in rm.get_states():
-                rm_obs = self._get_observation(obs, rm_id, u_id, False)
-                next_u_id, rm_rew, rm_done = rm.step(u_id, true_props, info)
-                done = rm_done or env_done
-                rm_next_obs = self._get_observation(next_obs, rm_id, next_u_id, done)
-                experiences.append((rm_obs,action,rm_rew,rm_next_obs,done))
+                exp = self._get_rm_experience(rm_id, rm, u_id, obs, action, next_obs, env_done, true_props, info)
+                experiences.append(exp)
         return experiences                
-

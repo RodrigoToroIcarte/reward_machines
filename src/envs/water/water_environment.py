@@ -33,9 +33,7 @@ class WaterRMEnv(RewardMachineEnv):
     def __init__(self, state_file):
         env = WaterEnv(state_file)
         rm_files = ["./envs/water/reward_machines/t%d.txt"%i for i in range(1,11)]
-        use_reward_shaping = False
-        rs_gamma = 0.9
-        super().__init__(env, rm_files, use_reward_shaping, rs_gamma)
+        super().__init__(env, rm_files)
 
     def render(self, mode='human'):
         if mode == 'human':
