@@ -99,7 +99,7 @@ def build_env(args):
 
     env_type, env_id = get_env_type(args)
 
-    if alg == 'qrm-deepq' or alg == 'deepq' or alg == 'qrm-qlearning':
+    if alg in ['qrm-deepq', 'deepq', 'qrm-qlearning', 'qrm-hrl']:
         env = make_env(env_id, env_type, args, seed=seed, logger_dir=logger.get_dir())
     else:
         config = tf.ConfigProto(allow_soft_placement=True,
@@ -265,5 +265,6 @@ if __name__ == '__main__':
     # python3 run.py --alg=qrm-qlearning --env=Craft-M0-v0 --num_timesteps=1e6 --log_path=./results/craft/0/qrm --use_qrm
     # python3 run.py --alg=qrm-qlearning --env=Craft-M0-v0 --num_timesteps=1e6 --log_path=./results/craft/0/qrm-rs --use_qrm --use_rs
 
+    # python3 run.py --alg=qrm-hrl --env=Craft-M0-v0 --num_timesteps=1e6 --log_path=./results/craft/0/hrl
 
     main(sys.argv)

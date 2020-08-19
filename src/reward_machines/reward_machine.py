@@ -30,7 +30,7 @@ class RewardMachine:
         # Returns the initial state
         return self.u0
 
-    def _get_next_state(self, u1, true_props):
+    def get_next_state(self, u1, true_props):
         for u2 in self.delta_u[u1]:
             if evaluate_dnf(self.delta_u[u1][u2], true_props):
                 return u2
@@ -44,7 +44,7 @@ class RewardMachine:
 
         # Computing the next state in the RM and checking if the episode is done
         assert u1 != self.terminal_u, "the RM was set to a terminal state!"
-        u2 = self._get_next_state(u1, true_props)
+        u2 = self.get_next_state(u1, true_props)
         done = (u2 == self.terminal_u)
         # Getting the reward
         rew = self._get_reward(u1,u2,s_info,add_rs, env_done)

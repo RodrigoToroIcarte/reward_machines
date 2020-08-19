@@ -85,7 +85,7 @@ def learn(env,
                 experiences = [(s,a,r,sn,done)]
 
             for _s,_a,_r,_sn,_done in experiences:
-                if _s not in Q: Q[_s] = dict([(a,q_init) for a in actions])
+                if _s not in Q: Q[_s] = dict([(b,q_init) for b in actions])
                 if _done: _delta = _r - Q[_s][_a]
                 else:     _delta = _r + gamma*get_qmax(Q,_sn,actions,q_init) - Q[_s][_a]
                 Q[_s][_a] += lr*_delta

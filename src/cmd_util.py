@@ -20,7 +20,7 @@ from baselines.common import retro_wrappers
 from baselines.common.wrappers import ClipActionsWrapper
 from baselines.common.cmd_util import arg_parser
 
-from reward_machines.rm_environment import RewardMachineWrapper
+from reward_machines.rm_environment import RewardMachineWrapper, HierarchicalRLWrapper
 
 def make_vec_env(env_id, env_type, num_env, seed, args, 
                  wrapper_kwargs=None,
@@ -77,6 +77,9 @@ def make_env(env_id, env_type, args, mpi_rank=0, subrank=0, seed=None, reward_sc
     env = gym.make(env_id, **env_kwargs)
 
     # Adding RM wrappers if needed
+    if args.alg.endswith("hrl"):
+        env = HierarchicalRLWrapper(env, args.r_min, args.r_max)
+
     if args.use_rs or args.use_qrm:
         env = RewardMachineWrapper(env, args.use_qrm, args.use_rs, args.gamma, args.rs_gamma)
 
@@ -120,4 +123,6 @@ def common_arg_parser():
     parser.add_argument("--use_qrm", help="Use counterfactual experience", action="store_true", default=False)
     parser.add_argument('--gamma', help="Discount factor", type=float, default=0.9)
     parser.add_argument('--rs_gamma', help="Discount factor used for reward shaping", type=float, default=0.9)
+    parser.add_argument('--r_min', help="R-min reward used for training option policies in HRL", type=float, default=0.0)
+    parser.add_argument('--r_max', help="R-max reward used for training option policies in HRL", type=float, default=1.0)
     return parser
