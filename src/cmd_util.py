@@ -77,7 +77,7 @@ def make_env(env_id, env_type, args, mpi_rank=0, subrank=0, seed=None, reward_sc
     env = gym.make(env_id, **env_kwargs)
 
     # Adding RM wrappers if needed
-    if args.alg.endswith("hrl"):
+    if args.alg.endswith("hrl") or args.alg.endswith("hdrl"):
         env = HierarchicalRLWrapper(env, args.r_min, args.r_max)
 
     if args.use_rs or args.use_qrm:

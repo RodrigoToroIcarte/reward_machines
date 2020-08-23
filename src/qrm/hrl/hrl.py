@@ -24,7 +24,8 @@ def learn(env,
           epsilon=0.1,
           print_freq=10000,
           gamma=0.9,
-          q_init=1.0):
+          q_init=1.0,
+          hrl_lr=0.1):
     """Train a tabular HRL method.
 
     Parameters
@@ -36,7 +37,7 @@ def learn(env,
     seed: int or None
         prng seed. The runs with the same seed "should" give the same results. If None, no seeding is used.
     lr: float
-        learning rate for adam optimizer
+        learning rate
     total_timesteps: int
         number of env steps to optimizer for
     epsilon: float
@@ -48,6 +49,8 @@ def learn(env,
         discount factor
     q_init: float
         initial q-value for unseen states
+    hrl_lr: float
+        learning rate for the macro-controller
     """
 
     # Running Q-Learning
@@ -90,10 +93,10 @@ def learn(env,
             # Note that this condition always hold if done is True
             if env.did_option_terminate(option_id):
                 option_sn = sn
-                option_reward = sum([r*gamma**_i for _i,_r in enumerate(option_rews)])
+                option_reward = sum([_r*gamma**_i for _i,_r in enumerate(option_rews)])
                 if done: _delta = option_reward - Q_controller[option_s][option_id]
                 else:    _delta = option_reward + gamma**(len(option_rews)) * get_qmax(Q_controller,option_sn,env.get_valid_options(),q_init) - Q_controller[option_s][option_id]
-                Q_controller[option_s][option_id] += lr*_delta
+                Q_controller[option_s][option_id] += hrl_lr*_delta
                 option_id = None
 
             # Moving to the next state

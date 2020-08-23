@@ -229,7 +229,9 @@ class HierarchicalRLWrapper(gym.Wrapper):
         s_low  = float(env_obs_space.low[0])
         s_high = float(env_obs_space.high[0])
         self.option_observation_space = spaces.Box(low=s_low, high=s_high, shape=(flatdim,), dtype=np.float32)
-        self.option_action_space = spaces.Discrete(self.num_options)
+        self.option_action_space = env.action_space
+        self.controller_observation_space = env.observation_space
+        self.controller_action_space = spaces.Discrete(self.num_options)
 
 
     def get_valid_options(self):

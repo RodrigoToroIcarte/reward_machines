@@ -38,7 +38,7 @@ def learn(env,
     seed: int or None
         prng seed. The runs with the same seed "should" give the same results. If None, no seeding is used.
     lr: float
-        learning rate for adam optimizer
+        learning rate
     total_timesteps: int
         number of env steps to optimizer for
     epsilon: float
