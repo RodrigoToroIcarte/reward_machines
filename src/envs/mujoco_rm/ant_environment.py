@@ -30,7 +30,7 @@ class MyAntEnv(gym.Wrapper):
 class MyAntEnvRM1(RewardMachineEnv):
     def __init__(self):
         env = MyAntEnv()
-        rm_files = ["./envs/ant/reward_machines/t1.txt"]
+        rm_files = ["./envs/mujoco_rm/reward_machines/t1.txt"]
         use_reward_shaping = False
         rs_gamma = 0.9
         super().__init__(env, rm_files, use_reward_shaping, rs_gamma)
@@ -38,7 +38,7 @@ class MyAntEnvRM1(RewardMachineEnv):
 class MyAntEnvRM4(RewardMachineEnv):
     def __init__(self):
         env = MyAntEnv()
-        rm_files = ["./envs/ant/reward_machines/t4.txt"]
+        rm_files = ["./envs/mujoco_rm/reward_machines/t4.txt"]
         use_reward_shaping = False
         rs_gamma = 0.9
         super().__init__(env, rm_files, use_reward_shaping, rs_gamma)
@@ -46,7 +46,7 @@ class MyAntEnvRM4(RewardMachineEnv):
 class MyAntEnvRM5(RewardMachineEnv):
     def __init__(self):
         env = MyAntEnv()
-        rm_files = ["./envs/ant/reward_machines/t5.txt"]
+        rm_files = ["./envs/mujoco_rm/reward_machines/t5.txt"]
         use_reward_shaping = False
         rs_gamma = 0.9
         super().__init__(env, rm_files, use_reward_shaping, rs_gamma)

@@ -18,6 +18,11 @@ try:
 except ImportError:
     MPI = None
 
+
+
+# (steps_per_epoch=4000, epochs=100, replay_size=1000000, gamma=0.99, polyak=0.995, pi_lr=0.001, q_lr=0.001, 
+#  batch_size=100, start_steps=10000, update_after=1000, update_every=50, act_noise=0.1, num_test_episodes=10, max_ep_len=1000, logger_kwargs={}, save_freq=1)
+
 def learn(network, env,
           seed=None,
           total_timesteps=None,
@@ -36,7 +41,7 @@ def learn(network, env,
           popart=False,
           gamma=0.99,
           clip_norm=None,
-          nb_train_steps=50, # per epoch cycle and MPI worker,
+          nb_train_steps=50, # per epoch cycle and MPI worker,  <- HERE!
           nb_eval_steps=100,
           batch_size=64, # per MPI worker
           tau=0.01,
@@ -60,7 +65,16 @@ def learn(network, env,
     nb_actions = env.action_space.shape[-1]
     assert (np.abs(env.action_space.low) == env.action_space.high).all()  # we assume symmetric actions.
 
-    memory = Memory(limit=int(1e6), action_shape=env.action_space.shape, observation_shape=env.observation_space.shape)
+    #memory = Memory(limit=int(1e6), action_shape=env.action_space.shape, observation_shape=env.observation_space.shape)
+    rm_states  = 2
+    batch_size = rm_states*batch_size
+    limit = rm_states*int(1e6)
+    #nb_train_steps = rm_states*nb_train_steps
+    #tau = 0.001
+    #actor_lr  = 1e-5
+    #critic_lr = 1e-5
+
+    memory = Memory(limit=limit, action_shape=env.action_space.shape, observation_shape=env.observation_space.shape)
     critic = Critic(network=network, **network_kwargs)
     actor = Actor(nb_actions, network=network, **network_kwargs)
 

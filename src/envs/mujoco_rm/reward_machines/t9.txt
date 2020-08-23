@@ -1,0 +1,6 @@
+0   # initial state
+[]  # terminal state
+(0,0,'!c',RewardControl())
+(0,1,'c',RewardControl())
+(1,1,'!d',RewardControl())
+(1,0,'d',ConstantRewardFunction(200))

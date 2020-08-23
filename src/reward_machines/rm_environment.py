@@ -77,6 +77,7 @@ class RewardMachineEnv(gym.Wrapper):
         self.current_rm    = self.reward_machines[self.current_rm_id]
         self.current_u_id  = self.current_rm.reset()
 
+        #self.last_true_props = "" # <- HERE!!!!
         # Adding the ltl goal to the observation
         return self._get_observation(self.obs, self.current_rm_id, self.current_u_id, False)
 
@@ -89,8 +90,11 @@ class RewardMachineEnv(gym.Wrapper):
         qrm_experience = self.get_qrm_experience(self.obs, action, next_obs, env_done, true_props, info)
         self.obs = next_obs
 
+        #c_id = self.current_u_id
         # update the RM state
         self.current_u_id, rm_rew, rm_done = self.current_rm.step(self.current_u_id, true_props, info)
+        #if c_id != self.current_u_id:
+        #    print(c_id, "->", self.current_u_id)
 
         # returning the result of this action
         done = rm_done or env_done
@@ -98,6 +102,7 @@ class RewardMachineEnv(gym.Wrapper):
 
         # adding qrm experience to the information
         info["qrm-experience"] = qrm_experience
+        #self.last_true_props = true_props # <- HERE!!!!
 
         return rm_obs, rm_rew, done, info
 
@@ -114,6 +119,9 @@ class RewardMachineEnv(gym.Wrapper):
         experiences = []
         for rm_id, rm in enumerate(self.reward_machines):
             for u_id in rm.get_states():
+                #if (rm_id,u_id) != (self.current_rm_id,self.current_u_id):
+                #    if ("c" in self.last_true_props and u_id == 0) or ("d" in self.last_true_props and u_id == 1): 
+                #        continue # <- HERE!!!!
                 rm_obs = self._get_observation(obs, rm_id, u_id, False)
                 next_u_id, rm_rew, rm_done = rm.step(u_id, true_props, info)
                 done = rm_done or env_done

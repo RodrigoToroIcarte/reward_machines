@@ -4,22 +4,60 @@ from gym.envs.registration import register
 
 register(
     id='Ant-RM1-v0',
-    entry_point='envs.ant.ant_environment:MyAntEnvRM1',
+    entry_point='envs.mujoco_rm.ant_environment:MyAntEnvRM1',
     max_episode_steps=1000,
     reward_threshold=6000.0,
 )
 register(
     id='Ant-RM4-v0',
-    entry_point='envs.ant.ant_environment:MyAntEnvRM4',
+    entry_point='envs.mujoco_rm.ant_environment:MyAntEnvRM4',
     max_episode_steps=1000,
     reward_threshold=6000.0,
 )
 register(
     id='Ant-RM5-v0',
-    entry_point='envs.ant.ant_environment:MyAntEnvRM5',
+    entry_point='envs.mujoco_rm.ant_environment:MyAntEnvRM5',
     max_episode_steps=1000,
     reward_threshold=6000.0,
 )
+register(
+    id='Half-Cheetah-RM5-v0',
+    entry_point='envs.mujoco_rm.half_cheetah_environment:MyHalfCheetahEnvRM5',
+    max_episode_steps=1000,
+    reward_threshold=4800.0,
+)
+register(
+    id='Half-Cheetah-RM6-v0',
+    entry_point='envs.mujoco_rm.half_cheetah_environment:MyHalfCheetahEnvRM6',
+    max_episode_steps=1000,
+)
+register(
+    id='Half-Cheetah-RM7-v0',
+    entry_point='envs.mujoco_rm.half_cheetah_environment:MyHalfCheetahEnvRM7',
+    max_episode_steps=1000,
+)
+register(
+    id='Half-Cheetah-RM8-v0',
+    entry_point='envs.mujoco_rm.half_cheetah_environment:MyHalfCheetahEnvRM8',
+    max_episode_steps=1000,
+)
+register(
+    id='Half-Cheetah-RM9-v0',
+    entry_point='envs.mujoco_rm.half_cheetah_environment:MyHalfCheetahEnvRM9',
+    max_episode_steps=1000,
+)
+register(
+    id='Half-Cheetah-RM10-v0',
+    entry_point='envs.mujoco_rm.half_cheetah_environment:MyHalfCheetahEnvRM10',
+    max_episode_steps=1000,
+)
+register(
+    id='Half-Cheetah-RM11-v0',
+    entry_point='envs.mujoco_rm.half_cheetah_environment:MyHalfCheetahEnvRM11',
+    max_episode_steps=1000,
+)
+
+
 
 # ----------------------------------------- WATER
 
