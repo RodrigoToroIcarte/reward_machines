@@ -3,7 +3,7 @@ from reward_machines.reward_machine_utils import evaluate_dnf, value_iteration
 import time
 
 class RewardMachine:
-    def __init__(self, file, use_rs, gamma):
+    def __init__(self, file):
         # <U,u0,delta_u,delta_r>
         self.U  = []         # list of non-terminal RM states
         self.u0 = None       # initial state
@@ -11,27 +11,32 @@ class RewardMachine:
         self.delta_r    = {} # reward-transition function
         self.terminal_u = -1  # All terminal states are sent to the same terminal state with id *-1*
         self._load_reward_machine(file)
-        self.use_rs = use_rs # flag indicating whether (or not) to use reward shaping
-        if self.use_rs:
-            self.gamma    = gamma # this is the gamme from the environment
-            self.rs_gamma = gamma # gamma that is used in the value iteration that compute the shaping potentials
-            self.potentials = value_iteration(self.U, self.delta_u, self.delta_r, self.terminal_u, self.rs_gamma)
-            for u in self.potentials:
-                self.potentials[u] = -self.potentials[u]
 
     # Public methods -----------------------------------
+
+    def add_reward_shaping(self, gamma, rs_gamma):
+        """
+        It computes the potential values for shaping the reward function:
+            - gamma(float):    this is the gamma from the environment
+            - rs_gamma(float): this gamma that is used in the value iteration that compute the shaping potentials
+        """
+        self.gamma    = gamma
+        self.potentials = value_iteration(self.U, self.delta_u, self.delta_r, self.terminal_u, rs_gamma)
+        for u in self.potentials:
+            self.potentials[u] = -self.potentials[u]
+
 
     def reset(self):
         # Returns the initial state
         return self.u0
 
-    def _get_next_state(self, u1, true_props):
+    def get_next_state(self, u1, true_props):
         for u2 in self.delta_u[u1]:
             if evaluate_dnf(self.delta_u[u1][u2], true_props):
                 return u2
         return self.terminal_u # no transition is defined for true_props
 
-    def step(self, u1, true_props, s_info):
+    def step(self, u1, true_props, s_info, add_rs=False, env_done=False):
         """
         Emulates an step on the reward machine from state *u1* when observing *true_props*.
         The rest of the parameters are for computing the reward when working with non-simple RMs: s_info (extra state information to compute the reward).
@@ -39,23 +44,13 @@ class RewardMachine:
 
         # Computing the next state in the RM and checking if the episode is done
         assert u1 != self.terminal_u, "the RM was set to a terminal state!"
-        u2 = self._get_next_state(u1, true_props)
+        u2 = self.get_next_state(u1, true_props)
         done = (u2 == self.terminal_u)
         # Getting the reward
-        rew = self._get_reward(u1,u2,s_info)
+        rew = self._get_reward(u1,u2,s_info,add_rs, env_done)
 
         return u2, rew, done
 
-
-    def get_counterfactual_experience(self, true_props, s1, a, s2):
-        """
-        This method generates one experience per each RM state
-        """
-        experiences = []
-        for u1 in self.U:
-            u2, rew, done = self.step(u1, true_props, s1, a, s2)
-            experiences.append((u1,u2,rew,done))
-        return experiences
 
     def get_states(self):
         return self.U
@@ -67,7 +62,7 @@ class RewardMachine:
 
     # Private methods -----------------------------------
 
-    def _get_reward(self,u1,u2,s_info):
+    def _get_reward(self,u1,u2,s_info,add_rs,env_done):
         """
         Returns the reward associated to this transition.
         """
@@ -77,8 +72,9 @@ class RewardMachine:
             reward += self.delta_r[u1][u2].get_reward(s_info)
         # Adding the reward shaping (if needed)
         rs = 0.0
-        if self.use_rs:
-            rs = self.gamma * self.potentials[u2] - self.potentials[u1]
+        if add_rs:
+            un = self.terminal_u if env_done else u2 # If the env reached a terminal state, we have to use the potential from the terminal RM state to keep RS optimality guarantees
+            rs = self.gamma * self.potentials[un] - self.potentials[u1]
         # Returning final reward
         return reward + rs
 

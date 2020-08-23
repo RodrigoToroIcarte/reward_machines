@@ -334,26 +334,17 @@ def get_colors():
     colors["n"] = (0,0,128)
     return colors
 
-def play():
-    import pygame, time
+def play(RMenv):
+    import pygame
 
-    state_file = "maps/world_0.pkl"
-    max_x = 400
-    max_y = 400
-    b_num_per_color = 2
-    b_radius = 15
-    use_velocities = True
-    ball_disappear = False
+    water_env   = RMenv.env
+    water_world = water_env.env
 
-    params = WaterWorldParams(state_file, b_radius=b_radius, max_x=max_x, max_y=max_y, 
-                              b_num_per_color=b_num_per_color, use_velocities = use_velocities, 
-                              ball_disappear=ball_disappear)
-
-
-    max_x, max_y = params.max_x, params.max_y
-
-    game = WaterWorld(params)    
-    game.reset()
+    max_x, max_y = water_env.params.max_x, water_env.params.max_y
+    RMenv.reset()
+    print("Current task:", RMenv.rm_files[RMenv.current_rm_id])
+    print("RM state:", RMenv.current_u_id)
+    current_u = RMenv.current_u_id
 
     pygame.init()
     
@@ -366,7 +357,6 @@ def play():
     clock = pygame.time.Clock()
     crashed = False
 
-    t_previous = time.time()
     actions = set()
     while not crashed:
         for event in pygame.event.get():
@@ -392,42 +382,39 @@ def play():
                     actions.add(Actions.down)
             
 
-        t_current = time.time()
-        t_delta = (t_current - t_previous)
-
         # Getting the action
         if len(actions) == 0: a = Actions.none
         else: a = random.choice(list(actions))
 
         # Executing the action
         #game.execute_action(a.value, t_delta)
-        game.execute_action(a.value)
 
-        feat = game.get_features()
-        if np.max(feat) > 1 or np.min(feat) < -1:
-            print(game.get_features().shape)
-            print(np.max(game.get_features()))
-            print(np.min(game.get_features()))
-            exit()
-
-        events = game.get_true_propositions()
+        obs, rew, done, _ = RMenv.step(a.value)
+        events = water_env.get_events()
 
         # printing image
         gameDisplay.fill(white)
-        for b in game.balls:
+        for b in water_world.balls:
             draw_ball(b, colors, 0, gameDisplay, pygame, max_y)
-        draw_ball(game.agent, colors, 3, gameDisplay, pygame, max_y)
+        draw_ball(water_world.agent, colors, 3, gameDisplay, pygame, max_y)
         pygame.display.update()
         clock.tick(20)
 
         # print info related to the task
-        if 'a' in events:
-            game.reset()
+        if done:
+            print("Reward:", rew)
+            RMenv.reset()
+            print("Current task:", RMenv.rm_files[RMenv.current_rm_id])
+            print("RM state:", RMenv.current_u_id)
+            current_u = RMenv.current_u_id
 
+        if RMenv.current_u_id != current_u:
+            print("RM state:", RMenv.current_u_id)
+            current_u = RMenv.current_u_id
 
     pygame.quit()
 
-def save_random_world(num_worlds, folder_out="../../experiments/water/maps/"):
+def save_random_world(num_worlds, folder_out="maps/"):
     max_x = 400
     max_y = 400
     b_num_per_color = 2
@@ -440,10 +427,3 @@ def save_random_world(num_worlds, folder_out="../../experiments/water/maps/"):
         game = WaterWorld(params)
         game.save_state("%sworld_%d.pkl"%(folder_out,i))
         
-
-# This code allow to play a game (for debugging purposes)
-if __name__ == '__main__':
-    import sys
-    sys.path.insert(0, '../../')
-    play()
-    #save_random_world(11)
