@@ -203,3 +203,132 @@ class OptionDQN:
         if t > self.learning_starts and t % self.target_network_update_freq == 0:
             # Update target network periodically.
             self.update_target()
+
+
+
+class OptionDDPG:
+    """
+    Wrapper for a DDPG agent that learns the policies for all the options
+    """
+
+    def __init__(self,
+          env,
+          gamma,
+          total_timesteps,
+          network='mlp',
+          nb_rollout_steps=100,
+          reward_scale=1.0,
+          noise_type='adaptive-param_0.2',
+          normalize_returns=False,
+          normalize_observations=False,
+          critic_l2_reg=1e-2,
+          actor_lr=1e-4,
+          critic_lr=1e-3,
+          popart=False,
+          clip_norm=None,
+          nb_train_steps=50, # per epoch cycle and MPI worker,  <- HERE!
+          nb_eval_steps=100,
+          buffer_size=1000000,
+          batch_size=64, # per MPI worker
+          tau=0.01,
+          param_noise_adaption_interval=50,
+          **network_kwargs):
+
+        observation_space = env.option_observation_space
+        action_space = env.option_action_space
+
+        nb_actions = action_space.shape[-1]
+        assert (np.abs(action_space.low) == action_space.high).all()  # we assume symmetric actions.
+
+        memory = Memory(limit=buffer_size, action_shape=action_space.shape, observation_shape=observation_space.shape)
+        critic = Critic(network=network, **network_kwargs)
+        actor = Actor(nb_actions, network=network, **network_kwargs)
+
+        action_noise = None
+        param_noise = None
+        if noise_type is not None:
+            for current_noise_type in noise_type.split(','):
+                current_noise_type = current_noise_type.strip()
+                if current_noise_type == 'none':
+                    pass
+                elif 'adaptive-param' in current_noise_type:
+                    _, stddev = current_noise_type.split('_')
+                    param_noise = AdaptiveParamNoiseSpec(initial_stddev=float(stddev), desired_action_stddev=float(stddev))
+                elif 'normal' in current_noise_type:
+                    _, stddev = current_noise_type.split('_')
+                    action_noise = NormalActionNoise(mu=np.zeros(nb_actions), sigma=float(stddev) * np.ones(nb_actions))
+                elif 'ou' in current_noise_type:
+                    _, stddev = current_noise_type.split('_')
+                    action_noise = OrnsteinUhlenbeckActionNoise(mu=np.zeros(nb_actions), sigma=float(stddev) * np.ones(nb_actions))
+                else:
+                    raise RuntimeError('unknown noise type "{}"'.format(current_noise_type))
+
+        max_action = action_space.high
+        logger.info('scaling actions by {} before executing in env'.format(max_action))
+
+        agent = DDPG(actor, critic, memory, observation_space.shape, action_space.shape,
+            gamma=gamma, tau=tau, normalize_returns=normalize_returns, normalize_observations=normalize_observations,
+            batch_size=batch_size, action_noise=action_noise, param_noise=param_noise, critic_l2_reg=critic_l2_reg,
+            actor_lr=actor_lr, critic_lr=critic_lr, enable_popart=popart, clip_norm=clip_norm,
+            reward_scale=reward_scale)
+        logger.info('Using agent with the following configuration:')
+        logger.info(str(agent.__dict__.items()))
+
+        sess = U.get_session()
+        # Prepare everything.
+        agent.initialize(sess)
+        sess.graph.finalize()
+
+        agent.reset()
+
+        # Variables that are used during learning
+        self.agent  = agent
+        self.memory = memory
+        self.max_action = max_action
+        self.batch_size = batch_size
+        self.nb_train_steps   = nb_train_steps
+        self.nb_rollout_steps = nb_rollout_steps
+        self.param_noise_adaption_interval = param_noise_adaption_interval
+
+
+    def get_action(self, obs, t, reset):
+        # The DDPG agent assumes that the environment is a vectorized environment
+        # we get around this issue by always assuming that the agent interacts with one environment
+        # and adapt the observation features to have shape (1,...)
+        obs.shape = (1,) + obs.shape
+        action, q, _, _ = self.agent.step(obs, apply_noise=True, compute_Q=True)
+        return self.max_action * action
+
+
+    def add_experience(self, obs, action, rew, new_obs, done):
+        # The DDPG agent assumes that the environment is a vectorized environment
+        # we get around this issue by always assuming that the agent interacts with one environment
+        # and adapt the observation features to have shape (1,...)
+        obs.shape     = (1,) + obs.shape
+        action.shape  = (1,) + action.shape
+        new_obs.shape = (1,) + new_obs.shape
+        rew           = np.array([rew])
+        done          = np.array([done])
+        self.agent.store_transition(obs, action, rew, new_obs, done) #the batched data will be unrolled in memory.py's append.
+
+        if done[0]:
+            # Episode done.
+            self.agent.reset()        
+
+
+    def learn(self, t):
+        if t%self.nb_rollout_steps==0 and t >= self.nb_rollout_steps:
+            # Train.
+            for t_train in range(self.nb_train_steps):
+                # Adapt param noise, if necessary.
+                if self.memory.nb_entries >= self.batch_size and t_train % self.param_noise_adaption_interval == 0:
+                    self.agent.adapt_param_noise()
+
+                self.agent.train()
+                self.agent.update_target_net()
+
+
+    def update_target_network(self, t):
+        # We are updating the network in the learn function
+        pass
+

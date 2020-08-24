@@ -196,7 +196,6 @@ def learn(network, env,
                             agent.reset()
 
 
-
             # Train.
             epoch_actor_losses = []
             epoch_critic_losses = []

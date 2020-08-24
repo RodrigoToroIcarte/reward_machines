@@ -261,7 +261,7 @@ if __name__ == '__main__':
     # python run.py --alg=qrm-ddpg --env=Half-Cheetah-RM5-v0 --reward_scale=5 --num_timesteps=3e6 --log_path=./results/cheetah_test/qrm2 --save_path=./results/cheetah_test/qrm2/models --network=mlp --num_layers=2 --num_hidden=256 --batch_size=100 --activation=tf.nn.relu --normalize_observations=False
 
     # python run.py --alg=qrm-ddpg --env=Half-Cheetah-RM6-v0 --num_timesteps=3e6 --log_path=./results/cheetah_rm6/qrm --save_path=./results/cheetah_rm6/qrm/models --network=mlp --num_layers=2 --num_hidden=256 --batch_size=100 --activation=tf.nn.relu --normalize_observations=False
-    # python run.py --alg=qrm-ddpg --env=Half-Cheetah-RM7-v0 --num_timesteps=3e6 --log_path=./results/cheetah_rm7/qrm --save_path=./results/cheetah_rm7/qrm/models --network=mlp --num_layers=2 --num_hidden=256 --batch_size=100 --activation=tf.nn.relu --normalize_observations=False
+    # python run.py --alg=qrm-hdrl --env=Half-Cheetah-RM7-v0 --num_timesteps=3e6 --log_path=./results/cheetah_rm7/hdrl --save_path=./results/cheetah_rm7/hdrl/models
 
     # python run.py --alg=deepq --env=Water-M0-v0 --num_timesteps=1e8 --network=mlp --num_layers=6 --num_hidden=64 --gamma=0.9
     # python run.py --alg=qrm-deepq --env=Water-M0-v0 --num_timesteps=1e8 --log_path=./results/water/0/qrm --network=mlp --num_layers=6 --num_hidden=64 --gamma=0.9 --lr=1e-5

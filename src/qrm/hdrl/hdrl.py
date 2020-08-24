@@ -19,11 +19,12 @@ from baselines.deepq.utils import ObservationInput
 from baselines.common.tf_util import get_session
 from baselines.deepq.models import build_q_func
 
-from qrm.hdrl.options import OptionDQN
+from qrm.hdrl.options import OptionDQN, OptionDDPG
 from qrm.hdrl.controller import ControllerDQN
 
 
 def learn(env,
+          use_ddpg=False,
           gamma=0.9,
           controller_kargs={},
           option_kargs={},
@@ -41,6 +42,8 @@ def learn(env,
     -------
     env: gym.Env
         environment to train on
+    use_ddpg: bool
+        whether to use DDPG or DQN to learn the option's policies
     gamma: float
         discount factor
     controller_kargs
@@ -76,7 +79,10 @@ def learn(env,
     set_global_seeds(seed)
 
     controller  = ControllerDQN(env, gamma, total_timesteps, **controller_kargs)
-    options     = OptionDQN(env, gamma, total_timesteps, **option_kargs)
+    if use_ddpg:
+        options = OptionDDPG(env, gamma, total_timesteps, **option_kargs)
+    else:
+        options = OptionDQN(env, gamma, total_timesteps, **option_kargs)
     option_s    = None # State where the option initiated
     option_id   = None # Id of the current option being executed
     option_rews = []   # Rewards obtained by the current option
