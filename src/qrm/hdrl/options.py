@@ -20,6 +20,16 @@ from baselines.common.tf_util import get_session
 from baselines.deepq.models import build_q_func
 from baselines.deepq.deepq import ActWrapper, load_act
 
+from baselines.ddpg.ddpg_learner import DDPG
+from baselines.ddpg.models import Actor, Critic
+from baselines.ddpg.memory import Memory
+from baselines.ddpg.noise import AdaptiveParamNoiseSpec, NormalActionNoise, OrnsteinUhlenbeckActionNoise
+
+
+
+
+
+
 
 class OptionDQN:
     """

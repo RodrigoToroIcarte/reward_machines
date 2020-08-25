@@ -162,10 +162,9 @@ def learn(env,
                 logger.record_tabular("steps", t)
                 logger.record_tabular("episodes", num_episodes)
                 logger.record_tabular("mean 100 episode reward", mean_100ep_reward)
-                logger.record_tabular("% time spent exploring", int(100 * options.exploration.value(t)))
                 logger.dump_tabular()
 
-            if (checkpoint_freq is not None and t > options.learning_starts and
+            if (checkpoint_freq is not None and
                     num_episodes > 100 and t % checkpoint_freq == 0):
                 if saved_mean_reward is None or mean_100ep_reward > saved_mean_reward:
                     if print_freq is not None:

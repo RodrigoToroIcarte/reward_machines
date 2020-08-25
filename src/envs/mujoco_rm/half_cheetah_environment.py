@@ -35,55 +35,41 @@ class MyHalfCheetahEnvRM5(RewardMachineEnv):
     def __init__(self):
         env = MyHalfCheetahEnv()
         rm_files = ["./envs/mujoco_rm/reward_machines/t5.txt"]
-        use_reward_shaping = False
-        rs_gamma = 0.9
-        super().__init__(env, rm_files, use_reward_shaping, rs_gamma)
+        super().__init__(env, rm_files)
 
 
 class MyHalfCheetahEnvRM6(RewardMachineEnv):
     def __init__(self):
         env = MyHalfCheetahEnv()
         rm_files = ["./envs/mujoco_rm/reward_machines/t6.txt"]
-        use_reward_shaping = False
-        rs_gamma = 0.9
-        super().__init__(env, rm_files, use_reward_shaping, rs_gamma)
+        super().__init__(env, rm_files)
 
 class MyHalfCheetahEnvRM7(RewardMachineEnv):
     def __init__(self):
         env = MyHalfCheetahEnv()
         rm_files = ["./envs/mujoco_rm/reward_machines/t7.txt"]
-        use_reward_shaping = False
-        rs_gamma = 0.9
-        super().__init__(env, rm_files, use_reward_shaping, rs_gamma)
+        super().__init__(env, rm_files)
 
 class MyHalfCheetahEnvRM8(RewardMachineEnv):
     def __init__(self):
         env = MyHalfCheetahEnv()
         rm_files = ["./envs/mujoco_rm/reward_machines/t8.txt"]
-        use_reward_shaping = False
-        rs_gamma = 0.9
-        super().__init__(env, rm_files, use_reward_shaping, rs_gamma)
+        super().__init__(env, rm_files)
 
 class MyHalfCheetahEnvRM9(RewardMachineEnv):
     def __init__(self):
         env = MyHalfCheetahEnv()
         rm_files = ["./envs/mujoco_rm/reward_machines/t9.txt"]
-        use_reward_shaping = False
-        rs_gamma = 0.9
-        super().__init__(env, rm_files, use_reward_shaping, rs_gamma)
+        super().__init__(env, rm_files)
 
 class MyHalfCheetahEnvRM10(RewardMachineEnv):
     def __init__(self):
         env = MyHalfCheetahEnv()
         rm_files = ["./envs/mujoco_rm/reward_machines/t10.txt"]
-        use_reward_shaping = False
-        rs_gamma = 0.9
-        super().__init__(env, rm_files, use_reward_shaping, rs_gamma)
+        super().__init__(env, rm_files)
 
 class MyHalfCheetahEnvRM11(RewardMachineEnv):
     def __init__(self):
         env = MyHalfCheetahEnv()
         rm_files = ["./envs/mujoco_rm/reward_machines/t11.txt"]
-        use_reward_shaping = False
-        rs_gamma = 0.9
-        super().__init__(env, rm_files, use_reward_shaping, rs_gamma)
+        super().__init__(env, rm_files)
