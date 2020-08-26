@@ -74,7 +74,7 @@ class RewardMachineEnv(gym.Wrapper):
         self.current_u_id  = self.current_rm.reset()
 
         # Adding the RM state to the observation
-        return self._get_observation(self.obs, self.current_rm_id, self.current_u_id, False)
+        return self.get_observation(self.obs, self.current_rm_id, self.current_u_id, False)
 
     def step(self, action):
         # executing the action in the environment
@@ -93,11 +93,11 @@ class RewardMachineEnv(gym.Wrapper):
 
         # returning the result of this action
         done = rm_done or env_done
-        rm_obs = self._get_observation(next_obs, self.current_rm_id, self.current_u_id, done)
+        rm_obs = self.get_observation(next_obs, self.current_rm_id, self.current_u_id, done)
 
         return rm_obs, rm_rew, done, info
 
-    def _get_observation(self, next_obs, rm_id, u_id, done):
+    def get_observation(self, next_obs, rm_id, u_id, done):
         rm_feat = self.rm_done_feat if done else self.rm_state_features[(rm_id,u_id)]
         rm_obs = {'features': next_obs,'rm-state': rm_feat}
         return gym.spaces.flatten(self.observation_dict, rm_obs)           
@@ -148,16 +148,11 @@ class RewardMachineWrapper(gym.Wrapper):
 
         return rm_obs, rm_rew, done, info
 
-    def _get_observation(self, next_obs, rm_id, u_id, done):
-        rm_feat = self.rm_done_feat if done else self.rm_state_features[(rm_id,u_id)]
-        rm_obs = {'features': next_obs,'rm-state': rm_feat}
-        return gym.spaces.flatten(self.observation_dict, rm_obs)
-
     def _get_rm_experience(self, rm_id, rm, u_id, obs, action, next_obs, env_done, true_props, info):
-        rm_obs = self._get_observation(obs, rm_id, u_id, False)
+        rm_obs = self.env.get_observation(obs, rm_id, u_id, False)
         next_u_id, rm_rew, rm_done = rm.step(u_id, true_props, info, self.add_rs, env_done)
         done = rm_done or env_done
-        rm_next_obs = self._get_observation(next_obs, rm_id, next_u_id, done)
+        rm_next_obs = self.env.get_observation(next_obs, rm_id, next_u_id, done)
         return (rm_obs,action,rm_rew,rm_next_obs,done), next_u_id
 
     def _get_qrm_experience(self, obs, action, next_obs, env_done, true_props, info):

@@ -270,12 +270,11 @@ if __name__ == '__main__':
 
 
 
-    # python3 run.py --alg=qlearning --env=Craft-M0-v0 --num_timesteps=1e6 --log_path=./results/craft/0/qlearning
-    # python3 run.py --alg=qlearning --env=Craft-M0-v0 --num_timesteps=1e6 --log_path=./results/craft/0/qlearning-rs --use_rs
-    # python3 run.py --alg=qlearning --env=Craft-M0-v0 --num_timesteps=1e6 --log_path=./results/craft/0/qrm --use_qrm
-    # python3 run.py --alg=qlearning --env=Craft-M0-v0 --num_timesteps=1e6 --log_path=./results/craft/0/qrm-rs --use_qrm --use_rs
-
-    # python3 run.py --alg=hrl --env=Craft-M0-v0 --num_timesteps=1e6 --log_path=./results/craft/0/hrl
+    # python3 run.py --alg=qlearning --env=Craft-M0-v0 --num_timesteps=2e6 --gamma=0.9 --log_path=./results/craft/0/qlearning
+    # python3 run.py --alg=qlearning --env=Craft-M0-v0 --num_timesteps=2e6 --gamma=0.9 --log_path=./results/craft/0/qlearning-rs --use_rs
+    # python3 run.py --alg=qlearning --env=Craft-M0-v0 --num_timesteps=2e6 --gamma=0.9 --log_path=./results/craft/0/qrm --use_qrm
+    # python3 run.py --alg=qlearning --env=Craft-M0-v0 --num_timesteps=2e6 --gamma=0.9 --log_path=./results/craft/0/qrm-rs --use_qrm --use_rs
+    # python3 run.py --alg=hrl --env=Craft-M0-v0 --num_timesteps=2e6 --gamma=0.9 --log_path=./results/craft/0/hrl
 
     # python3 run.py --alg=hdrl --env=Water-M0-v0 --num_timesteps=2e6 --log_path=./results/water/0/hdrl
 

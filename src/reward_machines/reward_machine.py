@@ -11,6 +11,7 @@ class RewardMachine:
         self.delta_r    = {} # reward-transition function
         self.terminal_u = -1  # All terminal states are sent to the same terminal state with id *-1*
         self._load_reward_machine(file)
+        self.known_transitions = {} # Auxiliary variable to speed up computation of the next RM state
 
     # Public methods -----------------------------------
 
@@ -30,11 +31,17 @@ class RewardMachine:
         # Returns the initial state
         return self.u0
 
-    def get_next_state(self, u1, true_props):
+    def _compute_next_state(self, u1, true_props):
         for u2 in self.delta_u[u1]:
             if evaluate_dnf(self.delta_u[u1][u2], true_props):
                 return u2
         return self.terminal_u # no transition is defined for true_props
+
+    def get_next_state(self, u1, true_props):
+        if (u1,true_props) not in self.known_transitions:
+            u2 = self._compute_next_state(u1, true_props)
+            self.known_transitions[(u1,true_props)] = u2
+        return self.known_transitions[(u1,true_props)]
 
     def step(self, u1, true_props, s_info, add_rs=False, env_done=False):
         """

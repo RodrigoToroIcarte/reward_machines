@@ -2,7 +2,7 @@
 Q-Learning based method
 """
 
-import random
+import random, time
 from baselines import logger
 
 
@@ -62,13 +62,22 @@ def learn(env,
     num_episodes = 0
     Q = {}
     actions = list(range(env.action_space.n))
+
+
+    #times = []        # DELETE ---------------------------------------------------
+
     while step < total_timesteps:
         s = tuple(env.reset())
         if s not in Q: Q[s] = dict([(a,q_init) for a in actions])
         while True:
             # Selecting and executing the action
             a = random.choice(actions) if random.random() < epsilon else get_best_action(Q,s,actions,q_init)
+            #t_init = time.time()                # DELETE
             sn, r, done, info = env.step(a)
+            #times.append(time.time() - t_init) # DELETE ---------------------------------------------------
+            #if len(times) == 10000:            # DELETE ---------------------------------------------------
+            #    print(sum(times))              # DELETE ---------------------------------------------------
+            #    exit()                         # DELETE ---------------------------------------------------
             sn = tuple(sn)
 
             # Updating the q-values
