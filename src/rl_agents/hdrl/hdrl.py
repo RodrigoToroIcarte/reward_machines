@@ -19,8 +19,8 @@ from baselines.deepq.utils import ObservationInput
 from baselines.common.tf_util import get_session
 from baselines.deepq.models import build_q_func
 
-from qrm.hdrl.options import OptionDQN, OptionDDPG
-from qrm.hdrl.controller import ControllerDQN
+from rl_agents.hdrl.options import OptionDQN, OptionDDPG
+from rl_agents.hdrl.controller import ControllerDQN
 
 
 def learn(env,

@@ -78,6 +78,11 @@ def train(args, extra_args):
         if alg_kwargs.get('network') is None:
             alg_kwargs['network'] = get_default_network(env_type)
 
+    # Adding RM-related parameters
+    alg_kwargs['use_rs']   = args.use_rs
+    alg_kwargs['use_qrm']  = args.use_qrm
+    alg_kwargs['gamma']    = args.gamma
+
     print('Training {} on {}:{} with arguments \n{}'.format(args.alg, env_type, env_id, alg_kwargs))
 
     model = learn(
@@ -99,7 +104,7 @@ def build_env(args):
 
     env_type, env_id = get_env_type(args)
 
-    if alg in ['qrm-deepq', 'deepq', 'qrm-qlearning', 'qrm-hrl', 'qrm-hdrl']:
+    if alg in ['deepq', 'qlearning', 'hrl', 'hdrl']:
         env = make_env(env_id, env_type, args, seed=seed, logger_dir=logger.get_dir())
     else:
         config = tf.ConfigProto(allow_soft_placement=True,
@@ -151,17 +156,14 @@ def get_default_network(env_type):
         return 'mlp'
 
 def get_alg_module(alg, submodule=None):
-    library = 'baselines'
-    if 'qrm-' in alg:
-        alg = alg.replace('qrm-','')
-        library = 'qrm'
+    library = 'rl_agents'
     submodule = submodule or alg
     try:
         # first try to import the alg module from baselines
         alg_module = import_module('.'.join([library, alg, submodule]))
     except ImportError:
         # then from rl_algs
-        alg_module = import_module('.'.join(['rl_' + 'algs', alg, submodule]))
+        alg_module = import_module('.'.join(['baselines', alg, submodule]))
 
     return alg_module
 
@@ -250,31 +252,31 @@ def main(args):
     return model
 
 if __name__ == '__main__':
-    # python run.py --alg=qrm-ddpg --env=Ant-RM5-v0 --num_timesteps=1e6 --network=mlp --num_layers=4 --num_hidden=128 --activation=tf.nn.relu
-    # python run.py --alg=qrm-ddpg --env=Ant-RM5-v0 --num_timesteps=1e8 --log_path=./results/ant_rm5/qrm --save_path=./results/ant_rm5/qrm/models --network=mlp --num_layers=4 --num_hidden=128
+    # python run.py --alg=ddpg --use_qrm --env=Ant-RM5-v0 --num_timesteps=1e6 --network=mlp --num_layers=4 --num_hidden=128 --activation=tf.nn.relu
+    # python run.py --alg=ddpg --use_qrm --env=Ant-RM5-v0 --num_timesteps=1e8 --log_path=./results/ant_rm5/qrm --save_path=./results/ant_rm5/qrm/models --network=mlp --num_layers=4 --num_hidden=128
     # python run.py --alg=ddpg --env=Ant-RM5-v0 --num_timesteps=1e8 --log_path=./results/ant_rm5/ddpg --save_path=./results/ant_rm5/ddpg/models --network=mlp --num_layers=4 --num_hidden=128
 
-    # python run.py --alg=qrm-ddpg --env=Half-Cheetah-RM5-v0 --reward_scale=5 --num_timesteps=1e8 --log_path=./results/cheetah_rm5/qrm --save_path=./results/cheetah_rm5/qrm/models --network=mlp --num_layers=2 --num_hidden=256 --batch_size=100 --activation=tf.nn.relu --actor_lr=1e-3 --normalize_observations=False
+    # python run.py --alg=ddpg --use_qrm --env=Half-Cheetah-RM5-v0 --reward_scale=5 --num_timesteps=1e8 --log_path=./results/cheetah_rm5/qrm --save_path=./results/cheetah_rm5/qrm/models --network=mlp --num_layers=2 --num_hidden=256 --batch_size=100 --activation=tf.nn.relu --actor_lr=1e-3 --normalize_observations=False
     # python run.py --alg=ddpg --env=Half-Cheetah-RM5-v0 --reward_scale=5 --num_timesteps=1e8 --log_path=./results/cheetah_rm5/ddpg --save_path=./results/cheetah_rm5/ddpg/models --network=mlp --num_layers=2 --num_hidden=256 --batch_size=100 --activation=tf.nn.relu --actor_lr=1e-3 --normalize_observations=False
 
     # python run.py --alg=ddpg --env=Half-Cheetah-RM5-v0 --reward_scale=5 --num_timesteps=3e6 --log_path=./results/cheetah_test/ddpg --save_path=./results/cheetah_test/ddpg/models --network=mlp --num_layers=2 --num_hidden=256 --batch_size=100 --activation=tf.nn.relu --actor_lr=1e-3 --normalize_observations=False
-    # python run.py --alg=qrm-ddpg --env=Half-Cheetah-RM5-v0 --reward_scale=5 --num_timesteps=3e6 --log_path=./results/cheetah_test/qrm2 --save_path=./results/cheetah_test/qrm2/models --network=mlp --num_layers=2 --num_hidden=256 --batch_size=100 --activation=tf.nn.relu --normalize_observations=False
+    # python run.py --alg=ddpg --use_qrm --env=Half-Cheetah-RM5-v0 --reward_scale=5 --num_timesteps=3e6 --log_path=./results/cheetah_test/qrm2 --save_path=./results/cheetah_test/qrm2/models --network=mlp --num_layers=2 --num_hidden=256 --batch_size=100 --activation=tf.nn.relu --normalize_observations=False
 
-    # python run.py --alg=qrm-ddpg --env=Half-Cheetah-RM6-v0 --num_timesteps=3e6 --log_path=./results/cheetah_rm6/qrm --save_path=./results/cheetah_rm6/qrm/models --network=mlp --num_layers=2 --num_hidden=256 --batch_size=100 --activation=tf.nn.relu --normalize_observations=False
-    # python run.py --alg=qrm-hdrl --env=Half-Cheetah-RM7-v0 --num_timesteps=3e6 --r_max=100 --log_path=./results/cheetah_rm7/hdrl --save_path=./results/cheetah_rm7/hdrl/models
+    # python run.py --alg=ddpg --use_qrm --env=Half-Cheetah-RM6-v0 --num_timesteps=3e6 --log_path=./results/cheetah_rm6/qrm --save_path=./results/cheetah_rm6/qrm/models --network=mlp --num_layers=2 --num_hidden=256 --batch_size=100 --activation=tf.nn.relu --normalize_observations=False
+    # python run.py --alg=hdrl --env=Half-Cheetah-RM7-v0 --num_timesteps=3e6 --r_max=100 --log_path=./results/cheetah_rm7/hdrl --save_path=./results/cheetah_rm7/hdrl/models
 
     # python run.py --alg=deepq --env=Water-M0-v0 --num_timesteps=1e8 --network=mlp --num_layers=6 --num_hidden=64 --gamma=0.9
-    # python run.py --alg=qrm-deepq --env=Water-M0-v0 --num_timesteps=1e8 --log_path=./results/water/0/qrm --network=mlp --num_layers=6 --num_hidden=64 --gamma=0.9 --lr=1e-5
+    # python run.py --alg=deepq --use_qrm --env=Water-M0-v0 --num_timesteps=1e8 --log_path=./results/water/0/qrm --network=mlp --num_layers=6 --num_hidden=64 --gamma=0.9 --lr=1e-5
 
 
 
-    # python3 run.py --alg=qrm-qlearning --env=Craft-M0-v0 --num_timesteps=1e6 --log_path=./results/craft/0/qlearning
-    # python3 run.py --alg=qrm-qlearning --env=Craft-M0-v0 --num_timesteps=1e6 --log_path=./results/craft/0/qlearning-rs --use_rs
-    # python3 run.py --alg=qrm-qlearning --env=Craft-M0-v0 --num_timesteps=1e6 --log_path=./results/craft/0/qrm --use_qrm
-    # python3 run.py --alg=qrm-qlearning --env=Craft-M0-v0 --num_timesteps=1e6 --log_path=./results/craft/0/qrm-rs --use_qrm --use_rs
+    # python3 run.py --alg=qlearning --env=Craft-M0-v0 --num_timesteps=1e6 --log_path=./results/craft/0/qlearning
+    # python3 run.py --alg=qlearning --env=Craft-M0-v0 --num_timesteps=1e6 --log_path=./results/craft/0/qlearning-rs --use_rs
+    # python3 run.py --alg=qlearning --env=Craft-M0-v0 --num_timesteps=1e6 --log_path=./results/craft/0/qrm --use_qrm
+    # python3 run.py --alg=qlearning --env=Craft-M0-v0 --num_timesteps=1e6 --log_path=./results/craft/0/qrm-rs --use_qrm --use_rs
 
-    # python3 run.py --alg=qrm-hrl --env=Craft-M0-v0 --num_timesteps=1e6 --log_path=./results/craft/0/hrl
+    # python3 run.py --alg=hrl --env=Craft-M0-v0 --num_timesteps=1e6 --log_path=./results/craft/0/hrl
 
-    # python3 run.py --alg=qrm-hdrl --env=Water-M0-v0 --num_timesteps=2e6 --log_path=./results/water/0/hdrl
+    # python3 run.py --alg=hdrl --env=Water-M0-v0 --num_timesteps=2e6 --log_path=./results/water/0/hdrl
 
     main(sys.argv)

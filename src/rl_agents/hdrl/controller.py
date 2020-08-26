@@ -18,8 +18,8 @@ from baselines.common.tf_util import get_session
 from baselines.deepq.models import build_q_func
 from baselines.deepq.deepq import ActWrapper, load_act
 
-from qrm.hdrl.build_graph import build_train
-from qrm.hdrl.replay_buffer import ReplayBuffer
+from rl_agents.hdrl.build_graph import build_train
+from rl_agents.hdrl.replay_buffer import ReplayBuffer
 
 class ControllerDQN:
     """

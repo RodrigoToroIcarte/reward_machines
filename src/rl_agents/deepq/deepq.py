@@ -95,6 +95,8 @@ def load_act(path):
 def learn(env,
           network,
           seed=None,
+          use_qrm=False,
+          use_rs=False,
           lr=5e-4,
           total_timesteps=100000,
           buffer_size=50000,
@@ -130,6 +132,10 @@ def learn(env,
         will be mapped to the Q function heads (see build_q_func in baselines.deepq.models for details on that)
     seed: int or None
         prng seed. The runs with the same seed "should" give the same results. If None, no seeding is used.
+    use_qrm: bool
+        use counterfactual experience to train the policy
+    use_rs: bool
+        use reward shaping
     lr: float
         learning rate for adam optimizer
     total_timesteps: int
@@ -279,10 +285,20 @@ def learn(env,
             env_action = action
             reset = False
             new_obs, rew, done, info = env.step(env_action)
+
             # Store transition in the replay buffer.
-            for _obs, _action, _r, _new_obs, _done in info["qrm-experience"]:
+            if use_qrm:
+                # Adding counterfactual experience (this will alrady include shaped rewards if use_rs=True)
+                experiences = info["qrm-experience"]
+            elif use_rs:
+                # Include only the current experince but shape the reward
+                experiences = [info["rs-experience"]]
+            else:
+                # Include only the current experience (standard deepq)
+                experiences = [(obs, action, rew, new_obs, float(done))]
+            # Adding the experiences to the replay buffer
+            for _obs, _action, _r, _new_obs, _done in experiences:
                 replay_buffer.add(_obs, _action, _r, _new_obs, _done)
-            # replay_buffer.add(obs, action, rew, new_obs, float(done))
             
             obs = new_obs
 

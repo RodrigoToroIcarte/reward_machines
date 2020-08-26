@@ -79,7 +79,8 @@ def learn(env,
                     experiences.append((tuple(_s),_a,_r,tuple(_sn),_done))
             elif use_rs:
                 # Include only the current experince but shape the reward
-                experiences = [info["rs-experience"]]
+                _s,_a,_r,_sn,_done = info["rs-experience"]
+                experiences = [(tuple(_s),_a,_r,tuple(_sn),_done)]
             else:
                 # Include only the current experience (standard q-learning)
                 experiences = [(s,a,r,sn,done)]

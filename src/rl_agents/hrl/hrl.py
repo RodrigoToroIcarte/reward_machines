@@ -25,7 +25,8 @@ def learn(env,
           print_freq=10000,
           gamma=0.9,
           q_init=1.0,
-          hrl_lr=0.1):
+          hrl_lr=0.1,
+          **others):
     """Train a tabular HRL method.
 
     Parameters

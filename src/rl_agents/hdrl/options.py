@@ -26,11 +26,6 @@ from baselines.ddpg.memory import Memory
 from baselines.ddpg.noise import AdaptiveParamNoiseSpec, NormalActionNoise, OrnsteinUhlenbeckActionNoise
 
 
-
-
-
-
-
 class OptionDQN:
     """
     Wrapper for a DQN agent that learns the policies for all the options

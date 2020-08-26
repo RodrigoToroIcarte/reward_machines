@@ -25,6 +25,8 @@ except ImportError:
 
 def learn(network, env,
           seed=None,
+          use_qrm=False,
+          use_rs=False,
           total_timesteps=None,
           nb_epochs=None, # with default settings, perform 1M steps total
           nb_epoch_cycles=20,
@@ -169,14 +171,23 @@ def learn(network, env,
 
                 # Adding counterfactual experience from the reward machines
                 if nenvs == 1:
-                    #print(new_obs[0,:2], new_obs[0,-2:], info[0]['x_position'], info[0]['reward_forward'], info[0]['reward_ctrl'], info[0]['reward_contact'], info[0]['reward_survive'])
-                    for _obs, _action, _r, _new_obs, _done in info[0]["qrm-experience"]:
-                        _obs.shape     = obs.shape
-                        _action.shape  = action.shape
-                        _new_obs.shape = new_obs.shape
-                        _r             = np.array([_r])
-                        _done          = np.array([_done])
-                        agent.store_transition(_obs, _action, _r, _new_obs, _done) #the batched data will be unrolled in memory.py's append.
+                    if not(use_qrm or use_rs):
+                        # Standard DDPG
+                        agent.store_transition(obs, action, r, new_obs, done) #the batched data will be unrolled in memory.py's append.
+                    else:
+                        # Adding qrm and/or reward shaping to DDPG
+                        if use_qrm:
+                            experiences = info[0]["qrm-experience"]
+                        else:
+                            experiences = [info[0]["rs-experience"]]
+
+                        for _obs, _action, _r, _new_obs, _done in experiences:
+                            _obs.shape     = obs.shape
+                            _action.shape  = action.shape
+                            _new_obs.shape = new_obs.shape
+                            _r             = np.array([_r])
+                            _done          = np.array([_done])
+                            agent.store_transition(_obs, _action, _r, _new_obs, _done) #the batched data will be unrolled in memory.py's append.
                 else:
                     assert False, "We have not implemented qrm for nenvs > 1 yet"
 
