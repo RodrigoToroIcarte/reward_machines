@@ -126,6 +126,7 @@ class RewardMachineWrapper(gym.Wrapper):
                 rm.add_reward_shaping(gamma, rs_gamma)
 
     def reset(self):
+        self.valid_states = None # We use this set to compute RM states that are reachable by the last experience (None means that all of them are reachable!) 
         return self.env.reset()
 
     def step(self, action):
@@ -142,7 +143,7 @@ class RewardMachineWrapper(gym.Wrapper):
             qrm_experience = self._get_qrm_experience(*self.qrm_params)
             info["qrm-experience"] = qrm_experience
         elif self.add_rs:
-            rs_experience  = self._get_rm_experience(rm_id, rm, u_id, *self.qrm_params)
+            rs_experience,_  = self._get_rm_experience(rm_id, rm, u_id, *self.qrm_params)
             info["rs-experience"] = rs_experience
 
         return rm_obs, rm_rew, done, info
@@ -157,22 +158,28 @@ class RewardMachineWrapper(gym.Wrapper):
         next_u_id, rm_rew, rm_done = rm.step(u_id, true_props, info, self.add_rs, env_done)
         done = rm_done or env_done
         rm_next_obs = self._get_observation(next_obs, rm_id, next_u_id, done)
-        return rm_obs,action,rm_rew,rm_next_obs,done
+        return (rm_obs,action,rm_rew,rm_next_obs,done), next_u_id
 
     def _get_qrm_experience(self, obs, action, next_obs, env_done, true_props, info):
         """
         Returns a list of counterfactual experiences generated per each RM state.
         Format: [..., (obs, action, r, new_obs, done), ...]
         """
+        reachable_states = set()
         experiences = []
         for rm_id, rm in enumerate(self.reward_machines):
             for u_id in rm.get_states():
                 #if (rm_id,u_id) != (self.current_rm_id,self.current_u_id):
                 #    if ("c" in self.last_true_props and u_id == 0) or ("d" in self.last_true_props and u_id == 1): 
                 #        continue # <- HERE!!!!
-                exp = self._get_rm_experience(rm_id, rm, u_id, obs, action, next_obs, env_done, true_props, info)
-                experiences.append(exp)
-        return experiences                
+                exp, next_u = self._get_rm_experience(rm_id, rm, u_id, obs, action, next_obs, env_done, true_props, info)
+                reachable_states.add((rm_id,next_u))
+                if self.valid_states is None or (rm_id,u_id) in self.valid_states:
+                    # We only add experience that are possible (i.e., it is possible to reach state u_id given the previous experience)
+                    experiences.append(exp)
+
+        self.valid_states = reachable_states
+        return experiences
 
 
 class HierarchicalRLWrapper(gym.Wrapper):
@@ -251,6 +258,7 @@ class HierarchicalRLWrapper(gym.Wrapper):
         return gym.spaces.flatten(self.option_observation_dict, opt_obs)    
 
     def reset(self):
+        self.valid_states = None # We use this set to compute RM states that are reachable by the last experience (None means that all of them are reachable!) 
         return self.env.reset()
 
     def step(self, action):
@@ -288,8 +296,19 @@ class HierarchicalRLWrapper(gym.Wrapper):
         Format: [..., (obs, action, r, new_obs, done), ...]
         """
         obs, action, next_obs, env_done, true_props, info = self.env.qrm_params
+        reachable_states = set()
         experiences = []
         for option_id in range(self.num_options):
-            exp = self._get_option_experience(option_id, obs, action, next_obs, env_done, true_props, info)
-            experiences.append(exp)
+            # Computing reachable states (for the next state)
+            rm_id, u1, u2 = self.options[option_id]
+            rm = self.env.reward_machines[rm_id]
+            un, _, _ = rm.step(u1, true_props, info)
+            reachable_states.add((rm_id,un))
+            # Adding experience (if needed)
+            if self.valid_states is None or (rm_id,u1) in self.valid_states:
+                # We only add experience that are possible (i.e., it is possible to reach state u1 given the previous experience)
+                exp = self._get_option_experience(option_id, obs, action, next_obs, env_done, true_props, info)
+                experiences.append(exp)
+
+        self.valid_states = reachable_states
         return experiences                
