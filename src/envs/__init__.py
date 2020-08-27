@@ -77,7 +77,7 @@ register(
 )
 
 # ----------------------------------------- CRAFT
-for i in range(1):
+for i in range(11):
     w_id = 'Craft-M%d-v0'%i
     w_en = 'envs.grids.grid_environment:CraftRMEnvM%d'%i
     register(

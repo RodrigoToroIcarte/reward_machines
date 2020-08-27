@@ -5,10 +5,12 @@ Q-Learning based method
 import random
 from baselines import logger
 
-
-def get_qmax(Q,s,actions,q_init):
+def add_state_if_needed(Q,s,actions,q_init):
     if s not in Q:
         Q[s] = dict([(a,q_init) for a in actions])
+
+def get_qmax(Q,s,actions,q_init):
+    add_state_if_needed(Q,s,actions,q_init)
     return max(Q[s].values())
 
 def get_best_action(Q,s,actions,q_init):
@@ -71,6 +73,7 @@ def learn(env,
             if option_id is None:
                 valid_options = env.get_valid_options()
                 option_s    = s
+                add_state_if_needed(Q_controller,option_s,valid_options,q_init)
                 option_id   = random.choice(valid_options) if random.random() < epsilon else get_best_action(Q_controller,s,valid_options,q_init)
                 option_rews = []
 
@@ -85,7 +88,7 @@ def learn(env,
             # Updating the option policies
             for _s,_a,_r,_sn,_done in env.get_experience():
                 _s,_sn = tuple(_s), tuple(_sn)
-                if _s not in Q_options: Q_options[_s] = dict([(b,q_init) for b in actions])
+                add_state_if_needed(Q_options,_s,actions,q_init)
                 if _done: _delta = _r - Q_options[_s][_a]
                 else:     _delta = _r + gamma*get_qmax(Q_options,_sn,actions,q_init) - Q_options[_s][_a]
                 Q_options[_s][_a] += lr*_delta

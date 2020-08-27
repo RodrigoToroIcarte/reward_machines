@@ -186,7 +186,7 @@ class HierarchicalRLWrapper(gym.Wrapper):
 
     Methods
     --------------------
-        - __init__(self, env, r_min, r_max):
+        - __init__(self, env, r_min, r_max, use_self_loops):
             - In addition of extracting the set of options available, it initializes the following attributes:
                 - self.option_observation_space: space of options (concatenation of the env features and the one-hot encoding of the option id)
                 - self.option_action_space: space of actions wrt the set of available options
@@ -194,6 +194,7 @@ class HierarchicalRLWrapper(gym.Wrapper):
                 - env(RewardMachineEnv): It must be an RM environment.
                 - r_min(float):          Reward given to the option policies when they failed to accomplish their goal.
                 - r_max(float):          Reward given to the option policies when they accomplished their goal.
+                - use_self_loops(bool):  When true, it adds option policies for each self-loop in the RM
         - get_valid_options(self):
             - Returns the set of valid options in the current RM state.
         - get_option_observation(self, option_id):
@@ -208,14 +209,18 @@ class HierarchicalRLWrapper(gym.Wrapper):
             - Returns the off-policy experience necessary to update all the option policies.
     """
 
-    def __init__(self, env, r_min, r_max):
+    def __init__(self, env, r_min, r_max, use_self_loops):
         self.r_min = r_min
         self.r_max = r_max
         super().__init__(env)
 
         # Extracting the set of options available (one per edge in the RM)
-        #self.options = [(rm_id,u1,u2) for rm_id, rm in enumerate(env.reward_machines) for u1 in rm.delta_u for u2 in rm.delta_u[u1] if u1 != u2]
-        self.options = [(rm_id,u1,u2) for rm_id, rm in enumerate(env.reward_machines) for u1 in rm.delta_u for u2 in rm.delta_u[u1]] # This version includes options for self-loops!
+        if use_self_loops:
+            # This version includes options for self-loops!
+            self.options = [(rm_id,u1,u2) for rm_id, rm in enumerate(env.reward_machines) for u1 in rm.delta_u for u2 in rm.delta_u[u1]]
+        else:
+            # This version does not include options for the self-loops!
+            self.options = [(rm_id,u1,u2) for rm_id, rm in enumerate(env.reward_machines) for u1 in rm.delta_u for u2 in rm.delta_u[u1] if u1 != u2]
         self.num_options = len(self.options)
         self.valid_options   = {}
         self.option_features = {}

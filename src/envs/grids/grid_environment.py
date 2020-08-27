@@ -87,3 +87,53 @@ class CraftRMEnvM0(CraftRMEnv):
     def __init__(self):
         file_map = "./envs/grids/maps/map_0.txt"
         super().__init__(file_map)
+
+class CraftRMEnvM1(CraftRMEnv):
+    def __init__(self):
+        file_map = "./envs/grids/maps/map_1.txt"
+        super().__init__(file_map)
+
+class CraftRMEnvM2(CraftRMEnv):
+    def __init__(self):
+        file_map = "./envs/grids/maps/map_2.txt"
+        super().__init__(file_map)
+
+class CraftRMEnvM3(CraftRMEnv):
+    def __init__(self):
+        file_map = "./envs/grids/maps/map_3.txt"
+        super().__init__(file_map)
+
+class CraftRMEnvM4(CraftRMEnv):
+    def __init__(self):
+        file_map = "./envs/grids/maps/map_4.txt"
+        super().__init__(file_map)
+
+class CraftRMEnvM5(CraftRMEnv):
+    def __init__(self):
+        file_map = "./envs/grids/maps/map_5.txt"
+        super().__init__(file_map)
+
+class CraftRMEnvM6(CraftRMEnv):
+    def __init__(self):
+        file_map = "./envs/grids/maps/map_6.txt"
+        super().__init__(file_map)
+
+class CraftRMEnvM7(CraftRMEnv):
+    def __init__(self):
+        file_map = "./envs/grids/maps/map_7.txt"
+        super().__init__(file_map)
+
+class CraftRMEnvM8(CraftRMEnv):
+    def __init__(self):
+        file_map = "./envs/grids/maps/map_8.txt"
+        super().__init__(file_map)
+
+class CraftRMEnvM9(CraftRMEnv):
+    def __init__(self):
+        file_map = "./envs/grids/maps/map_9.txt"
+        super().__init__(file_map)
+
+class CraftRMEnvM10(CraftRMEnv):
+    def __init__(self):
+        file_map = "./envs/grids/maps/map_10.txt"
+        super().__init__(file_map)
