@@ -190,6 +190,14 @@ def learn(env,
         Wrapper over act function. Adds ability to save it and load it.
         See header of baselines/deepq/categorical.py for details on the act function.
     """
+
+    # Adjusting hyper-parameters by considering the number of RM states for QRM
+    if use_qrm:
+        rm_states   = env.get_num_rm_states()
+        buffer_size = rm_states*buffer_size
+        batch_size  = rm_states*batch_size
+
+
     # Create all the functions necessary to train the model
 
     sess = get_session()

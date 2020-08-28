@@ -125,6 +125,9 @@ class RewardMachineWrapper(gym.Wrapper):
             for rm in env.reward_machines:
                 rm.add_reward_shaping(gamma, rs_gamma)
 
+    def get_num_rm_states(self):
+        return self.env.num_rm_states
+
     def reset(self):
         self.valid_states = None # We use this set to compute RM states that are reachable by the last experience (None means that all of them are reachable!) 
         return self.env.reset()

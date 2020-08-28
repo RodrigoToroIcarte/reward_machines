@@ -278,4 +278,22 @@ if __name__ == '__main__':
 
     # python3 run.py --alg=hdrl --env=Water-M0-v0 --num_timesteps=2e6 --log_path=./results/water/0/hdrl
 
+    # python3.6 run.py --alg=qlearning --env=Office-v0 --num_timesteps=1e5 --gamma=0.9 --log_path=./results/ql/office/0
+    # python3.6 run.py --alg=qlearning --env=Office-v0 --num_timesteps=1e5 --gamma=0.9 --log_path=./results/rs/office/0 --use_rs
+    # python3.6 run.py --alg=qlearning --env=Office-v0 --num_timesteps=1e5 --gamma=0.9 --log_path=./results/qrm/office/0 --use_qrm
+    # python3.6 run.py --alg=qlearning --env=Office-v0 --num_timesteps=1e5 --gamma=0.9 --log_path=./results/qrm-rs/office/0 --use_qrm --use_rs
+
+    # python3.6 run.py --alg=hrl --env=Office-v0 --num_timesteps=1e5 --gamma=0.9 --log_path=./results/hrl/office/0
+
+    # python3.6 run.py --alg=deepq --env=Water-M0-v0 --num_timesteps=2e6 --gamma=0.9 --log_path=./results/ql/water/M0/0 --save_path=./results/ql/water/M0/0/models
+    # python3.6 run.py --alg=deepq --env=Water-M0-v0 --num_timesteps=2e6 --gamma=0.9 --log_path=./results/qrm/water/M0/0 --save_path=./results/qrm/water/M0/0/models --use_qrm
+
+    # python3.6 run.py --alg=deepq --env=Water-M0-v0 --num_timesteps=1e5 --gamma=0.9 --log_path=./results/qrm/water/M0/0 --save_path=./results/qrm/water/M0/0/models --use_qrm
+
+
+    # python3.6 run.py --alg=deepq --env=Water-M0-v0 --num_timesteps=1e5 --gamma=0.9 --use_qrm
+
+    #import time
+    #t_init = time.time()
     main(sys.argv)
+    #print(time.time() - t_init)
