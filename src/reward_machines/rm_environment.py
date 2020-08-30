@@ -249,6 +249,8 @@ class HierarchicalRLWrapper(gym.Wrapper):
         self.controller_observation_space = env.observation_space
         self.controller_action_space = spaces.Discrete(self.num_options)
 
+    def get_number_of_options(self):
+        return self.num_options
 
     def get_valid_options(self):
         return self.valid_options[(self.env.current_rm_id,self.env.current_u_id)]

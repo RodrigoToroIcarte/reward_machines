@@ -99,6 +99,11 @@ class OptionDQN:
             additional keyword arguments to pass to the network builder.
         """
 
+        # Adjusting hyper-parameters by considering the number of options policies to learn
+        num_options = env.get_number_of_options()
+        buffer_size = num_options*buffer_size
+        batch_size  = num_options*batch_size
+
         q_func = build_q_func(network, **network_kwargs)
 
         # capture the shape outside the closure so that the env object is not serialized

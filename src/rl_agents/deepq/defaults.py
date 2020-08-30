@@ -24,8 +24,8 @@ def retro():
 def water_environment():
     return dict(
         network='mlp',
-        num_layers=6, 
-        num_hidden=64, 
+        num_layers=3, 
+        num_hidden=256, 
         activation=tf.nn.relu,
         lr=1e-5,
         buffer_size=50000,

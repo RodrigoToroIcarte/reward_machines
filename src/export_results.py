@@ -1,5 +1,12 @@
 import math,os,statistics,argparse
 from collections import deque
+import numpy as np
+
+def get_precentiles_str(a):
+    p25 = "%0.2f"%float(np.percentile(a, 25))
+    p50 = "%0.2f"%float(np.percentile(a, 50))
+    p75 = "%0.2f"%float(np.percentile(a, 75))
+    return [p25, p50, p75]
 
 
 def export_avg_results(agent,env,maps,seeds):
@@ -59,19 +66,20 @@ def export_avg_results(agent,env,maps,seeds):
     for i in range(max_length):
         if len(stats[i]) == len(seeds) * len(maps):
             f.write("\t".join([str((i+1)*steps_tic/1000), "%0.4f"%(sum(stats[i])/len(stats[i]))]) + "\n")
-            #f.write("\t".join([str((i+1)*steps_tic/1000), "%0.4f"%(sum(stats[i])/len(stats[i])), "%0.4f"%(statistics.stdev(stats[i]))]) + "\n")
+            #f.write("\t".join([str((i+1)*steps_tic/1000)] + get_precentiles_str(stats[i])) + "\n")
     f.close()
 
 def main():
-    #export_avg_results('qrm','water',['M0'],[0])
+    export_avg_results('qrm','water_big',['M0'],[0])
     #export_avg_results('ql','water',['M0'],[0])
 
     #for alg in ['ql', 'qrm', 'hrl', 'rs','qrm-rs']:
+    #    print(alg,'craft')
     #    export_avg_results(alg,'craft',['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10'],[0,1,2])
 
-    for alg in ['ql', 'qrm', 'hrl', 'rs','qrm-rs']:
-        print(alg,'office')
-        export_avg_results(alg,'office',['M1'],list(range(30)))
+    #for alg in ['ql', 'qrm', 'hrl', 'rs','qrm-rs']:
+    #    print(alg,'office')
+    #    export_avg_results(alg,'office',['M1'],list(range(30)))
 
 
 if __name__ == '__main__':
