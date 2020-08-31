@@ -16,15 +16,18 @@ class OfficeWorld:
         """
         We execute 'action' in the game
         """
-        action = Actions(a)
         x,y = self.agent
+        self.agent = self._get_new_position(x,y,a)
+
+    def _get_new_position(self, x, y, a):
+        action = Actions(a)
         # executing action
         if (x,y,action) not in self.forbidden_transitions:
             if action == Actions.up   : y+=1
             if action == Actions.down : y-=1
             if action == Actions.left : x-=1
             if action == Actions.right: x+=1
-        self.agent = (x,y)
+        return x,y
 
 
     def get_true_propositions(self):
@@ -83,6 +86,22 @@ class OfficeWorld:
                     else:
                         print(" ",end="")
                 print()                
+
+    def get_model(self):
+        """
+        This method returns a model of the environment. 
+        We use the model to compute optimal policies using value iteration.
+        The optimal policies are used to set the average reward per step of each task to 1.
+        """
+        S = [(x,y) for x in range(12) for y in range(9)] # States
+        A = self.actions.copy() # Actions
+        L = self.objects.copy() # Labeling function
+        T = {}                  # Transitions (s,a) -> s' (they are deterministic)
+        for s in S:
+            x,y = s
+            for a in A:
+                T[(s,a)] = self._get_new_position(x,y,a)
+        return S,A,L,T # SALT xD
 
     def _load_map(self):
         # Creating the map

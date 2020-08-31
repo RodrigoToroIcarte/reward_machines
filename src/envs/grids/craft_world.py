@@ -16,11 +16,11 @@ class CraftWorld:
         """
         We execute 'action' in the game
         """
-        action = Actions(a)
         agent = self.agent
+        ni,nj = agent.i, agent.j
 
         # Getting new position after executing action
-        ni,nj = self._get_next_position(action)
+        ni,nj = self._get_next_position(ni,nj,a)
         
         # Interacting with the objects that is in the next position (this doesn't include monsters)
         action_succeeded = self.map_array[ni][nj].interact(agent)
@@ -30,13 +30,12 @@ class CraftWorld:
             agent.change_position(ni,nj)
 
 
-    def _get_next_position(self, action):
+    def _get_next_position(self, ni, nj, a):
         """
         Returns the position where the agent would be if we execute action
         """
-        agent = self.agent
-        ni,nj = agent.i, agent.j
-            
+        action = Actions(a)
+        
         # OBS: Invalid actions behave as NO-OP
         if action == Actions.up   : ni-=1
         if action == Actions.down : ni+=1
@@ -76,6 +75,25 @@ class CraftWorld:
             r += s
         print(r)
 
+
+    def get_model(self):
+        """
+        This method returns a model of the environment. 
+        We use the model to compute optimal policies using value iteration.
+        The optimal policies are used to set the average reward per step of each task to 1.
+        """
+        S = [(x,y) for x in range(1,40) for y in range(1,40)] # States
+        A = self.actions.copy()                               # Actions
+        L = dict([((x,y),str(self.map_array[x][y]).strip()) for x,y in S])  # Labeling function
+        T = {}                  # Transitions (s,a) -> s' (they are deterministic)
+        for s in S:
+            x,y = s
+            for a in A:
+                x2,y2 = self._get_next_position(x,y,a)
+                T[(s,a)] = s if str(self.map_array[x2][y2]) == "X" else (x2,y2)
+        return S,A,L,T # SALT xD
+
+
     def _load_map(self,file_map):
         """
         This method adds the following attributes to the game:
@@ -88,7 +106,7 @@ class CraftWorld:
             - file_map: path to the map file
         """
         # contains all the actions that the agent can perform
-        actions = [Actions.up.value, Actions.right.value, Actions.down.value, Actions.left.value]
+        self.actions = [Actions.up.value, Actions.right.value, Actions.down.value, Actions.left.value]
         # loading the map
         self.map_array = []
         self.class_ids = {} # I use the lower case letters to define the features
@@ -107,8 +125,8 @@ class CraftWorld:
                     if e not in self.class_ids:
                         self.class_ids[e] = len(self.class_ids)
                 if e in " A":  entity = Empty(i,j)
-                if e == "X":    entity = Obstacle(i,j)
-                if e == "A":    self.agent = Agent(i,j,actions)
+                if e == "X":   entity = Obstacle(i,j)
+                if e == "A":   self.agent = Agent(i,j,self.actions)
                 row.append(entity)
                 j += 1
             self.map_array.append(row)

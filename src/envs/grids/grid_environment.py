@@ -1,9 +1,10 @@
-import gym
+import gym, random
 from gym import spaces
 import numpy as np
 from reward_machines.rm_environment import RewardMachineEnv
 from envs.grids.craft_world import CraftWorld
 from envs.grids.office_world import OfficeWorld
+from envs.grids.value_iteration import value_iteration
 
 class GridEnv(gym.Env):
     def __init__(self, env):
@@ -30,6 +31,8 @@ class GridEnv(gym.Env):
     def show(self):
         self.env.show()
 
+    def get_model(self):
+        return self.env.get_model()
 
 class GridRMEnv(RewardMachineEnv):
     def __init__(self, env, rm_files):
@@ -69,6 +72,46 @@ class GridRMEnv(RewardMachineEnv):
                     print("Forbidden action")
         else:
             raise NotImplementedError
+
+    def test_optimal_policies(self, num_episodes, epsilon, gamma):
+        """
+        This code computes optimal policies for each reward machine and evaluates them using epsilon-greedy exploration
+
+        PARAMS
+        ----------
+        num_episodes(int): Number of evaluation episodes
+        epsilon(float):    Epsilon constant for exploring the environment
+        gamma(float):      Discount factor
+
+        RETURNS
+        ----------
+        List with the optimal average-reward-per-step per reward machine
+        """
+        S,A,L,T = self.env.get_model()
+        print("\nComputing optimal policies... ", end='', flush=True)
+        optimal_policies = [value_iteration(S,A,L,T,rm,gamma) for rm in self.reward_machines]
+        print("Done!")
+        optimal_ARPS = [[] for _ in range(len(optimal_policies))]
+        print("\nEvaluating optimal policies.")
+        for ep in range(num_episodes):
+            if ep % 100 == 0 and ep > 0:
+                print("%d/%d"%(ep,num_episodes))
+            self.reset()
+            s = tuple(self.obs)
+            u = self.current_u_id
+            rm_id = self.current_rm_id
+            rewards = []
+            done = False
+            while not done:
+                a = random.choice(A) if random.random() < epsilon else optimal_policies[rm_id][(s,u)]
+                _, r, done, _ = self.step(a)
+                rewards.append(r)
+                s = tuple(self.obs)
+                u = self.current_u_id
+            optimal_ARPS[rm_id].append(sum(rewards)/len(rewards))
+        print("Done!\n")
+
+        return [sum(arps)/len(arps) for arps in optimal_ARPS]
 
 
 class OfficeRMEnv(GridRMEnv):
