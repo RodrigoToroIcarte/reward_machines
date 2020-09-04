@@ -79,8 +79,6 @@ def half_cheetah_environment():
           param_noise_adaption_interval=50
         )
 
-    # python3 run.py --network=mlp --num_layers=2 --num_hidden=256 --batch_size=100 --activation=tf.nn.relu --normalize_observations=False
-
     return dict(
         use_ddpg=True,
         gamma=0.99,

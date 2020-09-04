@@ -27,6 +27,12 @@ class MyHalfCheetahEnv(gym.Wrapper):
             events+='d'
         if self.info['x_position'] > 2:
             events+='c'
+        if self.info['x_position'] > 4:
+            events+='e'
+        if self.info['x_position'] > 6:
+            events+='f'
+        if self.info['x_position'] > 8:
+            events+='g'
         return events
 
 
@@ -72,4 +78,10 @@ class MyHalfCheetahEnvRM11(RewardMachineEnv):
     def __init__(self):
         env = MyHalfCheetahEnv()
         rm_files = ["./envs/mujoco_rm/reward_machines/t11.txt"]
+        super().__init__(env, rm_files)
+
+class MyHalfCheetahEnvRM12(RewardMachineEnv):
+    def __init__(self):
+        env = MyHalfCheetahEnv()
+        rm_files = ["./envs/mujoco_rm/reward_machines/t12.txt"]
         super().__init__(env, rm_files)

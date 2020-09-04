@@ -269,6 +269,11 @@ if __name__ == '__main__':
     # python run.py --alg=deepq --use_qrm --env=Water-M0-v0 --num_timesteps=1e8 --log_path=./results/water/0/qrm --network=mlp --num_layers=6 --num_hidden=64 --gamma=0.9 --lr=1e-5
 
 
+    # python3.6 run.py --alg=ddpg --env=Half-Cheetah-RM11-v0 --num_timesteps=3e6 --gamma=0.99
+    # python3.6 run.py --alg=ddpg --env=Half-Cheetah-RM11-v0 --num_timesteps=3e6 --gamma=0.99 --use_rs
+    # python3.6 run.py --alg=ddpg --env=Half-Cheetah-RM11-v0 --num_timesteps=3e6 --gamma=0.99 --use_qrm
+    # python3.6 run.py --alg=ddpg --env=Half-Cheetah-RM11-v0 --num_timesteps=3e6 --gamma=0.99 --use_qrm --use_rs
+    # python3.6 run.py --alg=hdrl --env=Half-Cheetah-RM11-v0 --num_timesteps=3e6 --gamma=0.99 --r_max=1000
 
     # python3 run.py --alg=qlearning --env=Craft-M0-v0 --num_timesteps=2e6 --gamma=0.9 --log_path=./results/craft/0/qlearning
     # python3 run.py --alg=qlearning --env=Craft-M0-v0 --num_timesteps=2e6 --gamma=0.9 --log_path=./results/craft/0/qlearning-rs --use_rs
@@ -293,7 +298,7 @@ if __name__ == '__main__':
 
     # python3.6 run.py --alg=hdrl --env=Water-M0-v0 --num_timesteps=1e5 --gamma=0.9
 
-    #import time
-    #t_init = time.time()
+    import time
+    t_init = time.time()
     main(sys.argv)
-    #print(time.time() - t_init)
+    print(time.time() - t_init)

@@ -17,7 +17,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     env = gym.make(args.env)
-    arps = env.test_optimal_policies(num_episodes=1000, epsilon=0.1, gamma=0.9)
+    arps = env.test_optimal_policies(num_episodes=1000000, epsilon=0.1, gamma=0.9)
     print(args.env)
     print(arps)
     print(10000*sum(arps)/len(arps))

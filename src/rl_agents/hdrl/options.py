@@ -244,6 +244,11 @@ class OptionDDPG:
           param_noise_adaption_interval=50,
           **network_kwargs):
 
+        # Adjusting hyper-parameters by considering the number of options policies to learn
+        num_options = env.get_number_of_options()
+        buffer_size = num_options*buffer_size
+        batch_size  = num_options*batch_size
+
         observation_space = env.option_observation_space
         action_space = env.option_action_space
 

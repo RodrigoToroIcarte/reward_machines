@@ -56,6 +56,11 @@ register(
     entry_point='envs.mujoco_rm.half_cheetah_environment:MyHalfCheetahEnvRM11',
     max_episode_steps=1000,
 )
+register(
+    id='Half-Cheetah-RM12-v0',
+    entry_point='envs.mujoco_rm.half_cheetah_environment:MyHalfCheetahEnvRM12',
+    max_episode_steps=1000,
+)
 
 
 
