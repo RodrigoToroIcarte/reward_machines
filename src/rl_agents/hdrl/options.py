@@ -214,7 +214,8 @@ class OptionDQN:
             # Update target network periodically.
             self.update_target()
 
-
+    def reset(self):
+        pass
 
 class OptionDDPG:
     """
@@ -326,11 +327,6 @@ class OptionDDPG:
         done          = np.array([done])
         self.agent.store_transition(obs, action, rew, new_obs, done) #the batched data will be unrolled in memory.py's append.
 
-        if done[0]:
-            # Episode done.
-            self.agent.reset()        
-
-
     def learn(self, t):
         if t%self.nb_rollout_steps==0 and t >= self.nb_rollout_steps:
             # Train.
@@ -342,8 +338,10 @@ class OptionDDPG:
                 self.agent.train()
                 self.agent.update_target_net()
 
-
     def update_target_network(self, t):
         # We are updating the network in the learn function
         pass
 
+    def reset(self):
+        # Episode done.
+        self.agent.reset()
