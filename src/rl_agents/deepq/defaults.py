@@ -25,7 +25,7 @@ def water_environment():
     return dict(
         network='mlp',
         num_layers=3, 
-        num_hidden=256, 
+        num_hidden=1024, 
         activation=tf.nn.relu,
         lr=1e-5,
         buffer_size=50000,

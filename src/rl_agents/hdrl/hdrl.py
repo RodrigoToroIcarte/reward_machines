@@ -78,7 +78,7 @@ def learn(env,
     sess = get_session()
     set_global_seeds(seed)
 
-    controller  = ControllerDQN(env, gamma, total_timesteps, **controller_kargs)
+    controller  = ControllerDQN(env, **controller_kargs)
     if use_ddpg:
         options = OptionDDPG(env, gamma, total_timesteps, **option_kargs)
     else:
@@ -142,7 +142,7 @@ def learn(env,
                 option_sn = new_obs
                 option_reward = sum([_r*gamma**_i for _i,_r in enumerate(option_rews)])
                 valid_options = [] if done else env.get_valid_options()
-                controller.add_experience(option_s, option_id, option_reward, option_sn, done, valid_options)
+                controller.add_experience(option_s, option_id, option_reward, option_sn, done, valid_options,gamma**(len(option_rews)))
                 controller.learn()
                 controller.update_target_network()
                 controller.increase_step()

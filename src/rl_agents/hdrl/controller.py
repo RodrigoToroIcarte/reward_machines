@@ -29,13 +29,10 @@ class ControllerDQN:
 
     def __init__(self,
           env,
-          gamma,
-          total_timesteps,
           network='mlp',
           lr=5e-4,
           buffer_size=50000,
-          exploration_fraction=0.1,
-          exploration_final_eps=0.02,
+          exploration_epsilon=0.1,
           train_freq=1,
           batch_size=32,
           learning_starts=1000,
@@ -48,22 +45,16 @@ class ControllerDQN:
         -------
         env: gym.Env
             environment to train on
-        gamma: float
-            discount factor
         network: string or a function
             neural network to use as a q function approximator. If string, has to be one of the names of registered models in baselines.common.models
             (mlp, cnn, conv_only). If a function, should take an observation tensor and return a latent variable tensor, which
             will be mapped to the Q function heads (see build_q_func in baselines.deepq.models for details on that)
-        total_timesteps: int
-            number of env steps to optimizer for
         lr: float
             learning rate for adam optimizer
         buffer_size: int
             size of the replay buffer
-        exploration_fraction: float
-            fraction of entire training period over which the exploration rate is annealed
-        exploration_final_eps: float
-            final value of random action probability
+        exploration_epsilon: float
+            value of random action probability
         train_freq: int
             update the model every `train_freq` steps.
         batch_size: int
@@ -91,7 +82,6 @@ class ControllerDQN:
             q_func=q_func,
             num_actions=env.controller_action_space.n,
             optimizer=tf.train.AdamOptimizer(learning_rate=lr),
-            gamma=gamma,
             grad_norm_clipping=10,
             scope="controller"
         )
@@ -106,10 +96,6 @@ class ControllerDQN:
 
         # Create the replay buffer
         replay_buffer = ReplayBuffer(buffer_size)
-        # Create the schedule for exploration starting from 1.
-        exploration = LinearSchedule(schedule_timesteps=int(exploration_fraction * total_timesteps),
-                                     initial_p=1.0,
-                                     final_p=exploration_final_eps)
 
         # Initialize the parameters and copy them to the target network.
         U.initialize()
@@ -120,7 +106,7 @@ class ControllerDQN:
         self.train = train
         self.update_target = update_target
         self.replay_buffer = replay_buffer
-        self.exploration   = exploration
+        self.exp_epsilon   = exploration_epsilon
         self.train_freq    = train_freq
         self.batch_size    = batch_size
         self.learning_starts = learning_starts
@@ -130,18 +116,17 @@ class ControllerDQN:
 
     def get_action(self, obs, valid_actions):
         kwargs = {}
-        update_eps = self.exploration.value(self.t)
-        action = self.act(np.array(obs)[None], update_eps=update_eps, action_mask=self._get_mask(valid_actions), **kwargs)[0]
+        action = self.act(np.array(obs)[None], update_eps=self.exp_epsilon, action_mask=self._get_mask(valid_actions), **kwargs)[0]
         return action
 
-    def add_experience(self, obs, action, rew, new_obs, done, valid_actions):
-        self.replay_buffer.add(obs, action, rew, new_obs, float(done), self._get_mask(valid_actions))
+    def add_experience(self, obs, action, rew, new_obs, done, valid_actions, gamma):
+        self.replay_buffer.add(obs, action, rew, new_obs, float(done), self._get_mask(valid_actions), gamma)
 
     def learn(self):
         if self.t > self.learning_starts and self.t % self.train_freq == 0:
             # Minimize the error in Bellman's equation on a batch sampled from replay buffer.
-            obses_t, actions, rewards, obses_tp1, dones, masks = self.replay_buffer.sample(self.batch_size)
-            self.train(obses_t, actions, rewards, obses_tp1, dones, masks, np.ones_like(rewards))
+            obses_t, actions, rewards, obses_tp1, dones, masks, gammas = self.replay_buffer.sample(self.batch_size)
+            self.train(obses_t, actions, rewards, obses_tp1, dones, masks, gammas, np.ones_like(rewards))
 
     def update_target_network(self):
         if self.t > self.learning_starts and self.t % self.target_network_update_freq == 0:

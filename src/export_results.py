@@ -95,7 +95,7 @@ def export_avg_results_water(env,maps,seeds):
     max_length = 200 
     num_tasks = 10
     best_rewards = dict(M0=[0]*num_tasks,M1=[0]*num_tasks,M2=[0]*num_tasks,M3=[0]*num_tasks,M4=[0]*num_tasks,M5=[0]*num_tasks,M6=[0]*num_tasks,M7=[0]*num_tasks,M8=[0]*num_tasks,M9=[0]*num_tasks,M10=[0]*num_tasks)   
-    agents = ['ql', 'qrm', 'qrm2', 'hrl', 'rs','qrm-rs','icml']
+    agents = ['ql', 'qrm0', 'qrm', 'qrm2', 'qrm6', 'hrl', 'rs', 'qrm-rs', 'icml']
 
     # Computing best performance per RM
     results_all = {}
@@ -156,7 +156,7 @@ def export_avg_results_water(env,maps,seeds):
 
 def export_avg_results_cheetah(maps,seeds):
 
-    num_episodes_avg = 1000
+    num_episodes_avg = 100
     num_total_steps = 3e6
     max_length = 200 
     agents = ['ql', 'qrm', 'hrl', 'rs','qrm-rs']
@@ -206,7 +206,7 @@ def export_avg_results_cheetah(maps,seeds):
                         break
 
         # Saving the average performance and standard deviation
-        f_out = "results/summary/%s-%s.txt"%(env,agent)
+        f_out = "results/summary/%s-%s-%s.txt"%(env,maps[0],agent)
         f = open(f_out, 'w')
         for i in range(max_length):
             if len(stats[i]) == len(seeds) * len(maps):
@@ -220,7 +220,7 @@ def test_water_M0():
     num_episodes_avg = 1000
     num_total_steps = 2e6
     max_length = 200 
-    agents = ['qrm4']
+    agents = ['qrm5','qrm6','qrm7']
     maps   = ['M1']
     seeds  = [0]
     env    = 'water'
@@ -289,7 +289,7 @@ def main():
     #    export_avg_results_grid(alg,'office',['M1'],list(range(30)))
 
     export_avg_results_water('water',['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10'],[0])
-    #export_avg_results_cheetah(['M1'],[0,1,2,3,4,5,6,7,8,9])
+    #export_avg_results_cheetah(['M2'],[0,1,2,3,4,5,6,7,8,9])
 
     #test_water_M0()
 

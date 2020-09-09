@@ -156,7 +156,7 @@ def build_act(make_obs_ph, q_func, num_actions, scope="deepq", reuse=None):
 
 
 
-def build_train(make_obs_ph, q_func, num_actions, optimizer, grad_norm_clipping=None, gamma=1.0,
+def build_train(make_obs_ph, q_func, num_actions, optimizer, grad_norm_clipping=None, 
     double_q=True, scope="controller", reuse=None):
     """Creates the train function:
 
@@ -182,8 +182,6 @@ def build_train(make_obs_ph, q_func, num_actions, optimizer, grad_norm_clipping=
         optimizer to use for the Q-learning objective.
     grad_norm_clipping: float or None
         clip gradient norms to this value. If None no clipping is performed.
-    gamma: float
-        discount rate.
     double_q: bool
         if true will use Double Q Learning (https://arxiv.org/abs/1509.06461).
         In general it is a good idea to keep it enabled.
@@ -216,6 +214,7 @@ def build_train(make_obs_ph, q_func, num_actions, optimizer, grad_norm_clipping=
         obs_tp1_input = make_obs_ph("obs_tp1")
         done_mask_ph = tf.placeholder(tf.float32, [None], name="done")
         act_t_mask_ph = tf.placeholder(tf.float32, [None,num_actions], name="act_mask")
+        gammas_ph = tf.placeholder(tf.float32, [None], name="gammas")
         importance_weights_ph = tf.placeholder(tf.float32, [None], name="weight")
 
         # q network evaluation
@@ -241,7 +240,7 @@ def build_train(make_obs_ph, q_func, num_actions, optimizer, grad_norm_clipping=
         q_tp1_best_masked = (1.0 - done_mask_ph) * q_tp1_best
 
         # compute RHS of bellman equation
-        q_t_selected_target = rew_t_ph + gamma * q_tp1_best_masked
+        q_t_selected_target = rew_t_ph + gammas_ph * q_tp1_best_masked
 
         # compute the error (potentially clipped)
         td_error = q_t_selected - tf.stop_gradient(q_t_selected_target)
@@ -274,6 +273,7 @@ def build_train(make_obs_ph, q_func, num_actions, optimizer, grad_norm_clipping=
                 obs_tp1_input,
                 done_mask_ph,
                 act_t_mask_ph,
+                gammas_ph,
                 importance_weights_ph
             ],
             outputs=td_error,

@@ -298,6 +298,8 @@ if __name__ == '__main__':
 
     # python3.6 run.py --alg=hdrl --env=Water-M0-v0 --num_timesteps=1e5 --gamma=0.9
 
+    # python3.6 run.py --alg=hdrl --env=Water-M0-v0 --num_timesteps=2e6 --gamma=0.9
+
     import time
     t_init = time.time()
     main(sys.argv)
