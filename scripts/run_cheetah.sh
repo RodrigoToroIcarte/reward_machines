@@ -1,6 +1,6 @@
 #!/bin/bash
 cd ../src
-for i in `seq 0 0`; 
+for i in `seq 0 9`; 
 do
 	# Task 1
 	python3.6 run.py --alg=ddpg --env=Half-Cheetah-RM1-v0 --num_timesteps=3e6 --gamma=0.99 --log_path=../my_results/ql/cheetah/M1/$i

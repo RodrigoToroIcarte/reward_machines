@@ -1,6 +1,6 @@
 #!/bin/bash
 cd ../src
-for i in `seq 0 0`; 
+for i in `seq 0 29`; 
 do
 	# Multi-task
 	python3.6 run.py --alg=qlearning --env=Office-v0 --num_timesteps=1e5 --gamma=0.9 --log_path=../my_results/ql/office/M1/$i

@@ -2,7 +2,7 @@
 cd ../src
 for i in `seq 1 10`; 
 do
-	for j in `seq 0 0`; 
+	for j in `seq 0 2`; 
 	do
 		# Multi-task
 		python3.6 run.py --alg=qlearning --env=Craft-M$i-v0 --num_timesteps=2e6 --gamma=0.9 --log_path=../my_results/ql/craft/M$i/$j
