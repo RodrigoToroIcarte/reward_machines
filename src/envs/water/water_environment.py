@@ -29,6 +29,8 @@ class WaterEnv(gym.Env):
         return self.env.get_features()
 
 
+# MULTITASK --------------------------------------------------------------------------------------------------
+
 class WaterRMEnv(RewardMachineEnv):
     def __init__(self, state_file):
         env = WaterEnv(state_file)
@@ -92,6 +94,77 @@ class WaterRMEnvM9(WaterRMEnv):
         super().__init__(state_file)
 
 class WaterRMEnvM10(WaterRMEnv):
+    def __init__(self):
+        state_file = "./envs/water/maps/world_10.pkl"
+        super().__init__(state_file)
+
+
+# SINGLE TASK --------------------------------------------------------------------------------------------------
+
+
+class WaterRM10Env(RewardMachineEnv):
+    def __init__(self, state_file):
+        env = WaterEnv(state_file)
+        rm_files = ["./envs/water/reward_machines/t10.txt"]
+        super().__init__(env, rm_files)
+
+    def render(self, mode='human'):
+        if mode == 'human':
+            play(self)
+        else:
+            raise NotImplementedError
+
+class WaterRM10EnvM0(WaterRM10Env):
+    def __init__(self):
+        state_file = "./envs/water/maps/world_0.pkl"
+        super().__init__(state_file)
+
+class WaterRM10EnvM1(WaterRM10Env):
+    def __init__(self):
+        state_file = "./envs/water/maps/world_1.pkl"
+        super().__init__(state_file)
+
+class WaterRM10EnvM2(WaterRM10Env):
+    def __init__(self):
+        state_file = "./envs/water/maps/world_2.pkl"
+        super().__init__(state_file)
+
+class WaterRM10EnvM3(WaterRM10Env):
+    def __init__(self):
+        state_file = "./envs/water/maps/world_3.pkl"
+        super().__init__(state_file)
+
+class WaterRM10EnvM4(WaterRM10Env):
+    def __init__(self):
+        state_file = "./envs/water/maps/world_4.pkl"
+        super().__init__(state_file)
+
+class WaterRM10EnvM5(WaterRM10Env):
+    def __init__(self):
+        state_file = "./envs/water/maps/world_5.pkl"
+        super().__init__(state_file)
+
+class WaterRM10EnvM6(WaterRM10Env):
+    def __init__(self):
+        state_file = "./envs/water/maps/world_6.pkl"
+        super().__init__(state_file)
+
+class WaterRM10EnvM7(WaterRM10Env):
+    def __init__(self):
+        state_file = "./envs/water/maps/world_7.pkl"
+        super().__init__(state_file)
+
+class WaterRM10EnvM8(WaterRM10Env):
+    def __init__(self):
+        state_file = "./envs/water/maps/world_8.pkl"
+        super().__init__(state_file)
+
+class WaterRM10EnvM9(WaterRM10Env):
+    def __init__(self):
+        state_file = "./envs/water/maps/world_9.pkl"
+        super().__init__(state_file)
+
+class WaterRM10EnvM10(WaterRM10Env):
     def __init__(self):
         state_file = "./envs/water/maps/world_10.pkl"
         super().__init__(state_file)

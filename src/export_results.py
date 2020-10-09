@@ -1,3 +1,7 @@
+"""
+This code exports summary results for all our approaches and runs.
+"""
+
 import math,os,statistics,argparse
 from collections import deque
 import numpy as np
@@ -7,7 +11,6 @@ def get_precentiles_str(a):
     p50 = "%0.4f"%float(np.percentile(a, 50))
     p75 = "%0.4f"%float(np.percentile(a, 75))
     return [p25, p50, p75]
-
 
 def export_avg_results_grid(agent,env,maps,seeds):
     """
@@ -48,7 +51,7 @@ def export_avg_results_grid(agent,env,maps,seeds):
     for env_map in maps:
         for seed in seeds:
             # Reading the results
-            f_path = "results/%s/%s/%s/%s/0.0.monitor.csv"%(agent,env,env_map,seed)
+            f_path = "../results/%s/%s/%s/%s/0.0.monitor.csv"%(agent,env,env_map,seed)
             results = []
             f = open(f_path)
             for l in f:
@@ -79,7 +82,73 @@ def export_avg_results_grid(agent,env,maps,seeds):
                     break
 
     # Saving the average performance and standard deviation
-    f_out = "results/summary/%s-%s.txt"%(env,agent)
+    f_out = "../results/summary/%s-%s.txt"%(env,agent)
+    f = open(f_out, 'w')
+    for i in range(max_length):
+        if len(stats[i]) == len(seeds) * len(maps):
+            #f.write("\t".join([str((i+1)*steps_tic/1000), "%0.4f"%(sum(stats[i])/len(stats[i]))]) + "\n")
+            f.write("\t".join([str((i+1)*steps_tic/1000)] + get_precentiles_str(stats[i])) + "\n")
+    f.close()
+
+def export_avg_results_grid_single(agent,env,maps,seeds):
+    """
+    NOTE: 
+        - Find a way to summarize the results coming from different seeds
+        - This is tricky because the timesteps per trace might be different
+    """
+
+    if 'office' in env:
+        num_episodes_avg = 100
+        num_total_steps = 1e5
+        max_length = 100 
+        # These values were computed using python3 test_optimal_policies.py --env Office-v0
+        optimal_rewards = dict(M1=0.031344625839253674)
+    elif 'craft' in env:
+        num_episodes_avg = 100
+        num_total_steps = 2e6
+        max_length = 200 
+        # These values were computed using python3 test_optimal_policies.py --env Craft-Mx-v0, where Mx \in {M0,...,M10}
+        optimal_rewards = dict(M0=0.012990580561337057, M1=0.01608448909869953, M2=0.016267593882624505, M3=0.015542177173904392, M4=0.015153066220061151, M5=0.01425830298231041, M6=0.017646578127461003, M7=0.01436104192390331, M8=0.010353648029998358, M9=0.01058547554394297, M10=0.015968906266383056)        
+    else:
+        assert False, "Invalid environment!"
+
+
+    stats = [[] for _ in range(max_length)]
+    for env_map in maps:
+        for seed in seeds:
+            # Reading the results
+            f_path = "../results/%s/%s/%s/%s/0.0.monitor.csv"%(agent,env,env_map,seed)
+            results = []
+            f = open(f_path)
+            for l in f:
+                raw = l.strip().split(',')
+                if len(raw) != 3 or raw[0]=='r':
+                    continue
+                r,l,t = float(raw[0]), float(raw[1]), float(raw[2])
+                results.append((t,l,r))
+            f.close()
+
+            # collecting average stats
+            steps = 0
+            rewards = deque([], maxlen=num_episodes_avg)
+            steps_tic = num_total_steps/max_length
+            for i in range(len(results)):
+                _,l,r = results[i]
+                rew_per_step = (r/l)/optimal_rewards[env_map]
+                if (steps+l)%steps_tic == 0:
+                    steps += l
+                    rewards.append(rew_per_step)
+                    stats[int((steps+l)//steps_tic)-1].append(sum(rewards)/len(rewards))
+                else:
+                    if (steps//steps_tic) != (steps+l)//steps_tic:
+                        stats[int((steps+l)//steps_tic)-1].append(sum(rewards)/len(rewards))
+                    steps += l
+                    rewards.append(rew_per_step)
+                if (steps+l)//steps_tic == max_length:
+                    break
+
+    # Saving the average performance and standard deviation
+    f_out = "../results/summary/%s-%s.txt"%(env,agent)
     f = open(f_out, 'w')
     for i in range(max_length):
         if len(stats[i]) == len(seeds) * len(maps):
@@ -95,7 +164,7 @@ def export_avg_results_water(env,maps,seeds):
     max_length = 200 
     num_tasks = 10
     best_rewards = dict(M0=[0]*num_tasks,M1=[0]*num_tasks,M2=[0]*num_tasks,M3=[0]*num_tasks,M4=[0]*num_tasks,M5=[0]*num_tasks,M6=[0]*num_tasks,M7=[0]*num_tasks,M8=[0]*num_tasks,M9=[0]*num_tasks,M10=[0]*num_tasks)   
-    agents = ['ql', 'qrm0', 'qrm', 'qrm2', 'qrm6', 'hrl', 'rs', 'qrm-rs', 'icml']
+    agents = ['ql', 'crm', 'crm1', 'crm2', 'crm3', 'hrm', 'ql-rs', 'crm-rs', 'qrm']
 
     # Computing best performance per RM
     results_all = {}
@@ -103,7 +172,7 @@ def export_avg_results_water(env,maps,seeds):
         for env_map in maps:
             for seed in seeds:
                 # Reading the results
-                f_path = "results/%s/%s/%s/%s/0.0.monitor.csv"%(agent,env,env_map,seed)
+                f_path = "../results/%s/%s/%s/%s/0.0.monitor.csv"%(agent,env,env_map,seed)
                 results = []
                 f = open(f_path)
                 for l in f:
@@ -146,7 +215,7 @@ def export_avg_results_water(env,maps,seeds):
                         break
 
         # Saving the average performance and standard deviation
-        f_out = "results/summary/%s-%s.txt"%(env,agent)
+        f_out = "../results/summary/%s-%s.txt"%(env,agent)
         f = open(f_out, 'w')
         for i in range(max_length):
             if len(stats[i]) == len(seeds) * len(maps):
@@ -154,12 +223,79 @@ def export_avg_results_water(env,maps,seeds):
                 f.write("\t".join([str((i+1)*steps_tic/1000)] + get_precentiles_str(stats[i])) + "\n")
         f.close()
 
+
+def export_avg_results_water_single(env,maps,seeds):
+
+    num_episodes_avg = 100
+    num_total_steps = 2e6
+    max_length = 200 
+    best_rewards = dict(M0=0,M1=0,M2=0,M3=0,M4=0,M5=0,M6=0,M7=0,M8=0,M9=0,M10=0)   
+    agents = ['ql', 'crm', 'hrm', 'ql-rs', 'crm-rs']
+
+    # Computing best performance per RM
+    results_all = {}
+    for agent in agents:
+        for env_map in maps:
+            for seed in seeds:
+                # Reading the results
+                f_path = "../results/%s/%s/%s/%s/0.0.monitor.csv"%(agent,env,env_map,seed)
+                results = []
+                f = open(f_path)
+                for l in f:
+                    raw = l.strip().split(',')
+                    if len(raw) != 3 or raw[0]=='r':
+                        continue
+                    r,l,t = float(raw[0]), float(raw[1]), raw[2]
+                    results.append((t,l,r))
+                f.close()
+
+                # Saving the best results
+                for i in range(len(results)):
+                    _,l,r = results[i]
+                    best_rewards[env_map] = max([r/l,best_rewards[env_map]])
+                results_all[(agent,env_map,seed)] = results
+
+    # Saving the performance of each agent
+    for agent in agents:
+        stats = [[] for _ in range(max_length)]
+        for env_map in maps:
+            for seed in seeds:
+                # collecting average stats
+                steps = 0
+                rewards = deque([], maxlen=num_episodes_avg)
+                steps_tic = num_total_steps/max_length
+                results = results_all[(agent,env_map,seed)]
+                for i in range(len(results)):
+                    _,l,r = results[i]
+                    rew_per_step = (r/l)/best_rewards[env_map]
+                    if (steps+l)%steps_tic == 0:
+                        steps += l
+                        rewards.append(rew_per_step)
+                        stats[int((steps+l)//steps_tic)-1].append(sum(rewards)/len(rewards))
+                    else:
+                        if (steps//steps_tic) != (steps+l)//steps_tic:
+                            stats[int((steps+l)//steps_tic)-1].append(sum(rewards)/len(rewards))
+                        steps += l
+                        rewards.append(rew_per_step)
+                    if (steps+l)//steps_tic == max_length:
+                        break
+
+        # Saving the average performance and standard deviation
+        f_out = "../results/summary/%s-%s.txt"%(env,agent)
+        f = open(f_out, 'w')
+        for i in range(max_length):
+            if len(stats[i]) == len(seeds) * len(maps):
+                #f.write("\t".join([str((i+1)*steps_tic/1000), "%0.4f"%(sum(stats[i])/len(stats[i]))]) + "\n")
+                f.write("\t".join([str((i+1)*steps_tic/1000)] + get_precentiles_str(stats[i])) + "\n")
+        f.close()
+
+
 def export_avg_results_cheetah(maps,seeds):
 
     num_episodes_avg = 100
     num_total_steps = 3e6
     max_length = 200 
-    agents = ['ql', 'qrm', 'hrl', 'rs','qrm-rs']
+    agents = ['ql', 'crm', 'hrm', 'ql-rs','crm-rs']
     env    = 'cheetah'
 
     # Computing best performance per RM
@@ -168,7 +304,7 @@ def export_avg_results_cheetah(maps,seeds):
         for env_map in maps:
             for seed in seeds:
                 # Reading the results
-                f_path = "results/%s/%s/%s/%s/0.0.monitor.csv"%(agent,env,env_map,seed)
+                f_path = "../results/%s/%s/%s/%s/0.0.monitor.csv"%(agent,env,env_map,seed)
                 results = []
                 f = open(f_path)
                 for l in f:
@@ -206,7 +342,7 @@ def export_avg_results_cheetah(maps,seeds):
                         break
 
         # Saving the average performance and standard deviation
-        f_out = "results/summary/%s-%s-%s.txt"%(env,maps[0],agent)
+        f_out = "../results/summary/%s-%s-%s.txt"%(env,maps[0],agent)
         f = open(f_out, 'w')
         for i in range(max_length):
             if len(stats[i]) == len(seeds) * len(maps):
@@ -215,86 +351,36 @@ def export_avg_results_cheetah(maps,seeds):
 
 
 
-def test_water_M0():
-
-    num_episodes_avg = 1000
-    num_total_steps = 2e6
-    max_length = 200 
-    agents = ['qrm5','qrm6','qrm7']
-    maps   = ['M1']
-    seeds  = [0]
-    env    = 'water'
-
-    # Computing best performance per RM
-    results_all = {}
-    for agent in agents:
-        for env_map in maps:
-            for seed in seeds:
-                # Reading the results
-                f_path = "results/%s/%s/%s/%s/0.0.monitor.csv"%(agent,env,env_map,seed)
-                results = []
-                f = open(f_path)
-                for l in f:
-                    raw = l.strip().split(',')
-                    if len(raw) != 3 or raw[0]=='r':
-                        continue
-                    r,l,t = float(raw[0]), float(raw[1]), raw[2]
-                    results.append((t,l,r))
-                f.close()
-                results_all[(agent,env_map,seed)] = results
-
-    # Saving the performance of each agent
-    for agent in agents:
-        stats = [[] for _ in range(max_length)]
-        for env_map in maps:
-            for seed in seeds:
-                # collecting average stats
-                steps = 0
-                rewards = deque([], maxlen=num_episodes_avg)
-                steps_tic = num_total_steps/max_length
-                results = results_all[(agent,env_map,seed)]
-                for i in range(len(results)):
-                    _,l,r = results[i]
-                    rew_per_step = (r/l)
-                    if (steps+l)%steps_tic == 0:
-                        steps += l
-                        rewards.append(rew_per_step)
-                        stats[int((steps+l)//steps_tic)-1].append(sum(rewards)/len(rewards))
-                    else:
-                        if (steps//steps_tic) != (steps+l)//steps_tic:
-                            stats[int((steps+l)//steps_tic)-1].append(sum(rewards)/len(rewards))
-                        steps += l
-                        rewards.append(rew_per_step)
-                    if (steps+l)//steps_tic == max_length:
-                        break
-
-        # Saving the average performance and standard deviation
-        f_out = "results/summary/test_%s-%s.txt"%(env,agent)
-        f = open(f_out, 'w')
-        for i in range(max_length):
-            if len(stats[i]) == len(seeds) * len(maps):
-                f.write("\t".join([str((i+1)*steps_tic/1000), "%0.4f"%(1000*sum(stats[i])/len(stats[i]))]) + "\n")
-                #f.write("\t".join([str((i+1)*steps_tic/1000)] + get_precentiles_str(stats[i])) + "\n")
-        f.close()
-
-
-def main():
-
-    #for alg in ['ql', 'qrm', 'hrl', 'rs','qrm-rs']:
-    #    print(alg,'craft')
-    #    export_avg_results_grid(alg,'craft',['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10'],[0,1,2])
-
-    #for alg in ['ql', 'qrm', 'hrl', 'rs','qrm-rs']:
-    #    print(alg,'office')
-    #    export_avg_results_grid(alg,'office',['M1'],list(range(30)))
-
-    export_avg_results_water('water',['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10'],[0])
-    #export_avg_results_cheetah(['M2'],[0,1,2,3,4,5,6,7,8,9])
-
-    #test_water_M0()
-
 
 if __name__ == '__main__':
-    main()
+    # Office world (multitask)
+    for alg in ['ql', 'crm', 'hrm', 'ql-rs','crm-rs']:
+        print(alg,'office')
+        export_avg_results_grid(alg,'office',['M1'],list(range(30)))
+
+    # Office world (single task)
+    for alg in ['ql', 'crm', 'hrm', 'ql-rs','crm-rs']:
+        print(alg,'office-single')
+        export_avg_results_grid_single(alg,'office-single',['M1'],list(range(30)))
+
+    # Minecraft world (multitask)
+    for alg in ['ql', 'crm', 'hrm', 'ql-rs','crm-rs']:
+        print(alg,'craft')
+        export_avg_results_grid(alg,'craft',['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10'],[0,1,2])
+
+    # Minecraft world (single task)
+    for alg in ['ql', 'crm', 'hrm', 'ql-rs','crm-rs']:
+        print(alg,'craft-single')
+        export_avg_results_grid_single(alg,'craft-single',['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10'],[0,1,2])
 
 
+    # Water world
+    print('water')
+    export_avg_results_water('water',['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10'],[0])
+    print('water-single')
+    export_avg_results_water_single('water-single',['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10'],[0])
+
+    # Half-Cheetah
+    print('half-cheetah')
+    export_avg_results_cheetah(['M1'],[0,1,2,3,4,5,6,7,8,9])
+    export_avg_results_cheetah(['M2'],[0,1,2,3,4,5,6,7,8,9])

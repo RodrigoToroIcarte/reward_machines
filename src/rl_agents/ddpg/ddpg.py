@@ -20,12 +20,9 @@ except ImportError:
 
 
 
-# (steps_per_epoch=4000, epochs=100, replay_size=1000000, gamma=0.99, polyak=0.995, pi_lr=0.001, q_lr=0.001, 
-#  batch_size=100, start_steps=10000, update_after=1000, update_every=50, act_noise=0.1, num_test_episodes=10, max_ep_len=1000, logger_kwargs={}, save_freq=1)
-
 def learn(network, env,
           seed=None,
-          use_qrm=False,
+          use_crm=False,
           use_rs=False,
           total_timesteps=None,
           nb_epochs=None, # with default settings, perform 1M steps total
@@ -43,7 +40,7 @@ def learn(network, env,
           popart=False,
           gamma=0.99,
           clip_norm=None,
-          nb_train_steps=50, # per epoch cycle and MPI worker,  <- HERE!
+          nb_train_steps=50, # per epoch cycle and MPI worker
           nb_eval_steps=100,
           batch_size=64, # per MPI worker
           tau=0.01,
@@ -69,7 +66,7 @@ def learn(network, env,
 
 
     limit = int(1e6)
-    if use_qrm:
+    if use_crm:
         rm_states  = env.envs[0].get_num_rm_states()
         batch_size = rm_states*batch_size
         limit = rm_states*int(1e6)
@@ -170,13 +167,13 @@ def learn(network, env,
 
                 # Adding counterfactual experience from the reward machines
                 if nenvs == 1:
-                    if not(use_qrm or use_rs):
+                    if not(use_crm or use_rs):
                         # Standard DDPG
                         agent.store_transition(obs, action, r, new_obs, done) #the batched data will be unrolled in memory.py's append.
                     else:
-                        # Adding qrm and/or reward shaping to DDPG
-                        if use_qrm:
-                            experiences = info[0]["qrm-experience"]
+                        # Adding crm and/or reward shaping to DDPG
+                        if use_crm:
+                            experiences = info[0]["crm-experience"]
                         else:
                             experiences = [info[0]["rs-experience"]]
 
@@ -188,7 +185,7 @@ def learn(network, env,
                             _done          = np.array([_done])
                             agent.store_transition(_obs, _action, _r, _new_obs, _done) #the batched data will be unrolled in memory.py's append.
                 else:
-                    assert False, "We have not implemented qrm for nenvs > 1 yet"
+                    assert False, "We have not implemented crm for nenvs > 1 yet"
 
                 obs = new_obs
 

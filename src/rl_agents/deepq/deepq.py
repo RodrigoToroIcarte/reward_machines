@@ -95,7 +95,7 @@ def load_act(path):
 def learn(env,
           network,
           seed=None,
-          use_qrm=False,
+          use_crm=False,
           use_rs=False,
           lr=5e-4,
           total_timesteps=100000,
@@ -132,7 +132,7 @@ def learn(env,
         will be mapped to the Q function heads (see build_q_func in baselines.deepq.models for details on that)
     seed: int or None
         prng seed. The runs with the same seed "should" give the same results. If None, no seeding is used.
-    use_qrm: bool
+    use_crm: bool
         use counterfactual experience to train the policy
     use_rs: bool
         use reward shaping
@@ -191,8 +191,8 @@ def learn(env,
         See header of baselines/deepq/categorical.py for details on the act function.
     """
 
-    # Adjusting hyper-parameters by considering the number of RM states for QRM
-    if use_qrm:
+    # Adjusting hyper-parameters by considering the number of RM states for crm
+    if use_crm:
         rm_states   = env.get_num_rm_states()
         buffer_size = rm_states*buffer_size
         batch_size  = rm_states*batch_size
@@ -295,9 +295,9 @@ def learn(env,
             new_obs, rew, done, info = env.step(env_action)
 
             # Store transition in the replay buffer.
-            if use_qrm:
+            if use_crm:
                 # Adding counterfactual experience (this will alrady include shaped rewards if use_rs=True)
-                experiences = info["qrm-experience"]
+                experiences = info["crm-experience"]
             elif use_rs:
                 # Include only the current experince but shape the reward
                 experiences = [info["rs-experience"]]

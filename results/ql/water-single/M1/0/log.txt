@@ -1,0 +1,2843 @@
+Logging to ./results/ql/water-single/M1/0
+--------------------------------------
+| % time spent exploring  | 97       |
+| episodes                | 100      |
+| mean 100 episode reward | 0        |
+| steps                   | 4.29e+03 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 95       |
+| episodes                | 200      |
+| mean 100 episode reward | 0        |
+| steps                   | 8.59e+03 |
+--------------------------------------
+Saving model due to mean reward increase: None -> 0.0
+--------------------------------------
+| % time spent exploring  | 93       |
+| episodes                | 300      |
+| mean 100 episode reward | 0        |
+| steps                   | 1.28e+04 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 91       |
+| episodes                | 400      |
+| mean 100 episode reward | 0        |
+| steps                   | 1.74e+04 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 89       |
+| episodes                | 500      |
+| mean 100 episode reward | 0        |
+| steps                   | 2.17e+04 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 87       |
+| episodes                | 600      |
+| mean 100 episode reward | 0        |
+| steps                   | 2.61e+04 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 84       |
+| episodes                | 700      |
+| mean 100 episode reward | 0        |
+| steps                   | 3.06e+04 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 82       |
+| episodes                | 800      |
+| mean 100 episode reward | 0        |
+| steps                   | 3.53e+04 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 80       |
+| episodes                | 900      |
+| mean 100 episode reward | 0        |
+| steps                   | 3.93e+04 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 77       |
+| episodes                | 1e+03    |
+| mean 100 episode reward | 0        |
+| steps                   | 4.46e+04 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 75       |
+| episodes                | 1.1e+03  |
+| mean 100 episode reward | 0        |
+| steps                   | 4.92e+04 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 73       |
+| episodes                | 1.2e+03  |
+| mean 100 episode reward | 0        |
+| steps                   | 5.43e+04 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 70       |
+| episodes                | 1.3e+03  |
+| mean 100 episode reward | 0        |
+| steps                   | 5.93e+04 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 68       |
+| episodes                | 1.4e+03  |
+| mean 100 episode reward | 0        |
+| steps                   | 6.44e+04 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 65       |
+| episodes                | 1.5e+03  |
+| mean 100 episode reward | 0        |
+| steps                   | 6.91e+04 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 62       |
+| episodes                | 1.6e+03  |
+| mean 100 episode reward | 0        |
+| steps                   | 7.49e+04 |
+--------------------------------------
+Saving model due to mean reward increase: 0.0 -> 0.1
+--------------------------------------
+| % time spent exploring  | 60       |
+| episodes                | 1.7e+03  |
+| mean 100 episode reward | 0.1      |
+| steps                   | 8.05e+04 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 57       |
+| episodes                | 1.8e+03  |
+| mean 100 episode reward | 0        |
+| steps                   | 8.65e+04 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 54       |
+| episodes                | 1.9e+03  |
+| mean 100 episode reward | 0.1      |
+| steps                   | 9.2e+04  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 52       |
+| episodes                | 2e+03    |
+| mean 100 episode reward | 0.1      |
+| steps                   | 9.67e+04 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 49       |
+| episodes                | 2.1e+03  |
+| mean 100 episode reward | 0.1      |
+| steps                   | 1.01e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 47       |
+| episodes                | 2.2e+03  |
+| mean 100 episode reward | 0.2      |
+| steps                   | 1.07e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 44       |
+| episodes                | 2.3e+03  |
+| mean 100 episode reward | 0.1      |
+| steps                   | 1.12e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 41       |
+| episodes                | 2.4e+03  |
+| mean 100 episode reward | 0.2      |
+| steps                   | 1.17e+05 |
+--------------------------------------
+Saving model due to mean reward increase: 0.1 -> 0.2
+--------------------------------------
+| % time spent exploring  | 39       |
+| episodes                | 2.5e+03  |
+| mean 100 episode reward | 0.2      |
+| steps                   | 1.23e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 36       |
+| episodes                | 2.6e+03  |
+| mean 100 episode reward | 0.3      |
+| steps                   | 1.29e+05 |
+--------------------------------------
+Saving model due to mean reward increase: 0.2 -> 0.3
+--------------------------------------
+| % time spent exploring  | 33       |
+| episodes                | 2.7e+03  |
+| mean 100 episode reward | 0.3      |
+| steps                   | 1.35e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 30       |
+| episodes                | 2.8e+03  |
+| mean 100 episode reward | 0.3      |
+| steps                   | 1.4e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 28       |
+| episodes                | 2.9e+03  |
+| mean 100 episode reward | 0.3      |
+| steps                   | 1.45e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 25       |
+| episodes                | 3e+03    |
+| mean 100 episode reward | 0.5      |
+| steps                   | 1.5e+05  |
+--------------------------------------
+Saving model due to mean reward increase: 0.3 -> 0.5
+--------------------------------------
+| % time spent exploring  | 23       |
+| episodes                | 3.1e+03  |
+| mean 100 episode reward | 0.5      |
+| steps                   | 1.55e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 20       |
+| episodes                | 3.2e+03  |
+| mean 100 episode reward | 0.4      |
+| steps                   | 1.6e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 18       |
+| episodes                | 3.3e+03  |
+| mean 100 episode reward | 0.4      |
+| steps                   | 1.65e+05 |
+--------------------------------------
+Saving model due to mean reward increase: 0.5 -> 0.6
+--------------------------------------
+| % time spent exploring  | 15       |
+| episodes                | 3.4e+03  |
+| mean 100 episode reward | 0.6      |
+| steps                   | 1.71e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 12       |
+| episodes                | 3.5e+03  |
+| mean 100 episode reward | 0.5      |
+| steps                   | 1.76e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 10       |
+| episodes                | 3.6e+03  |
+| mean 100 episode reward | 0.4      |
+| steps                   | 1.8e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 8        |
+| episodes                | 3.7e+03  |
+| mean 100 episode reward | 0.5      |
+| steps                   | 1.85e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 6        |
+| episodes                | 3.8e+03  |
+| mean 100 episode reward | 0.5      |
+| steps                   | 1.9e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 3        |
+| episodes                | 3.9e+03  |
+| mean 100 episode reward | 0.6      |
+| steps                   | 1.94e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4e+03    |
+| mean 100 episode reward | 0.6      |
+| steps                   | 2e+05    |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.1e+03  |
+| mean 100 episode reward | 0.7      |
+| steps                   | 2.05e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.2e+03  |
+| mean 100 episode reward | 0.8      |
+| steps                   | 2.1e+05  |
+--------------------------------------
+Saving model due to mean reward increase: 0.6 -> 0.8
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.3e+03  |
+| mean 100 episode reward | 0.6      |
+| steps                   | 2.15e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.4e+03  |
+| mean 100 episode reward | 0.7      |
+| steps                   | 2.2e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.5e+03  |
+| mean 100 episode reward | 0.6      |
+| steps                   | 2.24e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.6e+03  |
+| mean 100 episode reward | 0.7      |
+| steps                   | 2.3e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.7e+03  |
+| mean 100 episode reward | 0.8      |
+| steps                   | 2.35e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.8e+03  |
+| mean 100 episode reward | 0.8      |
+| steps                   | 2.4e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.9e+03  |
+| mean 100 episode reward | 0.9      |
+| steps                   | 2.46e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 5e+03    |
+| mean 100 episode reward | 0.8      |
+| steps                   | 2.51e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 5.1e+03  |
+| mean 100 episode reward | 0.8      |
+| steps                   | 2.56e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 5.2e+03  |
+| mean 100 episode reward | 0.8      |
+| steps                   | 2.61e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 5.3e+03  |
+| mean 100 episode reward | 0.6      |
+| steps                   | 2.66e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 5.4e+03  |
+| mean 100 episode reward | 0.8      |
+| steps                   | 2.71e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 5.5e+03  |
+| mean 100 episode reward | 0.9      |
+| steps                   | 2.76e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 5.6e+03  |
+| mean 100 episode reward | 0.8      |
+| steps                   | 2.81e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 5.7e+03  |
+| mean 100 episode reward | 0.8      |
+| steps                   | 2.86e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 5.8e+03  |
+| mean 100 episode reward | 0.8      |
+| steps                   | 2.91e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 5.9e+03  |
+| mean 100 episode reward | 0.8      |
+| steps                   | 2.96e+05 |
+--------------------------------------
+Saving model due to mean reward increase: 0.8 -> 0.9
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 6e+03    |
+| mean 100 episode reward | 0.9      |
+| steps                   | 3.01e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 6.1e+03  |
+| mean 100 episode reward | 0.7      |
+| steps                   | 3.06e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 6.2e+03  |
+| mean 100 episode reward | 0.7      |
+| steps                   | 3.1e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 6.3e+03  |
+| mean 100 episode reward | 0.9      |
+| steps                   | 3.15e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 6.4e+03  |
+| mean 100 episode reward | 0.8      |
+| steps                   | 3.2e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 6.5e+03  |
+| mean 100 episode reward | 0.8      |
+| steps                   | 3.25e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 6.6e+03  |
+| mean 100 episode reward | 0.9      |
+| steps                   | 3.3e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 6.7e+03  |
+| mean 100 episode reward | 0.8      |
+| steps                   | 3.35e+05 |
+--------------------------------------
+Saving model due to mean reward increase: 0.9 -> 1.0
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 6.8e+03  |
+| mean 100 episode reward | 1        |
+| steps                   | 3.4e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 6.9e+03  |
+| mean 100 episode reward | 0.9      |
+| steps                   | 3.45e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 7e+03    |
+| mean 100 episode reward | 0.9      |
+| steps                   | 3.5e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 7.1e+03  |
+| mean 100 episode reward | 0.9      |
+| steps                   | 3.55e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 7.2e+03  |
+| mean 100 episode reward | 0.9      |
+| steps                   | 3.6e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 7.3e+03  |
+| mean 100 episode reward | 1        |
+| steps                   | 3.65e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 7.4e+03  |
+| mean 100 episode reward | 0.9      |
+| steps                   | 3.69e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 7.5e+03  |
+| mean 100 episode reward | 0.9      |
+| steps                   | 3.74e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 7.6e+03  |
+| mean 100 episode reward | 0.8      |
+| steps                   | 3.79e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 7.7e+03  |
+| mean 100 episode reward | 1        |
+| steps                   | 3.83e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 7.8e+03  |
+| mean 100 episode reward | 1        |
+| steps                   | 3.88e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 7.9e+03  |
+| mean 100 episode reward | 1        |
+| steps                   | 3.92e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 8e+03    |
+| mean 100 episode reward | 1        |
+| steps                   | 3.97e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 8.1e+03  |
+| mean 100 episode reward | 1        |
+| steps                   | 4.01e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 8.2e+03  |
+| mean 100 episode reward | 0.9      |
+| steps                   | 4.06e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 8.3e+03  |
+| mean 100 episode reward | 1        |
+| steps                   | 4.1e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 8.4e+03  |
+| mean 100 episode reward | 1        |
+| steps                   | 4.15e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 8.5e+03  |
+| mean 100 episode reward | 1        |
+| steps                   | 4.19e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 8.6e+03  |
+| mean 100 episode reward | 0.9      |
+| steps                   | 4.23e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 8.7e+03  |
+| mean 100 episode reward | 0.9      |
+| steps                   | 4.28e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 8.8e+03  |
+| mean 100 episode reward | 1        |
+| steps                   | 4.32e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 8.9e+03  |
+| mean 100 episode reward | 0.9      |
+| steps                   | 4.36e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 9e+03    |
+| mean 100 episode reward | 1        |
+| steps                   | 4.41e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 9.1e+03  |
+| mean 100 episode reward | 1        |
+| steps                   | 4.45e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 9.2e+03  |
+| mean 100 episode reward | 1        |
+| steps                   | 4.49e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 9.3e+03  |
+| mean 100 episode reward | 1        |
+| steps                   | 4.54e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 9.4e+03  |
+| mean 100 episode reward | 0.9      |
+| steps                   | 4.58e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 9.5e+03  |
+| mean 100 episode reward | 1        |
+| steps                   | 4.62e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 9.6e+03  |
+| mean 100 episode reward | 1        |
+| steps                   | 4.67e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 9.7e+03  |
+| mean 100 episode reward | 1        |
+| steps                   | 4.71e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 9.8e+03  |
+| mean 100 episode reward | 1        |
+| steps                   | 4.75e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 9.9e+03  |
+| mean 100 episode reward | 1        |
+| steps                   | 4.79e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1e+04    |
+| mean 100 episode reward | 0.9      |
+| steps                   | 4.83e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.01e+04 |
+| mean 100 episode reward | 0.9      |
+| steps                   | 4.88e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.02e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 4.92e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.03e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 4.96e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.04e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 5e+05    |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.05e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 5.05e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.06e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 5.09e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.07e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 5.13e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.08e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 5.17e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.09e+04 |
+| mean 100 episode reward | 0.9      |
+| steps                   | 5.22e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.1e+04  |
+| mean 100 episode reward | 0.9      |
+| steps                   | 5.26e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.11e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 5.3e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.12e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 5.34e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.13e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 5.38e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.14e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 5.43e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.15e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 5.47e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.16e+04 |
+| mean 100 episode reward | 0.8      |
+| steps                   | 5.51e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.17e+04 |
+| mean 100 episode reward | 0.9      |
+| steps                   | 5.55e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.18e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 5.59e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.19e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 5.63e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.2e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 5.67e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.21e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 5.72e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.22e+04 |
+| mean 100 episode reward | 0.9      |
+| steps                   | 5.76e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.23e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 5.8e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.24e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 5.84e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.25e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 5.89e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.26e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 5.93e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.27e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 5.97e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.28e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 6.01e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.29e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 6.05e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.3e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 6.1e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.31e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 6.14e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.32e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 6.18e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.33e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 6.22e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.34e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 6.27e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.35e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 6.31e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.36e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 6.35e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.37e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 6.39e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.38e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 6.44e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.39e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 6.48e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.4e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 6.52e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.41e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 6.56e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.42e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 6.6e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.43e+04 |
+| mean 100 episode reward | 0.9      |
+| steps                   | 6.65e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.44e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 6.69e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.45e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 6.73e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.46e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 6.77e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.47e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 6.81e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.48e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 6.86e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.49e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 6.9e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.5e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 6.94e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.51e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 6.98e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.52e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 7.02e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.53e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 7.07e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.54e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 7.11e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.55e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 7.15e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.56e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 7.19e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.57e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 7.23e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.58e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 7.27e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.59e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 7.32e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.6e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 7.36e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.61e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 7.4e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.62e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 7.44e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.63e+04 |
+| mean 100 episode reward | 0.9      |
+| steps                   | 7.48e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.64e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 7.52e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.65e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 7.56e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.66e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 7.61e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.67e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 7.65e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.68e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 7.69e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.69e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 7.73e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.7e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 7.78e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.71e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 7.82e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.72e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 7.86e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.73e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 7.9e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.74e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 7.94e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.75e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 7.99e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.76e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 8.03e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.77e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 8.07e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.78e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 8.11e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.79e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 8.15e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.8e+04  |
+| mean 100 episode reward | 0.6      |
+| steps                   | 8.19e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.81e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 8.23e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.82e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 8.27e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.83e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 8.31e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.84e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 8.35e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.85e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 8.4e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.86e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 8.44e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.87e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 8.48e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.88e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 8.52e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.89e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 8.56e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.9e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 8.61e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.91e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 8.65e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.92e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 8.69e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.93e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 8.73e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.94e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 8.77e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.95e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 8.81e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.96e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 8.85e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.97e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 8.89e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.98e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 8.94e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 1.99e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 8.98e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2e+04    |
+| mean 100 episode reward | 1        |
+| steps                   | 9.02e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.01e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 9.06e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.02e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 9.1e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.03e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 9.15e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.04e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 9.19e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.05e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 9.23e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.06e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 9.27e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.07e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 9.31e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.08e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 9.35e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.09e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 9.39e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.1e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 9.43e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.11e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 9.47e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.12e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 9.52e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.13e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 9.56e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.14e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 9.6e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.15e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 9.64e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.16e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 9.68e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.17e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 9.72e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.18e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 9.76e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.19e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 9.8e+05  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.2e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 9.85e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.21e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 9.89e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.22e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 9.93e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.23e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 9.97e+05 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.24e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1e+06    |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.25e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.01e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.26e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.01e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.27e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.01e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.28e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.02e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.29e+04 |
+| mean 100 episode reward | 0.9      |
+| steps                   | 1.02e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.3e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 1.03e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.31e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.03e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.32e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.03e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.33e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.04e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.34e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.04e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.35e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.05e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.36e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.05e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.37e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.05e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.38e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.06e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.39e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.06e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.4e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 1.07e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.41e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.07e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.42e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.07e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.43e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.08e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.44e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.08e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.45e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.09e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.46e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.09e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.47e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.1e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.48e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.1e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.49e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.1e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.5e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 1.11e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.51e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.11e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.52e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.12e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.53e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.12e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.54e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.12e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.55e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.13e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.56e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.13e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.57e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.14e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.58e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.14e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.59e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.14e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.6e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 1.15e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.61e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.15e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.62e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.16e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.63e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.16e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.64e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.16e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.65e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.17e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.66e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.17e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.67e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.18e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.68e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.18e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.69e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.19e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.7e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 1.19e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.71e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.19e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.72e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.2e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.73e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.2e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.74e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.21e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.75e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.21e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.76e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.21e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.77e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.22e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.78e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.22e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.79e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.23e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.8e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 1.23e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.81e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.23e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.82e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.24e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.83e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.24e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.84e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.25e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.85e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.25e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.86e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.25e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.87e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.26e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.88e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.26e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.89e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.27e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.9e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 1.27e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.91e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.27e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.92e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.28e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.93e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.28e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.94e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.29e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.95e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.29e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.96e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.29e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.97e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.3e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.98e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.3e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 2.99e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.31e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3e+04    |
+| mean 100 episode reward | 1        |
+| steps                   | 1.31e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.01e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.31e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.02e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.32e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.03e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.32e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.04e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.33e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.05e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.33e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.06e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.33e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.07e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.34e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.08e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.34e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.09e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.35e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.1e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 1.35e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.11e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.36e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.12e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.36e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.13e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.36e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.14e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.37e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.15e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.37e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.16e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.38e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.17e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.38e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.18e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.38e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.19e+04 |
+| mean 100 episode reward | 0.9      |
+| steps                   | 1.39e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.2e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 1.39e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.21e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.4e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.22e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.4e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.23e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.4e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.24e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.41e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.25e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.41e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.26e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.42e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.27e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.42e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.28e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.42e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.29e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.43e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.3e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 1.43e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.31e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.44e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.32e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.44e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.33e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.44e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.34e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.45e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.35e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.45e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.36e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.46e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.37e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.46e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.38e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.46e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.39e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.47e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.4e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 1.47e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.41e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.48e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.42e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.48e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.43e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.48e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.44e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.49e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.45e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.49e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.46e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.5e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.47e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.5e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.48e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.5e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.49e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.51e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.5e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 1.51e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.51e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.52e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.52e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.52e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.53e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.52e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.54e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.53e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.55e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.53e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.56e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.54e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.57e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.54e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.58e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.54e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.59e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.55e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.6e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 1.55e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.61e+04 |
+| mean 100 episode reward | 0.8      |
+| steps                   | 1.56e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.62e+04 |
+| mean 100 episode reward | 0.2      |
+| steps                   | 1.56e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.63e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.56e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.64e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.57e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.65e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.57e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.66e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.58e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.67e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.58e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.68e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.58e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.69e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.59e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.7e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 1.59e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.71e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.6e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.72e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.6e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.73e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.6e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.74e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.61e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.75e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.61e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.76e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.62e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.77e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.62e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.78e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.62e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.79e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.63e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.8e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 1.63e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.81e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.64e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.82e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.64e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.83e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.64e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.84e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.65e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.85e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.65e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.86e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.66e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.87e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.66e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.88e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.66e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.89e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.67e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.9e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 1.67e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.91e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.68e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.92e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.68e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.93e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.68e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.94e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.69e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.95e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.69e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.96e+04 |
+| mean 100 episode reward | 0.9      |
+| steps                   | 1.7e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.97e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.7e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.98e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.7e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 3.99e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.71e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4e+04    |
+| mean 100 episode reward | 1        |
+| steps                   | 1.71e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.01e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.72e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.02e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.72e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.03e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.72e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.04e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.73e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.05e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.73e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.06e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.74e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.07e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.74e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.08e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.74e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.09e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.75e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.1e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 1.75e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.11e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.76e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.12e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.76e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.13e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.76e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.14e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.77e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.15e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.77e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.16e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.78e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.17e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.78e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.18e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.78e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.19e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.79e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.2e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 1.79e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.21e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.8e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.22e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.8e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.23e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.8e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.24e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.81e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.25e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.81e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.26e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.82e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.27e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.82e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.28e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.82e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.29e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.83e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.3e+04  |
+| mean 100 episode reward | 0.9      |
+| steps                   | 1.83e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.31e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.84e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.32e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.84e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.33e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.84e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.34e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.85e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.35e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.85e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.36e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.86e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.37e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.86e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.38e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.86e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.39e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.87e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.4e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 1.87e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.41e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.88e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.42e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.88e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.43e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.88e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.44e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.89e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.45e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.89e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.46e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.9e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.47e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.9e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.48e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.9e+06  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.49e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.91e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.5e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 1.91e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.51e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.92e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.52e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.92e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.53e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.92e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.54e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.93e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.55e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.93e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.56e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.94e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.57e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.94e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.58e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.94e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.59e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.95e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.6e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 1.95e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.61e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.96e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.62e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.96e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.63e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.96e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.64e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.97e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.65e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.97e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.66e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.98e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.67e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.98e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.68e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.98e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.69e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 1.99e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.7e+04  |
+| mean 100 episode reward | 1        |
+| steps                   | 1.99e+06 |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.71e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 2e+06    |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 1        |
+| episodes                | 4.72e+04 |
+| mean 100 episode reward | 1        |
+| steps                   | 2e+06    |
+--------------------------------------
+Restored model with mean reward: 1.0

@@ -36,52 +36,14 @@ class MyHalfCheetahEnv(gym.Wrapper):
         return events
 
 
-
-class MyHalfCheetahEnvRM5(RewardMachineEnv):
+class MyHalfCheetahEnvRM1(RewardMachineEnv):
     def __init__(self):
         env = MyHalfCheetahEnv()
-        rm_files = ["./envs/mujoco_rm/reward_machines/t5.txt"]
+        rm_files = ["./envs/mujoco_rm/reward_machines/t1.txt"]
         super().__init__(env, rm_files)
 
-
-class MyHalfCheetahEnvRM6(RewardMachineEnv):
+class MyHalfCheetahEnvRM2(RewardMachineEnv):
     def __init__(self):
         env = MyHalfCheetahEnv()
-        rm_files = ["./envs/mujoco_rm/reward_machines/t6.txt"]
-        super().__init__(env, rm_files)
-
-class MyHalfCheetahEnvRM7(RewardMachineEnv):
-    def __init__(self):
-        env = MyHalfCheetahEnv()
-        rm_files = ["./envs/mujoco_rm/reward_machines/t7.txt"]
-        super().__init__(env, rm_files)
-
-class MyHalfCheetahEnvRM8(RewardMachineEnv):
-    def __init__(self):
-        env = MyHalfCheetahEnv()
-        rm_files = ["./envs/mujoco_rm/reward_machines/t8.txt"]
-        super().__init__(env, rm_files)
-
-class MyHalfCheetahEnvRM9(RewardMachineEnv):
-    def __init__(self):
-        env = MyHalfCheetahEnv()
-        rm_files = ["./envs/mujoco_rm/reward_machines/t9.txt"]
-        super().__init__(env, rm_files)
-
-class MyHalfCheetahEnvRM10(RewardMachineEnv):
-    def __init__(self):
-        env = MyHalfCheetahEnv()
-        rm_files = ["./envs/mujoco_rm/reward_machines/t10.txt"]
-        super().__init__(env, rm_files)
-
-class MyHalfCheetahEnvRM11(RewardMachineEnv):
-    def __init__(self):
-        env = MyHalfCheetahEnv()
-        rm_files = ["./envs/mujoco_rm/reward_machines/t11.txt"]
-        super().__init__(env, rm_files)
-
-class MyHalfCheetahEnvRM12(RewardMachineEnv):
-    def __init__(self):
-        env = MyHalfCheetahEnv()
-        rm_files = ["./envs/mujoco_rm/reward_machines/t12.txt"]
+        rm_files = ["./envs/mujoco_rm/reward_machines/t2.txt"]
         super().__init__(env, rm_files)

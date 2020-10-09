@@ -20,7 +20,7 @@ from baselines.common import retro_wrappers
 from baselines.common.wrappers import ClipActionsWrapper
 from baselines.common.cmd_util import arg_parser
 
-from reward_machines.rm_environment import RewardMachineWrapper, HierarchicalRLWrapper
+from reward_machines.rm_environment import RewardMachineWrapper, HierarchicalRMWrapper
 
 def make_vec_env(env_id, env_type, num_env, seed, args, 
                  wrapper_kwargs=None,
@@ -77,11 +77,11 @@ def make_env(env_id, env_type, args, mpi_rank=0, subrank=0, seed=None, reward_sc
     env = gym.make(env_id, **env_kwargs)
 
     # Adding RM wrappers if needed
-    if args.alg.endswith("hrl") or args.alg.endswith("hdrl"):
-        env = HierarchicalRLWrapper(env, args.r_min, args.r_max, args.use_self_loops)
+    if args.alg.endswith("hrm") or args.alg.endswith("dhrm"):
+        env = HierarchicalRMWrapper(env, args.r_min, args.r_max, args.use_self_loops)
 
-    if args.use_rs or args.use_qrm:
-        env = RewardMachineWrapper(env, args.use_qrm, args.use_rs, args.gamma, args.rs_gamma)
+    if args.use_rs or args.use_crm:
+        env = RewardMachineWrapper(env, args.use_crm, args.use_rs, args.gamma, args.rs_gamma)
 
     if flatten_dict_observations and isinstance(env.observation_space, gym.spaces.Dict):
         env = FlattenObservation(env)
@@ -120,10 +120,10 @@ def common_arg_parser():
     parser.add_argument('--play', default=False, action='store_true')
     # RM-related arguments
     parser.add_argument("--use_rs", help="Use reward shaping", action="store_true", default=False)
-    parser.add_argument("--use_qrm", help="Use counterfactual experience", action="store_true", default=False)
+    parser.add_argument("--use_crm", help="Use counterfactual experience", action="store_true", default=False)
     parser.add_argument('--gamma', help="Discount factor", type=float, default=0.9)
     parser.add_argument('--rs_gamma', help="Discount factor used for reward shaping", type=float, default=0.9)
-    parser.add_argument('--r_min', help="R-min reward used for training option policies in HRL", type=float, default=0.0)
-    parser.add_argument('--r_max', help="R-max reward used for training option policies in HRL", type=float, default=1.0)
+    parser.add_argument('--r_min', help="R-min reward used for training option policies in hrm", type=float, default=0.0)
+    parser.add_argument('--r_max', help="R-max reward used for training option policies in hrm", type=float, default=1.0)
     parser.add_argument("--use_self_loops", help="Add option policies for self-loops in the RMs", action="store_true", default=False)
     return parser

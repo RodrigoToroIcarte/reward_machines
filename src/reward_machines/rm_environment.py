@@ -82,7 +82,7 @@ class RewardMachineEnv(gym.Wrapper):
 
         # getting the output of the detectors and saving information for generating counterfactual experiences
         true_props = self.env.get_events()
-        self.qrm_params = self.obs, action, next_obs, env_done, true_props, info
+        self.crm_params = self.obs, action, next_obs, env_done, true_props, info
         self.obs = next_obs
 
         # update the RM state
@@ -104,22 +104,22 @@ class RewardMachineEnv(gym.Wrapper):
 
 
 class RewardMachineWrapper(gym.Wrapper):
-    def __init__(self, env, add_qrm, add_rs, gamma, rs_gamma):
+    def __init__(self, env, add_crm, add_rs, gamma, rs_gamma):
         """
         RM wrapper
         --------------------
-        It adds qrm (counterfactual experience) and/or reward shaping to *info* in the step function
+        It adds crm (counterfactual experience) and/or reward shaping to *info* in the step function
 
         Parameters
         --------------------
             - env(RewardMachineEnv): It must be an RM environment
-            - add_qrm(bool):   if True, it will add a set of counterfactual experiences to info
+            - add_crm(bool):   if True, it will add a set of counterfactual experiences to info
             - add_rs(bool):    if True, it will add reward shaping to info
             - gamma(float):    Discount factor for the environment
             - rs_gamma(float): Discount factor for shaping the rewards in the RM
         """
         super().__init__(env)
-        self.add_qrm = add_qrm
+        self.add_crm = add_crm
         self.add_rs  = add_rs
         if add_rs:
             for rm in env.reward_machines:
@@ -141,12 +141,12 @@ class RewardMachineWrapper(gym.Wrapper):
         # executing the action in the environment
         rm_obs, rm_rew, done, info = self.env.step(action)
 
-        # adding qrm if needed
-        if self.add_qrm:
-            qrm_experience = self._get_qrm_experience(*self.qrm_params)
-            info["qrm-experience"] = qrm_experience
+        # adding crm if needed
+        if self.add_crm:
+            crm_experience = self._get_crm_experience(*self.crm_params)
+            info["crm-experience"] = crm_experience
         elif self.add_rs:
-            rs_experience,_  = self._get_rm_experience(rm_id, rm, u_id, *self.qrm_params)
+            rs_experience,_  = self._get_rm_experience(rm_id, rm, u_id, *self.crm_params)
             info["rs-experience"] = rs_experience
 
         return rm_obs, rm_rew, done, info
@@ -158,7 +158,7 @@ class RewardMachineWrapper(gym.Wrapper):
         rm_next_obs = self.env.get_observation(next_obs, rm_id, next_u_id, done)
         return (rm_obs,action,rm_rew,rm_next_obs,done), next_u_id
 
-    def _get_qrm_experience(self, obs, action, next_obs, env_done, true_props, info):
+    def _get_crm_experience(self, obs, action, next_obs, env_done, true_props, info):
         """
         Returns a list of counterfactual experiences generated per each RM state.
         Format: [..., (obs, action, r, new_obs, done), ...]
@@ -180,7 +180,7 @@ class RewardMachineWrapper(gym.Wrapper):
         return experiences
 
 
-class HierarchicalRLWrapper(gym.Wrapper):
+class HierarchicalRMWrapper(gym.Wrapper):
     """
     HRL wrapper
     --------------------
@@ -272,7 +272,7 @@ class HierarchicalRLWrapper(gym.Wrapper):
     def did_option_terminate(self, option_id):
         # Note: options terminate when the current experience changes the RM state
         rm_id, u1, _ = self.options[option_id]
-        _, _, _, _, true_props, _ = self.env.qrm_params
+        _, _, _, _, true_props, _ = self.env.crm_params
         un = self.env.reward_machines[rm_id].get_next_state(u1, true_props)
         return u1 != un
 
@@ -300,7 +300,7 @@ class HierarchicalRLWrapper(gym.Wrapper):
         Returns a list of counterfactual experiences generated for updating each option.
         Format: [..., (obs, action, r, new_obs, done), ...]
         """
-        obs, action, next_obs, env_done, true_props, info = self.env.qrm_params
+        obs, action, next_obs, env_done, true_props, info = self.env.crm_params
         reachable_states = set()
         experiences = []
         for option_id in range(self.num_options):

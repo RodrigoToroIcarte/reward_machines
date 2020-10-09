@@ -25,7 +25,7 @@ def learn(env,
           print_freq=10000,
           gamma=0.9,
           q_init=1.0,
-          use_qrm=False,
+          use_crm=False,
           use_rs=False):
     """Train a tabular q-learning model.
 
@@ -50,7 +50,7 @@ def learn(env,
         discount factor
     q_init: float
         initial q-value for unseen states
-    use_qrm: bool
+    use_crm: bool
         use counterfactual experience to train the policy
     use_rs: bool
         use reward shaping
@@ -63,28 +63,20 @@ def learn(env,
     Q = {}
     actions = list(range(env.action_space.n))
 
-
-    #times = []        # DELETE ---------------------------------------------------
-
     while step < total_timesteps:
         s = tuple(env.reset())
         if s not in Q: Q[s] = dict([(a,q_init) for a in actions])
         while True:
             # Selecting and executing the action
             a = random.choice(actions) if random.random() < epsilon else get_best_action(Q,s,actions,q_init)
-            #t_init = time.time()                # DELETE
             sn, r, done, info = env.step(a)
-            #times.append(time.time() - t_init) # DELETE ---------------------------------------------------
-            #if len(times) == 10000:            # DELETE ---------------------------------------------------
-            #    print(sum(times))              # DELETE ---------------------------------------------------
-            #    exit()                         # DELETE ---------------------------------------------------
             sn = tuple(sn)
 
             # Updating the q-values
             experiences = []
-            if use_qrm:
+            if use_crm:
                 # Adding counterfactual experience (this will alrady include shaped rewards if use_rs=True)
-                for _s,_a,_r,_sn,_done in info["qrm-experience"]:
+                for _s,_a,_r,_sn,_done in info["crm-experience"]:
                     experiences.append((tuple(_s),_a,_r,tuple(_sn),_done))
             elif use_rs:
                 # Include only the current experince but shape the reward
