@@ -4,14 +4,14 @@ Reinforcement learning (RL) methods usually treat reward functions as black boxe
 
 A complete description of reward machines and our methods to exploit their internal structure can be found in the following paper ([link](https://arxiv.org/abs/2010.03950)):
 
-    @article{tor-etal-arxiv18,
+    @article{tor-etal-arxiv20,
         author  = {Toro Icarte, Rodrigo and Klassen, Toryn Q. and Valenzano, Richard and McIlraith, Sheila A.},
         title   = {Reward Machines: Exploiting Reward Function Structure in Reinforcement Learning},
         journal = {arXiv preprint arXiv:2010.03950},
         year    = {2020}
     }
 
-Our methods build on top of our two previous work on reward machines:
+Our methods build on top of our two previous work on reward machines ([icml18](http://proceedings.mlr.press/v80/icarte18a.html), [ijcai19](https://www.ijcai.org/Proceedings/2019/840)):
 
     @inproceedings{tor-etal-icml18,
         author = {Toro Icarte, Rodrigo and Klassen, Toryn Q. and Valenzano, Richard and McIlraith, Sheila A.},
@@ -20,7 +20,6 @@ Our methods build on top of our two previous work on reward machines:
         year      = {2018},
         pages      = {2112--2121}
     }
-
     @inproceedings{cam-etal-ijcai19,
         author = {Camacho, Alberto and Toro Icarte, Rodrigo and Klassen, Toryn Q. and Valenzano, Richard and McIlraith, Sheila A.},
         title     = {LTL and Beyond: Formal Languages for Reward Function Specification in Reinforcement Learning},
