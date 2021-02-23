@@ -300,7 +300,7 @@ def learn(env,
                 experiences = info["crm-experience"]
             elif use_rs:
                 # Include only the current experince but shape the reward
-                experiences = [info["rs-experience"]]
+                experiences = [(obs, action, info["rs-reward"], new_obs, float(done))]
             else:
                 # Include only the current experience (standard deepq)
                 experiences = [(obs, action, rew, new_obs, float(done))]

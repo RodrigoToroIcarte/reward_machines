@@ -11,6 +11,7 @@ do
 	python3.6 run.py --alg=deepq --env=Water-M$i-v0 --num_timesteps=2e6 --gamma=0.9 --log_path=../my_results/crm3/water/M$i/0 --use_crm --num_layers=6 --num_hidden=64
 	python3.6 run.py --alg=deepq --env=Water-M$i-v0 --num_timesteps=2e6 --gamma=0.9 --log_path=../my_results/crm-rs/water/M$i/0 --use_crm --use_rs
 	python3.6 run.py --alg=dhrm --env=Water-M$i-v0 --num_timesteps=2e6 --gamma=0.9 --log_path=../my_results/hrm/water/M$i/0
+	python3.6 run.py --alg=dhrm --env=Water-M$i-v0 --num_timesteps=2e6 --gamma=0.9 --log_path=../my_results/hrm-rs/water/M$i/0 --use_rs
 
 	# Single task
 	python3.6 run.py --alg=deepq --env=Water-single-M$i-v0 --num_timesteps=2e6 --gamma=0.9 --log_path=../my_results/ql/water-single/M$i/0
@@ -18,4 +19,5 @@ do
 	python3.6 run.py --alg=deepq --env=Water-single-M$i-v0 --num_timesteps=2e6 --gamma=0.9 --log_path=../my_results/crm/water-single/M$i/0 --use_crm
 	python3.6 run.py --alg=deepq --env=Water-single-M$i-v0 --num_timesteps=2e6 --gamma=0.9 --log_path=../my_results/crm-rs/water-single/M$i/0 --use_crm --use_rs
 	python3.6 run.py --alg=dhrm --env=Water-single-M$i-v0 --num_timesteps=2e6 --gamma=0.9 --log_path=../my_results/hrm/water-single/M$i/0
+	python3.6 run.py --alg=dhrm --env=Water-single-M$i-v0 --num_timesteps=2e6 --gamma=0.9 --log_path=../my_results/hrm-rs/water-single/M$i/0 --use_rs
 done

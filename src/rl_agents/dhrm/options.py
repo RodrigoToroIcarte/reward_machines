@@ -298,6 +298,7 @@ class OptionDDPG:
         agent.reset()
 
         # Variables that are used during learning
+        self.act    = actor
         self.agent  = agent
         self.memory = memory
         self.max_action = max_action

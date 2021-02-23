@@ -28,6 +28,7 @@ def learn(env,
           gamma=0.9,
           q_init=1.0,
           hrm_lr=0.1,
+          use_rs=False,
           **others):
     """Train a tabular HRM method.
 
@@ -52,8 +53,10 @@ def learn(env,
         discount factor
     q_init: float
         initial q-value for unseen states
-    hrl_lr: float
+    hrm_lr: float
         learning rate for the macro-controller
+    use_rs: bool
+        use reward shaping
     """
 
     # Running Q-Learning
@@ -83,7 +86,10 @@ def learn(env,
             sn = tuple(sn)
 
             # Saving the real reward that the option is getting
-            option_rews.append(r)
+            if use_rs:
+                option_rews.append(info["rs-reward"])
+            else:
+                option_rews.append(r)
 
             # Updating the option policies
             for _s,_a,_r,_sn,_done in env.get_experience():
@@ -100,7 +106,7 @@ def learn(env,
                 option_reward = sum([_r*gamma**_i for _i,_r in enumerate(option_rews)])
                 if done: _delta = option_reward - Q_controller[option_s][option_id]
                 else:    _delta = option_reward + gamma**(len(option_rews)) * get_qmax(Q_controller,option_sn,env.get_valid_options(),q_init) - Q_controller[option_s][option_id]
-                Q_controller[option_s][option_id] += hrl_lr*_delta
+                Q_controller[option_s][option_id] += hrm_lr*_delta
                 option_id = None
 
             # Moving to the next state

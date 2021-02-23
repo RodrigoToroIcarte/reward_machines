@@ -255,18 +255,20 @@ if __name__ == '__main__':
 
     # Examples over the office world:
     #    cross-product baseline: 
-    #        >>> python3 run.py --alg=qlearning --env=Office-v0 --num_timesteps=1e5 --gamma=0.9 --log_path=../my_results/ql/office/M1/$i
+    #        >>> python3.6 run.py --alg=qlearning --env=Office-v0 --num_timesteps=1e5 --gamma=0.9 --log_path=../my_results/ql/office/M1/$i
     #    cross-product baseline with reward shaping: 
-    #        >>> python3 run.py --alg=qlearning --env=Office-v0 --num_timesteps=1e5 --gamma=0.9 --use_rs
+    #        >>> python3.6 run.py --alg=qlearning --env=Office-v0 --num_timesteps=1e5 --gamma=0.9 --use_rs
     #    CRM: 
-    #        >>> python3 run.py --alg=qlearning --env=Office-v0 --num_timesteps=1e5 --gamma=0.9 --use_crm
+    #        >>> python3.6 run.py --alg=qlearning --env=Office-v0 --num_timesteps=1e5 --gamma=0.9 --use_crm
     #    CRM with reward shaping: 
-    #        >>> python3 run.py --alg=qlearning --env=Office-v0 --num_timesteps=1e5 --gamma=0.9 --use_crm --use_rs
+    #        >>> python3.6 run.py --alg=qlearning --env=Office-v0 --num_timesteps=1e5 --gamma=0.9 --use_crm --use_rs
     #    HRM: 
-    #        >>> python3 run.py --alg=hrm --env=Office-v0 --num_timesteps=1e5 --gamma=0.9
+    #        >>> python3.6 run.py --alg=hrm --env=Office-v0 --num_timesteps=1e5 --gamma=0.9
+    #    HRM with reward shaping: 
+    #        >>> python3.6 run.py --alg=hrm --env=Office-v0 --num_timesteps=1e5 --gamma=0.9 --use_rs
     # NOTE: The complete list of experiments (that we reported in the paper) can be found on '../scripts' 
 
     import time
     t_init = time.time()
     main(sys.argv)
-    print(time.time() - t_init)
+    logger.log("Total time: " + str(time.time() - t_init) + " seconds")

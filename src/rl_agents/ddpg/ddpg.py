@@ -175,7 +175,7 @@ def learn(network, env,
                         if use_crm:
                             experiences = info[0]["crm-experience"]
                         else:
-                            experiences = [info[0]["rs-experience"]]
+                            experiences = [(obs, action, info[0]["rs-reward"], new_obs, done)]
 
                         for _obs, _action, _r, _new_obs, _done in experiences:
                             _obs.shape     = obs.shape

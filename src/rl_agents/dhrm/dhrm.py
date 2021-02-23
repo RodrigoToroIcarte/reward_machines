@@ -26,6 +26,7 @@ from rl_agents.dhrm.controller import ControllerDQN
 def learn(env,
           use_ddpg=False,
           gamma=0.9,
+          use_rs=False,
           controller_kargs={},
           option_kargs={},
           seed=None,
@@ -46,6 +47,8 @@ def learn(env,
         whether to use DDPG or DQN to learn the option's policies
     gamma: float
         discount factor
+    use_rs: bool
+        use reward shaping
     controller_kargs
         arguments for learning the controller policy.
     option_kargs
@@ -126,7 +129,10 @@ def learn(env,
             new_obs, rew, done, info = env.step(action)
 
             # Saving the real reward that the option is getting
-            option_rews.append(rew)
+            if use_rs:
+                option_rews.append(info["rs-reward"])
+            else:
+                option_rews.append(rew)
 
             # Store transition for the option policies
             for _s,_a,_r,_sn,_done in env.get_experience():

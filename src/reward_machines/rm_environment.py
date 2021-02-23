@@ -86,10 +86,7 @@ class RewardMachineEnv(gym.Wrapper):
         self.obs = next_obs
 
         # update the RM state
-        #c_id = self.current_u_id
         self.current_u_id, rm_rew, rm_done = self.current_rm.step(self.current_u_id, true_props, info)
-        #if c_id != self.current_u_id:
-        #    print(c_id, "->", self.current_u_id)
 
         # returning the result of this action
         done = rm_done or env_done
@@ -146,8 +143,10 @@ class RewardMachineWrapper(gym.Wrapper):
             crm_experience = self._get_crm_experience(*self.crm_params)
             info["crm-experience"] = crm_experience
         elif self.add_rs:
-            rs_experience,_  = self._get_rm_experience(rm_id, rm, u_id, *self.crm_params)
-            info["rs-experience"] = rs_experience
+            # Computing reward using reward shaping
+            _, _, _, rs_env_done, rs_true_props, rs_info = self.crm_params
+            _, rs_rm_rew, _ = rm.step(u_id, rs_true_props, rs_info, self.add_rs, rs_env_done)
+            info["rs-reward"] = rs_rm_rew
 
         return rm_obs, rm_rew, done, info
 
@@ -167,9 +166,6 @@ class RewardMachineWrapper(gym.Wrapper):
         experiences = []
         for rm_id, rm in enumerate(self.reward_machines):
             for u_id in rm.get_states():
-                #if (rm_id,u_id) != (self.current_rm_id,self.current_u_id):
-                #    if ("c" in self.last_true_props and u_id == 0) or ("d" in self.last_true_props and u_id == 1): 
-                #        continue # <- HERE!!!!
                 exp, next_u = self._get_rm_experience(rm_id, rm, u_id, obs, action, next_obs, env_done, true_props, info)
                 reachable_states.add((rm_id,next_u))
                 if self.valid_states is None or (rm_id,u_id) in self.valid_states:
@@ -198,6 +194,9 @@ class HierarchicalRMWrapper(gym.Wrapper):
                 - r_min(float):          Reward given to the option policies when they failed to accomplish their goal.
                 - r_max(float):          Reward given to the option policies when they accomplished their goal.
                 - use_self_loops(bool):  When true, it adds option policies for each self-loop in the RM
+                - add_rs(bool):    if True, it will add reward shaping to info
+                - gamma(float):    Discount factor for the environment
+                - rs_gamma(float): Discount factor for shaping the rewards in the RM
         - get_valid_options(self):
             - Returns the set of valid options in the current RM state.
         - get_option_observation(self, option_id):
@@ -212,10 +211,16 @@ class HierarchicalRMWrapper(gym.Wrapper):
             - Returns the off-policy experience necessary to update all the option policies.
     """
 
-    def __init__(self, env, r_min, r_max, use_self_loops):
+    def __init__(self, env, r_min, r_max, use_self_loops, add_rs, gamma, rs_gamma):
         self.r_min = r_min
         self.r_max = r_max
         super().__init__(env)
+
+        # Adding reward shaping (if needed)
+        self.add_rs  = add_rs
+        if add_rs:
+            for rm in env.reward_machines:
+                rm.add_reward_shaping(gamma, rs_gamma)
 
         # Extracting the set of options available (one per edge in the RM)
         if use_self_loops:
@@ -267,12 +272,26 @@ class HierarchicalRMWrapper(gym.Wrapper):
         return self.env.reset()
 
     def step(self, action):
-        return self.env.step(action)
+        # RM and RM state before executing the action
+        rm    = self.env.current_rm
+        u_id  = self.env.current_u_id
+
+        # executing the action in the environment
+        rm_obs, rm_rew, done, info = self.env.step(action)
+
+        # adding crm if needed
+        if self.add_rs:
+            # Computing reward using reward shaping
+            _, _, _, rs_env_done, rs_true_props, rs_info = self.crm_params
+            _, rs_rm_rew, _ = rm.step(u_id, rs_true_props, rs_info, self.add_rs, rs_env_done)
+            info["rs-reward"] = rs_rm_rew
+
+        return rm_obs, rm_rew, done, info
 
     def did_option_terminate(self, option_id):
         # Note: options terminate when the current experience changes the RM state
         rm_id, u1, _ = self.options[option_id]
-        _, _, _, _, true_props, _ = self.env.crm_params
+        _, _, _, _, true_props, _ = self.crm_params
         un = self.env.reward_machines[rm_id].get_next_state(u1, true_props)
         return u1 != un
 
@@ -281,17 +300,16 @@ class HierarchicalRMWrapper(gym.Wrapper):
         rm = self.env.reward_machines[rm_id]
 
         opt_obs = self.get_option_observation(option_id, obs)
-        un, rm_rew, _ = rm.step(u1, true_props, info)
+        un, rm_rew, _ = rm.step(u1, true_props, info, self.add_rs, env_done)
         done = env_done or u1 != un
         opt_next_obs = self.get_option_observation(option_id, next_obs)
 
         # Computing the reward for the option
+        opt_rew = rm_rew
         if u1 != u2 == un: 
-            opt_rew = self.r_max  # Positive reward, the agent accomplished this option
-        elif not done: 
-            opt_rew = rm_rew      # Neutral reward, the agent is still trying to accomplish this option
-        else:          
-            opt_rew = self.r_min  # Negative reward, the agent failed to accomplish this option
+            opt_rew += self.r_max  # Extra positive reward because the agent accomplished this option
+        elif done: 
+            opt_rew += self.r_min  # Extra negative reward because the agent failed to accomplish this option
 
         return opt_obs,action,opt_rew,opt_next_obs,done
 
@@ -300,7 +318,7 @@ class HierarchicalRMWrapper(gym.Wrapper):
         Returns a list of counterfactual experiences generated for updating each option.
         Format: [..., (obs, action, r, new_obs, done), ...]
         """
-        obs, action, next_obs, env_done, true_props, info = self.env.crm_params
+        obs, action, next_obs, env_done, true_props, info = self.crm_params
         reachable_states = set()
         experiences = []
         for option_id in range(self.num_options):
