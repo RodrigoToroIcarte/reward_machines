@@ -1,0 +1,298 @@
+Logging to ./results/hrm-rs/cheetah/M2/14
+scaling actions by [1. 1. 1. 1. 1. 1.] before executing in env
+setting up param noise
+  param_noise_actor/mlp_fc0/w:0 <- actor/mlp_fc0/w:0 + noise
+  param_noise_actor/mlp_fc0/b:0 <- actor/mlp_fc0/b:0 + noise
+  param_noise_actor/mlp_fc1/w:0 <- actor/mlp_fc1/w:0 + noise
+  param_noise_actor/mlp_fc1/b:0 <- actor/mlp_fc1/b:0 + noise
+  param_noise_actor/dense/kernel:0 <- actor/dense/kernel:0 + noise
+  param_noise_actor/dense/bias:0 <- actor/dense/bias:0 + noise
+  adaptive_param_noise_actor/mlp_fc0/w:0 <- actor/mlp_fc0/w:0 + noise
+  adaptive_param_noise_actor/mlp_fc0/b:0 <- actor/mlp_fc0/b:0 + noise
+  adaptive_param_noise_actor/mlp_fc1/w:0 <- actor/mlp_fc1/w:0 + noise
+  adaptive_param_noise_actor/mlp_fc1/b:0 <- actor/mlp_fc1/b:0 + noise
+  adaptive_param_noise_actor/dense/kernel:0 <- actor/dense/kernel:0 + noise
+  adaptive_param_noise_actor/dense/bias:0 <- actor/dense/bias:0 + noise
+setting up actor optimizer
+  actor shapes: [[23, 256], [256], [256, 256], [256], [256, 6], [6]]
+  actor params: 73478
+setting up critic optimizer
+  regularizing: critic/mlp_fc0/w:0
+  regularizing: critic/mlp_fc1/w:0
+  applying l2 regularization with 0.01
+  critic shapes: [[29, 256], [256], [256, 256], [256], [256, 1], [1]]
+  critic params: 73729
+setting up target updates ...
+  target_actor/mlp_fc0/w:0 <- actor/mlp_fc0/w:0
+  target_actor/mlp_fc0/b:0 <- actor/mlp_fc0/b:0
+  target_actor/mlp_fc1/w:0 <- actor/mlp_fc1/w:0
+  target_actor/mlp_fc1/b:0 <- actor/mlp_fc1/b:0
+  target_actor/dense/kernel:0 <- actor/dense/kernel:0
+  target_actor/dense/bias:0 <- actor/dense/bias:0
+setting up target updates ...
+  target_critic/mlp_fc0/w:0 <- critic/mlp_fc0/w:0
+  target_critic/mlp_fc0/b:0 <- critic/mlp_fc0/b:0
+  target_critic/mlp_fc1/w:0 <- critic/mlp_fc1/w:0
+  target_critic/mlp_fc1/b:0 <- critic/mlp_fc1/b:0
+  target_critic/output/kernel:0 <- critic/output/kernel:0
+  target_critic/output/bias:0 <- critic/output/bias:0
+Using agent with the following configuration:
+dict_items([('obs0', <tf.Tensor 'obs0:0' shape=(?, 23) dtype=float32>), ('obs1', <tf.Tensor 'obs1:0' shape=(?, 23) dtype=float32>), ('terminals1', <tf.Tensor 'terminals1:0' shape=(?, 1) dtype=float32>), ('rewards', <tf.Tensor 'rewards:0' shape=(?, 1) dtype=float32>), ('actions', <tf.Tensor 'actions:0' shape=(?, 6) dtype=float32>), ('critic_target', <tf.Tensor 'critic_target:0' shape=(?, 1) dtype=float32>), ('param_noise_stddev', <tf.Tensor 'param_noise_stddev:0' shape=() dtype=float32>), ('gamma', 0.99), ('tau', 0.01), ('memory', <baselines.ddpg.memory.Memory object at 0x7f2bc2e06ef0>), ('normalize_observations', False), ('normalize_returns', False), ('action_noise', None), ('param_noise', AdaptiveParamNoiseSpec(initial_stddev=0.2, desired_action_stddev=0.2, adoption_coefficient=1.01)), ('action_range', (-1.0, 1.0)), ('return_range', (-inf, inf)), ('observation_range', (-5.0, 5.0)), ('critic', <baselines.ddpg.models.Critic object at 0x7f2bc2e06da0>), ('actor', <baselines.ddpg.models.Actor object at 0x7f2ae47391d0>), ('actor_lr', 0.0001), ('critic_lr', 0.001), ('clip_norm', None), ('enable_popart', False), ('reward_scale', 1.0), ('batch_size', 500), ('stats_sample', None), ('critic_l2_reg', 0.01), ('obs_rms', None), ('ret_rms', None), ('target_actor', <baselines.ddpg.models.Actor object at 0x7f2b003779b0>), ('target_critic', <baselines.ddpg.models.Critic object at 0x7f2b00377668>), ('actor_tf', <tf.Tensor 'actor/Tanh:0' shape=(?, 6) dtype=float32>), ('normalized_critic_tf', <tf.Tensor 'critic/output/BiasAdd:0' shape=(?, 1) dtype=float32>), ('critic_tf', <tf.Tensor 'clip_by_value_2:0' shape=(?, 1) dtype=float32>), ('normalized_critic_with_actor_tf', <tf.Tensor 'critic_1/output/BiasAdd:0' shape=(?, 1) dtype=float32>), ('critic_with_actor_tf', <tf.Tensor 'clip_by_value_3:0' shape=(?, 1) dtype=float32>), ('target_Q', <tf.Tensor 'add:0' shape=(?, 1) dtype=float32>), ('perturbed_actor_tf', <tf.Tensor 'param_noise_actor/Tanh:0' shape=(?, 6) dtype=float32>), ('perturb_policy_ops', <tf.Operation 'group_deps' type=NoOp>), ('perturb_adaptive_policy_ops', <tf.Operation 'group_deps_1' type=NoOp>), ('adaptive_policy_distance', <tf.Tensor 'Sqrt:0' shape=() dtype=float32>), ('actor_loss', <tf.Tensor 'Neg:0' shape=() dtype=float32>), ('actor_grads', <tf.Tensor 'concat:0' shape=(73478,) dtype=float32>), ('actor_optimizer', <baselines.common.mpi_adam.MpiAdam object at 0x7f2abc0a5940>), ('critic_loss', <tf.Tensor 'add_13:0' shape=() dtype=float32>), ('critic_grads', <tf.Tensor 'concat_2:0' shape=(73729,) dtype=float32>), ('critic_optimizer', <baselines.common.mpi_adam.MpiAdam object at 0x7f2b7fd3b518>), ('stats_ops', [<tf.Tensor 'Mean_3:0' shape=() dtype=float32>, <tf.Tensor 'Sqrt_1:0' shape=() dtype=float32>, <tf.Tensor 'Mean_6:0' shape=() dtype=float32>, <tf.Tensor 'Sqrt_2:0' shape=() dtype=float32>, <tf.Tensor 'Mean_9:0' shape=() dtype=float32>, <tf.Tensor 'Sqrt_3:0' shape=() dtype=float32>, <tf.Tensor 'Mean_12:0' shape=() dtype=float32>, <tf.Tensor 'Sqrt_4:0' shape=() dtype=float32>]), ('stats_names', ['reference_Q_mean', 'reference_Q_std', 'reference_actor_Q_mean', 'reference_actor_Q_std', 'reference_action_mean', 'reference_action_std', 'reference_perturbed_action_mean', 'reference_perturbed_action_std']), ('target_init_updates', [<tf.Operation 'group_deps_4' type=NoOp>, <tf.Operation 'group_deps_6' type=NoOp>]), ('target_soft_updates', [<tf.Operation 'group_deps_5' type=NoOp>, <tf.Operation 'group_deps_7' type=NoOp>]), ('initial_state', None)])
+--------------------------------------
+| episodes                | 100      |
+| mean 100 episode reward | -570     |
+| steps                   | 9.79e+04 |
+--------------------------------------
+Saving model due to mean reward increase: None -> -570.3
+--------------------------------------
+| episodes                | 200      |
+| mean 100 episode reward | -585     |
+| steps                   | 1.97e+05 |
+--------------------------------------
+--------------------------------------
+| episodes                | 300      |
+| mean 100 episode reward | -573     |
+| steps                   | 2.97e+05 |
+--------------------------------------
+Saving model due to mean reward increase: -570.3 -> -549.0
+Saving model due to mean reward increase: -549.0 -> -539.1
+--------------------------------------
+| episodes                | 400      |
+| mean 100 episode reward | -539     |
+| steps                   | 3.95e+05 |
+--------------------------------------
+Saving model due to mean reward increase: -539.1 -> -528.3
+Saving model due to mean reward increase: -528.3 -> -505.1
+Saving model due to mean reward increase: -505.1 -> -459.6
+Saving model due to mean reward increase: -459.6 -> -424.6
+Saving model due to mean reward increase: -424.6 -> -361.6
+Saving model due to mean reward increase: -361.6 -> -231.9
+Saving model due to mean reward increase: -231.9 -> -145.3
+Saving model due to mean reward increase: -145.3 -> -111.0
+--------------------------------------
+| episodes                | 500      |
+| mean 100 episode reward | -99.1    |
+| steps                   | 4.82e+05 |
+--------------------------------------
+Saving model due to mean reward increase: -111.0 -> -62.7
+Saving model due to mean reward increase: -62.7 -> -22.7
+Saving model due to mean reward increase: -22.7 -> 11.4
+Saving model due to mean reward increase: 11.4 -> 95.5
+Saving model due to mean reward increase: 95.5 -> 131.9
+--------------------------------------
+| episodes                | 600      |
+| mean 100 episode reward | 192      |
+| steps                   | 5.58e+05 |
+--------------------------------------
+Saving model due to mean reward increase: 131.9 -> 193.8
+Saving model due to mean reward increase: 193.8 -> 277.1
+Saving model due to mean reward increase: 277.1 -> 387.3
+Saving model due to mean reward increase: 387.3 -> 422.2
+Saving model due to mean reward increase: 422.2 -> 521.0
+Saving model due to mean reward increase: 521.0 -> 582.6
+--------------------------------------
+| episodes                | 700      |
+| mean 100 episode reward | 579      |
+| steps                   | 6.16e+05 |
+--------------------------------------
+Saving model due to mean reward increase: 582.6 -> 588.8
+--------------------------------------
+| episodes                | 800      |
+| mean 100 episode reward | 318      |
+| steps                   | 6.85e+05 |
+--------------------------------------
+--------------------------------------
+| episodes                | 900      |
+| mean 100 episode reward | -4.5     |
+| steps                   | 7.61e+05 |
+--------------------------------------
+--------------------------------------
+| episodes                | 1e+03    |
+| mean 100 episode reward | 476      |
+| steps                   | 8.12e+05 |
+--------------------------------------
+Saving model due to mean reward increase: 588.8 -> 596.6
+Saving model due to mean reward increase: 596.6 -> 656.5
+--------------------------------------
+| episodes                | 1.1e+03  |
+| mean 100 episode reward | 490      |
+| steps                   | 8.66e+05 |
+--------------------------------------
+--------------------------------------
+| episodes                | 1.2e+03  |
+| mean 100 episode reward | 698      |
+| steps                   | 9.06e+05 |
+--------------------------------------
+Saving model due to mean reward increase: 656.5 -> 683.5
+Saving model due to mean reward increase: 683.5 -> 695.5
+--------------------------------------
+| episodes                | 1.3e+03  |
+| mean 100 episode reward | 498      |
+| steps                   | 9.55e+05 |
+--------------------------------------
+--------------------------------------
+| episodes                | 1.4e+03  |
+| mean 100 episode reward | 427      |
+| steps                   | 1.01e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 1.5e+03  |
+| mean 100 episode reward | 808      |
+| steps                   | 1.04e+06 |
+--------------------------------------
+Saving model due to mean reward increase: 695.5 -> 812.6
+Saving model due to mean reward increase: 812.6 -> 816.8
+--------------------------------------
+| episodes                | 1.6e+03  |
+| mean 100 episode reward | 774      |
+| steps                   | 1.07e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 1.7e+03  |
+| mean 100 episode reward | 267      |
+| steps                   | 1.13e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 1.8e+03  |
+| mean 100 episode reward | 501      |
+| steps                   | 1.17e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 1.9e+03  |
+| mean 100 episode reward | -165     |
+| steps                   | 1.25e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2e+03    |
+| mean 100 episode reward | 219      |
+| steps                   | 1.31e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.1e+03  |
+| mean 100 episode reward | 604      |
+| steps                   | 1.36e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.2e+03  |
+| mean 100 episode reward | 737      |
+| steps                   | 1.39e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.3e+03  |
+| mean 100 episode reward | 627      |
+| steps                   | 1.43e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.4e+03  |
+| mean 100 episode reward | 319      |
+| steps                   | 1.49e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.5e+03  |
+| mean 100 episode reward | 605      |
+| steps                   | 1.53e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.6e+03  |
+| mean 100 episode reward | 646      |
+| steps                   | 1.57e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.7e+03  |
+| mean 100 episode reward | 549      |
+| steps                   | 1.61e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.8e+03  |
+| mean 100 episode reward | 157      |
+| steps                   | 1.67e+06 |
+--------------------------------------
+Saving model due to mean reward increase: 816.8 -> 838.3
+--------------------------------------
+| episodes                | 2.9e+03  |
+| mean 100 episode reward | 843      |
+| steps                   | 1.69e+06 |
+--------------------------------------
+Saving model due to mean reward increase: 838.3 -> 872.0
+--------------------------------------
+| episodes                | 3e+03    |
+| mean 100 episode reward | 848      |
+| steps                   | 1.72e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 3.1e+03  |
+| mean 100 episode reward | 826      |
+| steps                   | 1.74e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 3.2e+03  |
+| mean 100 episode reward | 764      |
+| steps                   | 1.77e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 3.3e+03  |
+| mean 100 episode reward | 301      |
+| steps                   | 1.82e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 3.4e+03  |
+| mean 100 episode reward | -376     |
+| steps                   | 1.91e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 3.5e+03  |
+| mean 100 episode reward | -564     |
+| steps                   | 2.01e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 3.6e+03  |
+| mean 100 episode reward | -29.7    |
+| steps                   | 2.09e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 3.7e+03  |
+| mean 100 episode reward | -207     |
+| steps                   | 2.17e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 3.8e+03  |
+| mean 100 episode reward | -224     |
+| steps                   | 2.25e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 3.9e+03  |
+| mean 100 episode reward | -502     |
+| steps                   | 2.35e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 4e+03    |
+| mean 100 episode reward | -486     |
+| steps                   | 2.44e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 4.1e+03  |
+| mean 100 episode reward | -594     |
+| steps                   | 2.54e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 4.2e+03  |
+| mean 100 episode reward | -588     |
+| steps                   | 2.64e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 4.3e+03  |
+| mean 100 episode reward | -587     |
+| steps                   | 2.74e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 4.4e+03  |
+| mean 100 episode reward | -573     |
+| steps                   | 2.84e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 4.5e+03  |
+| mean 100 episode reward | -589     |
+| steps                   | 2.94e+06 |
+--------------------------------------
+Restored model with mean reward: 872.0
+Total time: 18995.078511476517 seconds
