@@ -50,7 +50,6 @@ class RewardForward(RewardFunction):
         return "forward"
 
     def get_reward(self, s_info):
-        #return s_info['reward_forward'] + s_info['reward_ctrl'] + s_info['reward_contact'] + s_info['reward_survive'] # ANT
         return s_info['reward_run'] + s_info['reward_ctrl']  #Cheetah
 
 
@@ -65,5 +64,4 @@ class RewardBackwards(RewardFunction):
         return "backwards"
 
     def get_reward(self, s_info):
-        #return -s_info['reward_forward'] + s_info['reward_ctrl'] + s_info['reward_contact'] + s_info['reward_survive'] # ANT
         return -s_info['reward_run'] + s_info['reward_ctrl']  #Cheetah

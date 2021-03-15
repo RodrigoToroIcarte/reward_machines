@@ -26,7 +26,7 @@ def learn(env,
           epsilon=0.1,
           print_freq=10000,
           gamma=0.9,
-          q_init=1.0,
+          q_init=2.0,
           hrm_lr=0.1,
           use_rs=False,
           **others):

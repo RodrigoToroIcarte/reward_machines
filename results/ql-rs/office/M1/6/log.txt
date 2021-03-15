@@ -1,51 +1,52 @@
-Logging to ./results/rs/office/6
+Logging to ./results/rs/office/M1/6
 ---------------------------
-| episodes     | 163      |
+| episodes     | 186      |
 | steps        | 1e+04    |
-| total reward | 8        |
+| total reward | 19       |
 ---------------------------
 ---------------------------
-| episodes     | 251      |
+| episodes     | 304      |
 | steps        | 2e+04    |
-| total reward | 10       |
+| total reward | 31       |
 ---------------------------
 ---------------------------
-| episodes     | 371      |
+| episodes     | 410      |
 | steps        | 3e+04    |
-| total reward | 32       |
+| total reward | 44       |
 ---------------------------
 ---------------------------
-| episodes     | 503      |
+| episodes     | 543      |
 | steps        | 4e+04    |
-| total reward | 58       |
+| total reward | 53       |
 ---------------------------
 ---------------------------
-| episodes     | 639      |
+| episodes     | 675      |
 | steps        | 5e+04    |
-| total reward | 61       |
+| total reward | 62       |
 ---------------------------
 ---------------------------
-| episodes     | 774      |
+| episodes     | 798      |
 | steps        | 6e+04    |
-| total reward | 67       |
+| total reward | 66       |
 ---------------------------
 ---------------------------
-| episodes     | 914      |
+| episodes     | 967      |
 | steps        | 7e+04    |
-| total reward | 78       |
+| total reward | 99       |
 ---------------------------
 ---------------------------
-| episodes     | 1.07e+03 |
+| episodes     | 1.15e+03 |
 | steps        | 8e+04    |
-| total reward | 97       |
+| total reward | 110      |
 ---------------------------
 ---------------------------
-| episodes     | 1.29e+03 |
+| episodes     | 1.35e+03 |
 | steps        | 9e+04    |
-| total reward | 140      |
+| total reward | 117      |
 ---------------------------
 ---------------------------
-| episodes     | 1.5e+03  |
+| episodes     | 1.59e+03 |
 | steps        | 1e+05    |
-| total reward | 153      |
+| total reward | 182      |
 ---------------------------
+Total time: 4.040670394897461 seconds

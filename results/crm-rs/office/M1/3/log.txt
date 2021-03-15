@@ -1,51 +1,52 @@
-Logging to ./results/qrm-rs/office/3
+Logging to ./results/crm-rs/office/M1/3
 ---------------------------
-| episodes     | 125      |
+| episodes     | 95       |
 | steps        | 1e+04    |
-| total reward | 49       |
+| total reward | 22       |
 ---------------------------
 ---------------------------
-| episodes     | 498      |
+| episodes     | 259      |
 | steps        | 2e+04    |
-| total reward | 278      |
+| total reward | 94       |
 ---------------------------
 ---------------------------
-| episodes     | 971      |
+| episodes     | 689      |
 | steps        | 3e+04    |
-| total reward | 395      |
+| total reward | 350      |
 ---------------------------
 ---------------------------
-| episodes     | 1.46e+03 |
+| episodes     | 1.17e+03 |
 | steps        | 4e+04    |
-| total reward | 394      |
+| total reward | 385      |
 ---------------------------
 ---------------------------
-| episodes     | 1.93e+03 |
+| episodes     | 1.64e+03 |
 | steps        | 5e+04    |
 | total reward | 396      |
 ---------------------------
 ---------------------------
-| episodes     | 2.41e+03 |
+| episodes     | 2.12e+03 |
 | steps        | 6e+04    |
-| total reward | 395      |
+| total reward | 391      |
 ---------------------------
 ---------------------------
-| episodes     | 2.89e+03 |
+| episodes     | 2.6e+03  |
 | steps        | 7e+04    |
-| total reward | 396      |
+| total reward | 388      |
 ---------------------------
 ---------------------------
-| episodes     | 3.37e+03 |
+| episodes     | 3.08e+03 |
 | steps        | 8e+04    |
-| total reward | 384      |
+| total reward | 390      |
 ---------------------------
 ---------------------------
-| episodes     | 3.86e+03 |
+| episodes     | 3.56e+03 |
 | steps        | 9e+04    |
 | total reward | 392      |
 ---------------------------
 ---------------------------
-| episodes     | 4.34e+03 |
+| episodes     | 4.03e+03 |
 | steps        | 1e+05    |
 | total reward | 402      |
 ---------------------------
+Total time: 34.46199703216553 seconds

@@ -2,50 +2,51 @@ Logging to ./results/rs/office-single/M1/5
 ---------------------------
 | episodes     | 118      |
 | steps        | 1e+04    |
-| total reward | 2        |
+| total reward | 11       |
 ---------------------------
 ---------------------------
-| episodes     | 198      |
+| episodes     | 213      |
 | steps        | 2e+04    |
-| total reward | 21       |
+| total reward | 25       |
 ---------------------------
 ---------------------------
-| episodes     | 539      |
+| episodes     | 435      |
 | steps        | 3e+04    |
-| total reward | 257      |
+| total reward | 143      |
 ---------------------------
 ---------------------------
-| episodes     | 967      |
+| episodes     | 805      |
 | steps        | 4e+04    |
-| total reward | 341      |
+| total reward | 305      |
 ---------------------------
 ---------------------------
-| episodes     | 1.4e+03  |
+| episodes     | 1.21e+03 |
 | steps        | 5e+04    |
-| total reward | 344      |
+| total reward | 307      |
 ---------------------------
 ---------------------------
-| episodes     | 1.82e+03 |
+| episodes     | 1.64e+03 |
 | steps        | 6e+04    |
 | total reward | 344      |
 ---------------------------
 ---------------------------
-| episodes     | 2.25e+03 |
+| episodes     | 2.07e+03 |
 | steps        | 7e+04    |
-| total reward | 343      |
+| total reward | 356      |
 ---------------------------
 ---------------------------
-| episodes     | 2.67e+03 |
+| episodes     | 2.5e+03  |
 | steps        | 8e+04    |
-| total reward | 337      |
+| total reward | 344      |
 ---------------------------
 ---------------------------
-| episodes     | 3.1e+03  |
+| episodes     | 2.93e+03 |
 | steps        | 9e+04    |
-| total reward | 345      |
+| total reward | 342      |
 ---------------------------
 ---------------------------
-| episodes     | 3.53e+03 |
+| episodes     | 3.36e+03 |
 | steps        | 1e+05    |
-| total reward | 340      |
+| total reward | 341      |
 ---------------------------
+Total time: 3.2602126598358154 seconds

@@ -1,51 +1,52 @@
 Logging to ./results/rs/office-single/M1/23
 ---------------------------
-| episodes     | 117      |
+| episodes     | 136      |
 | steps        | 1e+04    |
-| total reward | 3        |
+| total reward | 9        |
 ---------------------------
 ---------------------------
-| episodes     | 221      |
+| episodes     | 229      |
 | steps        | 2e+04    |
-| total reward | 33       |
+| total reward | 29       |
 ---------------------------
 ---------------------------
-| episodes     | 588      |
+| episodes     | 418      |
 | steps        | 3e+04    |
-| total reward | 288      |
+| total reward | 117      |
 ---------------------------
 ---------------------------
-| episodes     | 1.01e+03 |
+| episodes     | 810      |
 | steps        | 4e+04    |
-| total reward | 349      |
+| total reward | 313      |
 ---------------------------
 ---------------------------
-| episodes     | 1.44e+03 |
+| episodes     | 1.22e+03 |
 | steps        | 5e+04    |
-| total reward | 343      |
+| total reward | 318      |
 ---------------------------
 ---------------------------
-| episodes     | 1.86e+03 |
+| episodes     | 1.64e+03 |
 | steps        | 6e+04    |
-| total reward | 337      |
+| total reward | 342      |
 ---------------------------
 ---------------------------
-| episodes     | 2.29e+03 |
+| episodes     | 2.07e+03 |
 | steps        | 7e+04    |
-| total reward | 342      |
+| total reward | 345      |
 ---------------------------
 ---------------------------
-| episodes     | 2.71e+03 |
+| episodes     | 2.49e+03 |
 | steps        | 8e+04    |
-| total reward | 337      |
+| total reward | 339      |
 ---------------------------
 ---------------------------
-| episodes     | 3.13e+03 |
+| episodes     | 2.93e+03 |
 | steps        | 9e+04    |
-| total reward | 342      |
+| total reward | 344      |
 ---------------------------
 ---------------------------
-| episodes     | 3.55e+03 |
+| episodes     | 3.35e+03 |
 | steps        | 1e+05    |
-| total reward | 348      |
+| total reward | 344      |
 ---------------------------
+Total time: 3.2063710689544678 seconds

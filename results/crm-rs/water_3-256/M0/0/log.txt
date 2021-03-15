@@ -1,1 +1,0 @@
-Logging to ./results/qrm-rs/water/M0/0

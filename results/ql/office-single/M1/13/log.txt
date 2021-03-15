@@ -1,51 +1,52 @@
 Logging to ./results/ql/office-single/M1/13
 ---------------------------
-| episodes     | 118      |
+| episodes     | 113      |
 | steps        | 1e+04    |
 | total reward | 11       |
 ---------------------------
 ---------------------------
-| episodes     | 236      |
+| episodes     | 206      |
 | steps        | 2e+04    |
-| total reward | 41       |
+| total reward | 19       |
 ---------------------------
 ---------------------------
-| episodes     | 505      |
+| episodes     | 293      |
 | steps        | 3e+04    |
-| total reward | 179      |
+| total reward | 32       |
 ---------------------------
 ---------------------------
-| episodes     | 918      |
+| episodes     | 400      |
 | steps        | 4e+04    |
-| total reward | 322      |
+| total reward | 37       |
 ---------------------------
 ---------------------------
-| episodes     | 1.35e+03 |
+| episodes     | 658      |
 | steps        | 5e+04    |
-| total reward | 329      |
+| total reward | 184      |
 ---------------------------
 ---------------------------
-| episodes     | 1.77e+03 |
+| episodes     | 1.06e+03 |
 | steps        | 6e+04    |
-| total reward | 335      |
+| total reward | 314      |
 ---------------------------
 ---------------------------
-| episodes     | 2.2e+03  |
+| episodes     | 1.47e+03 |
 | steps        | 7e+04    |
-| total reward | 348      |
+| total reward | 332      |
 ---------------------------
 ---------------------------
-| episodes     | 2.64e+03 |
+| episodes     | 1.88e+03 |
 | steps        | 8e+04    |
-| total reward | 342      |
+| total reward | 325      |
 ---------------------------
 ---------------------------
-| episodes     | 3.05e+03 |
+| episodes     | 2.31e+03 |
 | steps        | 9e+04    |
-| total reward | 342      |
+| total reward | 343      |
 ---------------------------
 ---------------------------
-| episodes     | 3.48e+03 |
+| episodes     | 2.74e+03 |
 | steps        | 1e+05    |
-| total reward | 337      |
+| total reward | 351      |
 ---------------------------
+Total time: 2.4984307289123535 seconds

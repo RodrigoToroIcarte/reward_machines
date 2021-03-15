@@ -1,51 +1,52 @@
-Logging to ./results/qrm/office/26
+Logging to ./results/crm/office/M1/26
 ---------------------------
-| episodes     | 133      |
+| episodes     | 105      |
 | steps        | 1e+04    |
-| total reward | 48       |
+| total reward | 26       |
 ---------------------------
 ---------------------------
-| episodes     | 365      |
+| episodes     | 227      |
 | steps        | 2e+04    |
-| total reward | 162      |
+| total reward | 61       |
 ---------------------------
 ---------------------------
-| episodes     | 797      |
+| episodes     | 571      |
 | steps        | 3e+04    |
-| total reward | 351      |
+| total reward | 262      |
 ---------------------------
 ---------------------------
-| episodes     | 1.28e+03 |
+| episodes     | 1.03e+03 |
 | steps        | 4e+04    |
-| total reward | 386      |
+| total reward | 373      |
 ---------------------------
 ---------------------------
-| episodes     | 1.77e+03 |
+| episodes     | 1.5e+03  |
 | steps        | 5e+04    |
-| total reward | 389      |
+| total reward | 400      |
 ---------------------------
 ---------------------------
-| episodes     | 2.25e+03 |
+| episodes     | 1.98e+03 |
 | steps        | 6e+04    |
-| total reward | 393      |
+| total reward | 388      |
 ---------------------------
 ---------------------------
-| episodes     | 2.74e+03 |
+| episodes     | 2.45e+03 |
 | steps        | 7e+04    |
+| total reward | 388      |
+---------------------------
+---------------------------
+| episodes     | 2.95e+03 |
+| steps        | 8e+04    |
 | total reward | 383      |
 ---------------------------
 ---------------------------
-| episodes     | 3.22e+03 |
-| steps        | 8e+04    |
-| total reward | 393      |
----------------------------
----------------------------
-| episodes     | 3.7e+03  |
+| episodes     | 3.43e+03 |
 | steps        | 9e+04    |
-| total reward | 392      |
+| total reward | 390      |
 ---------------------------
 ---------------------------
-| episodes     | 4.19e+03 |
+| episodes     | 3.9e+03  |
 | steps        | 1e+05    |
-| total reward | 391      |
+| total reward | 397      |
 ---------------------------
+Total time: 31.303816080093384 seconds

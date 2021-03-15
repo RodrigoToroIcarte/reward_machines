@@ -184,6 +184,6 @@ def learn(env,
         if model_saved:
             if print_freq is not None:
                 logger.log("Restored model with mean reward: {}".format(saved_mean_reward))
-            load_variables(model_file)
+            #load_variables(model_file)
 
     return controller.act, options.act

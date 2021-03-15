@@ -1,51 +1,52 @@
-Logging to ./results/qrm/office/25
+Logging to ./results/crm/office/M1/25
 ---------------------------
-| episodes     | 133      |
+| episodes     | 94       |
 | steps        | 1e+04    |
-| total reward | 43       |
+| total reward | 30       |
 ---------------------------
 ---------------------------
-| episodes     | 349      |
+| episodes     | 223      |
 | steps        | 2e+04    |
-| total reward | 154      |
+| total reward | 70       |
 ---------------------------
 ---------------------------
-| episodes     | 803      |
+| episodes     | 501      |
 | steps        | 3e+04    |
-| total reward | 375      |
+| total reward | 223      |
 ---------------------------
 ---------------------------
-| episodes     | 1.24e+03 |
+| episodes     | 954      |
 | steps        | 4e+04    |
-| total reward | 363      |
+| total reward | 378      |
 ---------------------------
 ---------------------------
-| episodes     | 1.72e+03 |
+| episodes     | 1.43e+03 |
 | steps        | 5e+04    |
-| total reward | 393      |
+| total reward | 391      |
 ---------------------------
 ---------------------------
-| episodes     | 2.20e+03 |
+| episodes     | 1.91e+03 |
 | steps        | 6e+04    |
-| total reward | 396      |
+| total reward | 392      |
 ---------------------------
 ---------------------------
-| episodes     | 2.69e+03 |
+| episodes     | 2.4e+03  |
 | steps        | 7e+04    |
-| total reward | 385      |
+| total reward | 390      |
 ---------------------------
 ---------------------------
-| episodes     | 3.17e+03 |
+| episodes     | 2.89e+03 |
 | steps        | 8e+04    |
-| total reward | 388      |
+| total reward | 397      |
 ---------------------------
 ---------------------------
-| episodes     | 3.65e+03 |
+| episodes     | 3.37e+03 |
 | steps        | 9e+04    |
-| total reward | 396      |
+| total reward | 397      |
 ---------------------------
 ---------------------------
-| episodes     | 4.12e+03 |
+| episodes     | 3.84e+03 |
 | steps        | 1e+05    |
-| total reward | 389      |
+| total reward | 391      |
 ---------------------------
+Total time: 31.288313627243042 seconds

@@ -1,51 +1,52 @@
 Logging to ./results/ql/office-single/M1/19
 ---------------------------
-| episodes     | 116      |
+| episodes     | 119      |
 | steps        | 1e+04    |
-| total reward | 12       |
+| total reward | 10       |
 ---------------------------
 ---------------------------
-| episodes     | 215      |
+| episodes     | 203      |
 | steps        | 2e+04    |
-| total reward | 37       |
+| total reward | 21       |
 ---------------------------
 ---------------------------
-| episodes     | 493      |
+| episodes     | 286      |
 | steps        | 3e+04    |
-| total reward | 196      |
+| total reward | 32       |
 ---------------------------
 ---------------------------
-| episodes     | 910      |
+| episodes     | 383      |
 | steps        | 4e+04    |
-| total reward | 324      |
+| total reward | 49       |
 ---------------------------
 ---------------------------
-| episodes     | 1.33e+03 |
+| episodes     | 696      |
 | steps        | 5e+04    |
-| total reward | 331      |
+| total reward | 223      |
 ---------------------------
 ---------------------------
-| episodes     | 1.75e+03 |
+| episodes     | 1.09e+03 |
 | steps        | 6e+04    |
-| total reward | 331      |
+| total reward | 319      |
 ---------------------------
 ---------------------------
-| episodes     | 2.18e+03 |
+| episodes     | 1.48e+03 |
 | steps        | 7e+04    |
-| total reward | 347      |
+| total reward | 311      |
 ---------------------------
 ---------------------------
-| episodes     | 2.6e+03  |
+| episodes     | 1.88e+03 |
 | steps        | 8e+04    |
+| total reward | 323      |
+---------------------------
+---------------------------
+| episodes     | 2.31e+03 |
+| steps        | 9e+04    |
 | total reward | 347      |
 ---------------------------
 ---------------------------
-| episodes     | 3.03e+03 |
-| steps        | 9e+04    |
-| total reward | 335      |
----------------------------
----------------------------
-| episodes     | 3.44e+03 |
+| episodes     | 2.74e+03 |
 | steps        | 1e+05    |
-| total reward | 346      |
+| total reward | 330      |
 ---------------------------
+Total time: 2.459287166595459 seconds

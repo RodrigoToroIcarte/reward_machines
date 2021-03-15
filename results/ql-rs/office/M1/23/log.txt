@@ -1,51 +1,52 @@
-Logging to ./results/rs/office/23
+Logging to ./results/rs/office/M1/23
 ---------------------------
-| episodes     | 168      |
+| episodes     | 182      |
 | steps        | 1e+04    |
-| total reward | 5        |
+| total reward | 19       |
 ---------------------------
 ---------------------------
-| episodes     | 257      |
+| episodes     | 299      |
 | steps        | 2e+04    |
-| total reward | 13       |
+| total reward | 34       |
 ---------------------------
 ---------------------------
-| episodes     | 384      |
+| episodes     | 406      |
 | steps        | 3e+04    |
-| total reward | 37       |
----------------------------
----------------------------
-| episodes     | 522      |
-| steps        | 4e+04    |
-| total reward | 57       |
----------------------------
----------------------------
-| episodes     | 619      |
-| steps        | 5e+04    |
 | total reward | 44       |
 ---------------------------
 ---------------------------
-| episodes     | 771      |
+| episodes     | 534      |
+| steps        | 4e+04    |
+| total reward | 59       |
+---------------------------
+---------------------------
+| episodes     | 667      |
+| steps        | 5e+04    |
+| total reward | 59       |
+---------------------------
+---------------------------
+| episodes     | 801      |
 | steps        | 6e+04    |
-| total reward | 72       |
+| total reward | 67       |
 ---------------------------
 ---------------------------
-| episodes     | 915      |
+| episodes     | 975      |
 | steps        | 7e+04    |
-| total reward | 75       |
+| total reward | 93       |
 ---------------------------
 ---------------------------
-| episodes     | 1.07e+03 |
+| episodes     | 1.14e+03 |
 | steps        | 8e+04    |
-| total reward | 96       |
+| total reward | 91       |
 ---------------------------
 ---------------------------
-| episodes     | 1.27e+03 |
+| episodes     | 1.35e+03 |
 | steps        | 9e+04    |
-| total reward | 125      |
+| total reward | 137      |
 ---------------------------
 ---------------------------
-| episodes     | 1.51e+03 |
+| episodes     | 1.58e+03 |
 | steps        | 1e+05    |
-| total reward | 166      |
+| total reward | 154      |
 ---------------------------
+Total time: 3.7939445972442627 seconds

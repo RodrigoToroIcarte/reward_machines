@@ -164,13 +164,17 @@ def export_avg_results_water(env,maps,seeds):
     max_length = 200 
     num_tasks = 10
     best_rewards = dict(M0=[0]*num_tasks,M1=[0]*num_tasks,M2=[0]*num_tasks,M3=[0]*num_tasks,M4=[0]*num_tasks,M5=[0]*num_tasks,M6=[0]*num_tasks,M7=[0]*num_tasks,M8=[0]*num_tasks,M9=[0]*num_tasks,M10=[0]*num_tasks)   
-    agents = ['ql', 'crm', 'crm1', 'crm2', 'crm3', 'hrm', 'ql-rs', 'crm-rs', 'qrm']
+    agents = ['ql', 'crm', 'crm1', 'crm2', 'crm3', 'hrm', 'hrm-rs', 'ql-rs', 'crm-rs', 'qrm']
+    seeds_agent = {}
+    for agent in agents:
+        seeds_agent[agent] = seeds if agent in ['ql', 'crm', 'hrm', 'hrm-rs', 'ql-rs', 'crm-rs'] else [0]
 
     # Computing best performance per RM
     results_all = {}
     for agent in agents:
         for env_map in maps:
-            for seed in seeds:
+            for seed in seeds_agent[agent]:
+
                 # Reading the results
                 f_path = "../results/%s/%s/%s/%s/0.0.monitor.csv"%(agent,env,env_map,seed)
                 results = []
@@ -193,7 +197,7 @@ def export_avg_results_water(env,maps,seeds):
     for agent in agents:
         stats = [[] for _ in range(max_length)]
         for env_map in maps:
-            for seed in seeds:
+            for seed in seeds_agent[agent]:
                 # collecting average stats
                 steps = 0
                 rewards = deque([], maxlen=num_episodes_avg)
@@ -218,8 +222,7 @@ def export_avg_results_water(env,maps,seeds):
         f_out = "../results/summary/%s-%s.txt"%(env,agent)
         f = open(f_out, 'w')
         for i in range(max_length):
-            if len(stats[i]) == len(seeds) * len(maps):
-                #f.write("\t".join([str((i+1)*steps_tic/1000), "%0.4f"%(sum(stats[i])/len(stats[i]))]) + "\n")
+            if len(stats[i]) == len(seeds_agent[agent]) * len(maps):
                 f.write("\t".join([str((i+1)*steps_tic/1000)] + get_precentiles_str(stats[i])) + "\n")
         f.close()
 
@@ -230,7 +233,7 @@ def export_avg_results_water_single(env,maps,seeds):
     num_total_steps = 2e6
     max_length = 200 
     best_rewards = dict(M0=0,M1=0,M2=0,M3=0,M4=0,M5=0,M6=0,M7=0,M8=0,M9=0,M10=0)   
-    agents = ['ql', 'crm', 'hrm', 'ql-rs', 'crm-rs']
+    agents = ['ql', 'crm', 'hrm', 'hrm-rs', 'ql-rs','crm-rs']
 
     # Computing best performance per RM
     results_all = {}
@@ -295,7 +298,7 @@ def export_avg_results_cheetah(maps,seeds):
     num_episodes_avg = 100
     num_total_steps = 3e6
     max_length = 200 
-    agents = ['ql', 'crm', 'hrm', 'ql-rs','crm-rs']
+    agents = ['ql', 'crm', 'hrm', 'hrm-rs', 'ql-rs','crm-rs']
     env    = 'cheetah'
 
     # Computing best performance per RM
@@ -353,34 +356,37 @@ def export_avg_results_cheetah(maps,seeds):
 
 
 if __name__ == '__main__':
+
+    algs = ['ql', 'crm', 'hrm', 'hrm-rs', 'ql-rs','crm-rs']
+
     # Office world (multitask)
-    for alg in ['ql', 'crm', 'hrm', 'ql-rs','crm-rs']:
+    for alg in algs:
         print(alg,'office')
-        export_avg_results_grid(alg,'office',['M1'],list(range(30)))
+        export_avg_results_grid(alg,'office',['M1'],list(range(60)))
 
     # Office world (single task)
-    for alg in ['ql', 'crm', 'hrm', 'ql-rs','crm-rs']:
+    for alg in algs:
         print(alg,'office-single')
-        export_avg_results_grid_single(alg,'office-single',['M1'],list(range(30)))
+        export_avg_results_grid_single(alg,'office-single',['M1'],list(range(60)))
 
     # Minecraft world (multitask)
-    for alg in ['ql', 'crm', 'hrm', 'ql-rs','crm-rs']:
+    for alg in algs:
         print(alg,'craft')
-        export_avg_results_grid(alg,'craft',['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10'],[0,1,2])
+        export_avg_results_grid(alg,'craft',['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10'],list(range(6)))
 
     # Minecraft world (single task)
-    for alg in ['ql', 'crm', 'hrm', 'ql-rs','crm-rs']:
+    for alg in algs:
         print(alg,'craft-single')
-        export_avg_results_grid_single(alg,'craft-single',['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10'],[0,1,2])
+        export_avg_results_grid_single(alg,'craft-single',['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10'],list(range(6)))
 
 
     # Water world
     print('water')
-    export_avg_results_water('water',['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10'],[0])
+    export_avg_results_water('water',['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10'],[0,1])
     print('water-single')
-    export_avg_results_water_single('water-single',['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10'],[0])
+    export_avg_results_water_single('water-single',['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10'],[0,1])
 
     # Half-Cheetah
     print('half-cheetah')
-    export_avg_results_cheetah(['M1'],[0,1,2,3,4,5,6,7,8,9])
-    export_avg_results_cheetah(['M2'],[0,1,2,3,4,5,6,7,8,9])
+    export_avg_results_cheetah(['M1'],list(range(20)))
+    export_avg_results_cheetah(['M2'],list(range(20)))

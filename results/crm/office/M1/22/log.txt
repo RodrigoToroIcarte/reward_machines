@@ -1,51 +1,52 @@
-Logging to ./results/qrm/office/22
+Logging to ./results/crm/office/M1/22
 ---------------------------
-| episodes     | 130      |
+| episodes     | 94       |
 | steps        | 1e+04    |
-| total reward | 45       |
+| total reward | 24       |
 ---------------------------
 ---------------------------
-| episodes     | 322      |
+| episodes     | 230      |
 | steps        | 2e+04    |
-| total reward | 144      |
+| total reward | 75       |
 ---------------------------
 ---------------------------
-| episodes     | 760      |
+| episodes     | 568      |
 | steps        | 3e+04    |
-| total reward | 361      |
+| total reward | 263      |
 ---------------------------
 ---------------------------
-| episodes     | 1.23e+03 |
+| episodes     | 993      |
 | steps        | 4e+04    |
-| total reward | 394      |
+| total reward | 343      |
 ---------------------------
 ---------------------------
-| episodes     | 1.71e+03 |
+| episodes     | 1.47e+03 |
 | steps        | 5e+04    |
 | total reward | 390      |
 ---------------------------
 ---------------------------
-| episodes     | 2.2e+03  |
+| episodes     | 1.95e+03 |
 | steps        | 6e+04    |
-| total reward | 390      |
+| total reward | 381      |
 ---------------------------
 ---------------------------
-| episodes     | 2.68e+03 |
+| episodes     | 2.42e+03 |
 | steps        | 7e+04    |
-| total reward | 400      |
+| total reward | 393      |
 ---------------------------
 ---------------------------
-| episodes     | 3.17e+03 |
+| episodes     | 2.89e+03 |
 | steps        | 8e+04    |
-| total reward | 386      |
+| total reward | 392      |
 ---------------------------
 ---------------------------
-| episodes     | 3.64e+03 |
+| episodes     | 3.39e+03 |
 | steps        | 9e+04    |
-| total reward | 393      |
+| total reward | 380      |
 ---------------------------
 ---------------------------
-| episodes     | 4.13e+03 |
+| episodes     | 3.86e+03 |
 | steps        | 1e+05    |
-| total reward | 393      |
+| total reward | 403      |
 ---------------------------
+Total time: 30.994561672210693 seconds

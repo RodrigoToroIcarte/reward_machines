@@ -255,7 +255,7 @@ if __name__ == '__main__':
 
     # Examples over the office world:
     #    cross-product baseline: 
-    #        >>> python3.6 run.py --alg=qlearning --env=Office-v0 --num_timesteps=1e5 --gamma=0.9 --log_path=../my_results/ql/office/M1/$i
+    #        >>> python3.6 run.py --alg=qlearning --env=Office-v0 --num_timesteps=1e5 --gamma=0.9 
     #    cross-product baseline with reward shaping: 
     #        >>> python3.6 run.py --alg=qlearning --env=Office-v0 --num_timesteps=1e5 --gamma=0.9 --use_rs
     #    CRM: 

@@ -1,51 +1,52 @@
-Logging to ./results/ql/office/10
+Logging to ./results/ql/office/M1/10
 ---------------------------
-| episodes     | 192      |
+| episodes     | 172      |
 | steps        | 1e+04    |
 | total reward | 20       |
 ---------------------------
 ---------------------------
-| episodes     | 315      |
+| episodes     | 298      |
 | steps        | 2e+04    |
-| total reward | 40       |
+| total reward | 33       |
 ---------------------------
 ---------------------------
-| episodes     | 431      |
+| episodes     | 378      |
 | steps        | 3e+04    |
-| total reward | 46       |
+| total reward | 24       |
 ---------------------------
 ---------------------------
-| episodes     | 574      |
+| episodes     | 462      |
 | steps        | 4e+04    |
-| total reward | 68       |
+| total reward | 31       |
 ---------------------------
 ---------------------------
-| episodes     | 714      |
+| episodes     | 557      |
 | steps        | 5e+04    |
-| total reward | 68       |
+| total reward | 35       |
 ---------------------------
 ---------------------------
-| episodes     | 875      |
+| episodes     | 661      |
 | steps        | 6e+04    |
-| total reward | 88       |
+| total reward | 48       |
 ---------------------------
 ---------------------------
-| episodes     | 1.04e+03 |
+| episodes     | 766      |
 | steps        | 7e+04    |
-| total reward | 96       |
+| total reward | 51       |
 ---------------------------
 ---------------------------
-| episodes     | 1.22e+03 |
+| episodes     | 863      |
 | steps        | 8e+04    |
-| total reward | 105      |
+| total reward | 49       |
 ---------------------------
 ---------------------------
-| episodes     | 1.48e+03 |
+| episodes     | 998      |
 | steps        | 9e+04    |
-| total reward | 178      |
+| total reward | 67       |
 ---------------------------
 ---------------------------
-| episodes     | 1.74e+03 |
+| episodes     | 1.14e+03 |
 | steps        | 1e+05    |
-| total reward | 197      |
+| total reward | 78       |
 ---------------------------
+Total time: 2.862755060195923 seconds

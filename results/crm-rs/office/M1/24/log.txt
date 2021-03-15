@@ -1,51 +1,52 @@
-Logging to ./results/qrm-rs/office/24
+Logging to ./results/crm-rs/office/M1/24
 ---------------------------
-| episodes     | 140      |
+| episodes     | 105      |
 | steps        | 1e+04    |
-| total reward | 53       |
+| total reward | 28       |
 ---------------------------
 ---------------------------
-| episodes     | 520      |
+| episodes     | 235      |
 | steps        | 2e+04    |
-| total reward | 313      |
+| total reward | 72       |
 ---------------------------
 ---------------------------
-| episodes     | 1e+03    |
+| episodes     | 635      |
 | steps        | 3e+04    |
+| total reward | 324      |
+---------------------------
+---------------------------
+| episodes     | 1.11e+03 |
+| steps        | 4e+04    |
 | total reward | 391      |
 ---------------------------
 ---------------------------
-| episodes     | 1.49e+03 |
-| steps        | 4e+04    |
-| total reward | 387      |
----------------------------
----------------------------
-| episodes     | 1.97e+03 |
+| episodes     | 1.59e+03 |
 | steps        | 5e+04    |
 | total reward | 395      |
 ---------------------------
 ---------------------------
-| episodes     | 2.46e+03 |
+| episodes     | 2.06e+03 |
 | steps        | 6e+04    |
-| total reward | 390      |
+| total reward | 389      |
 ---------------------------
 ---------------------------
-| episodes     | 2.94e+03 |
+| episodes     | 2.54e+03 |
 | steps        | 7e+04    |
-| total reward | 391      |
+| total reward | 402      |
 ---------------------------
 ---------------------------
-| episodes     | 3.41e+03 |
+| episodes     | 3.02e+03 |
 | steps        | 8e+04    |
-| total reward | 393      |
+| total reward | 387      |
 ---------------------------
 ---------------------------
-| episodes     | 3.89e+03 |
+| episodes     | 3.5e+03  |
 | steps        | 9e+04    |
-| total reward | 393      |
+| total reward | 396      |
 ---------------------------
 ---------------------------
-| episodes     | 4.38e+03 |
+| episodes     | 3.99e+03 |
 | steps        | 1e+05    |
-| total reward | 392      |
+| total reward | 387      |
 ---------------------------
+Total time: 31.541677474975586 seconds

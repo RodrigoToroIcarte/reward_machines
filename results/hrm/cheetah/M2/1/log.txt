@@ -1,4 +1,4 @@
-Logging to ./results/hrl/cheetah/M2/1
+Logging to ./results/hrm/cheetah/M2/1
 scaling actions by [1. 1. 1. 1. 1. 1.] before executing in env
 setting up param noise
   param_noise_actor/mlp_fc0/w:0 <- actor/mlp_fc0/w:0 + noise
@@ -37,1038 +37,1321 @@ setting up target updates ...
   target_critic/output/kernel:0 <- critic/output/kernel:0
   target_critic/output/bias:0 <- critic/output/bias:0
 Using agent with the following configuration:
-dict_items([('obs0', <tf.Tensor 'obs0:0' shape=(?, 23) dtype=float32>), ('obs1', <tf.Tensor 'obs1:0' shape=(?, 23) dtype=float32>), ('terminals1', <tf.Tensor 'terminals1:0' shape=(?, 1) dtype=float32>), ('rewards', <tf.Tensor 'rewards:0' shape=(?, 1) dtype=float32>), ('actions', <tf.Tensor 'actions:0' shape=(?, 6) dtype=float32>), ('critic_target', <tf.Tensor 'critic_target:0' shape=(?, 1) dtype=float32>), ('param_noise_stddev', <tf.Tensor 'param_noise_stddev:0' shape=() dtype=float32>), ('gamma', 0.99), ('tau', 0.01), ('memory', <baselines.ddpg.memory.Memory object at 0x7f12d00ed5c0>), ('normalize_observations', False), ('normalize_returns', False), ('action_noise', None), ('param_noise', AdaptiveParamNoiseSpec(initial_stddev=0.2, desired_action_stddev=0.2, adoption_coefficient=1.01)), ('action_range', (-1.0, 1.0)), ('return_range', (-inf, inf)), ('observation_range', (-5.0, 5.0)), ('critic', <baselines.ddpg.models.Critic object at 0x7f12d319d630>), ('actor', <baselines.ddpg.models.Actor object at 0x7f12d319d550>), ('actor_lr', 0.0001), ('critic_lr', 0.001), ('clip_norm', None), ('enable_popart', False), ('reward_scale', 1.0), ('batch_size', 500), ('stats_sample', None), ('critic_l2_reg', 0.01), ('obs_rms', None), ('ret_rms', None), ('target_actor', <baselines.ddpg.models.Actor object at 0x7f12a07c0908>), ('target_critic', <baselines.ddpg.models.Critic object at 0x7f12a07b8f28>), ('actor_tf', <tf.Tensor 'actor/Tanh:0' shape=(?, 6) dtype=float32>), ('normalized_critic_tf', <tf.Tensor 'critic/output/BiasAdd:0' shape=(?, 1) dtype=float32>), ('critic_tf', <tf.Tensor 'clip_by_value_2:0' shape=(?, 1) dtype=float32>), ('normalized_critic_with_actor_tf', <tf.Tensor 'critic_1/output/BiasAdd:0' shape=(?, 1) dtype=float32>), ('critic_with_actor_tf', <tf.Tensor 'clip_by_value_3:0' shape=(?, 1) dtype=float32>), ('target_Q', <tf.Tensor 'add:0' shape=(?, 1) dtype=float32>), ('perturbed_actor_tf', <tf.Tensor 'param_noise_actor/Tanh:0' shape=(?, 6) dtype=float32>), ('perturb_policy_ops', <tf.Operation 'group_deps' type=NoOp>), ('perturb_adaptive_policy_ops', <tf.Operation 'group_deps_1' type=NoOp>), ('adaptive_policy_distance', <tf.Tensor 'Sqrt:0' shape=() dtype=float32>), ('actor_loss', <tf.Tensor 'Neg:0' shape=() dtype=float32>), ('actor_grads', <tf.Tensor 'concat:0' shape=(73478,) dtype=float32>), ('actor_optimizer', <baselines.common.mpi_adam.MpiAdam object at 0x7f127c191470>), ('critic_loss', <tf.Tensor 'add_13:0' shape=() dtype=float32>), ('critic_grads', <tf.Tensor 'concat_2:0' shape=(73729,) dtype=float32>), ('critic_optimizer', <baselines.common.mpi_adam.MpiAdam object at 0x7f127c081860>), ('stats_ops', [<tf.Tensor 'Mean_3:0' shape=() dtype=float32>, <tf.Tensor 'Sqrt_1:0' shape=() dtype=float32>, <tf.Tensor 'Mean_6:0' shape=() dtype=float32>, <tf.Tensor 'Sqrt_2:0' shape=() dtype=float32>, <tf.Tensor 'Mean_9:0' shape=() dtype=float32>, <tf.Tensor 'Sqrt_3:0' shape=() dtype=float32>, <tf.Tensor 'Mean_12:0' shape=() dtype=float32>, <tf.Tensor 'Sqrt_4:0' shape=() dtype=float32>]), ('stats_names', ['reference_Q_mean', 'reference_Q_std', 'reference_actor_Q_mean', 'reference_actor_Q_std', 'reference_action_mean', 'reference_action_std', 'reference_perturbed_action_mean', 'reference_perturbed_action_std']), ('target_init_updates', [<tf.Operation 'group_deps_4' type=NoOp>, <tf.Operation 'group_deps_6' type=NoOp>]), ('target_soft_updates', [<tf.Operation 'group_deps_5' type=NoOp>, <tf.Operation 'group_deps_7' type=NoOp>]), ('initial_state', None)])
+dict_items([('obs0', <tf.Tensor 'obs0:0' shape=(?, 23) dtype=float32>), ('obs1', <tf.Tensor 'obs1:0' shape=(?, 23) dtype=float32>), ('terminals1', <tf.Tensor 'terminals1:0' shape=(?, 1) dtype=float32>), ('rewards', <tf.Tensor 'rewards:0' shape=(?, 1) dtype=float32>), ('actions', <tf.Tensor 'actions:0' shape=(?, 6) dtype=float32>), ('critic_target', <tf.Tensor 'critic_target:0' shape=(?, 1) dtype=float32>), ('param_noise_stddev', <tf.Tensor 'param_noise_stddev:0' shape=() dtype=float32>), ('gamma', 0.99), ('tau', 0.01), ('memory', <baselines.ddpg.memory.Memory object at 0x7f7f482d6dd8>), ('normalize_observations', False), ('normalize_returns', False), ('action_noise', None), ('param_noise', AdaptiveParamNoiseSpec(initial_stddev=0.2, desired_action_stddev=0.2, adoption_coefficient=1.01)), ('action_range', (-1.0, 1.0)), ('return_range', (-inf, inf)), ('observation_range', (-5.0, 5.0)), ('critic', <baselines.ddpg.models.Critic object at 0x7f800a5afe80>), ('actor', <baselines.ddpg.models.Actor object at 0x7f800a5afda0>), ('actor_lr', 0.0001), ('critic_lr', 0.001), ('clip_norm', None), ('enable_popart', False), ('reward_scale', 1.0), ('batch_size', 500), ('stats_sample', None), ('critic_l2_reg', 0.01), ('obs_rms', None), ('ret_rms', None), ('target_actor', <baselines.ddpg.models.Actor object at 0x7f7f70036e10>), ('target_critic', <baselines.ddpg.models.Critic object at 0x7f7f287051d0>), ('actor_tf', <tf.Tensor 'actor/Tanh:0' shape=(?, 6) dtype=float32>), ('normalized_critic_tf', <tf.Tensor 'critic/output/BiasAdd:0' shape=(?, 1) dtype=float32>), ('critic_tf', <tf.Tensor 'clip_by_value_2:0' shape=(?, 1) dtype=float32>), ('normalized_critic_with_actor_tf', <tf.Tensor 'critic_1/output/BiasAdd:0' shape=(?, 1) dtype=float32>), ('critic_with_actor_tf', <tf.Tensor 'clip_by_value_3:0' shape=(?, 1) dtype=float32>), ('target_Q', <tf.Tensor 'add:0' shape=(?, 1) dtype=float32>), ('perturbed_actor_tf', <tf.Tensor 'param_noise_actor/Tanh:0' shape=(?, 6) dtype=float32>), ('perturb_policy_ops', <tf.Operation 'group_deps' type=NoOp>), ('perturb_adaptive_policy_ops', <tf.Operation 'group_deps_1' type=NoOp>), ('adaptive_policy_distance', <tf.Tensor 'Sqrt:0' shape=() dtype=float32>), ('actor_loss', <tf.Tensor 'Neg:0' shape=() dtype=float32>), ('actor_grads', <tf.Tensor 'concat:0' shape=(73478,) dtype=float32>), ('actor_optimizer', <baselines.common.mpi_adam.MpiAdam object at 0x7f7f08380978>), ('critic_loss', <tf.Tensor 'add_13:0' shape=() dtype=float32>), ('critic_grads', <tf.Tensor 'concat_2:0' shape=(73729,) dtype=float32>), ('critic_optimizer', <baselines.common.mpi_adam.MpiAdam object at 0x7f7fc74e2470>), ('stats_ops', [<tf.Tensor 'Mean_3:0' shape=() dtype=float32>, <tf.Tensor 'Sqrt_1:0' shape=() dtype=float32>, <tf.Tensor 'Mean_6:0' shape=() dtype=float32>, <tf.Tensor 'Sqrt_2:0' shape=() dtype=float32>, <tf.Tensor 'Mean_9:0' shape=() dtype=float32>, <tf.Tensor 'Sqrt_3:0' shape=() dtype=float32>, <tf.Tensor 'Mean_12:0' shape=() dtype=float32>, <tf.Tensor 'Sqrt_4:0' shape=() dtype=float32>]), ('stats_names', ['reference_Q_mean', 'reference_Q_std', 'reference_actor_Q_mean', 'reference_actor_Q_std', 'reference_action_mean', 'reference_action_std', 'reference_perturbed_action_mean', 'reference_perturbed_action_std']), ('target_init_updates', [<tf.Operation 'group_deps_4' type=NoOp>, <tf.Operation 'group_deps_6' type=NoOp>]), ('target_soft_updates', [<tf.Operation 'group_deps_5' type=NoOp>, <tf.Operation 'group_deps_7' type=NoOp>]), ('initial_state', None)])
 --------------------------------------
 | episodes                | 100      |
-| mean 100 episode reward | -504     |
-| steps                   | 9.6e+04  |
+| mean 100 episode reward | -303     |
+| steps                   | 8.79e+04 |
 --------------------------------------
-Saving model due to mean reward increase: None -> -437.3
-Saving model due to mean reward increase: -437.3 -> -147.0
-Saving model due to mean reward increase: -147.0 -> -15.7
-Saving model due to mean reward increase: -15.7 -> 281.5
-Saving model due to mean reward increase: 281.5 -> 516.8
+Saving model due to mean reward increase: None -> -254.6
+Saving model due to mean reward increase: -254.6 -> -59.0
+Saving model due to mean reward increase: -59.0 -> 278.9
+Saving model due to mean reward increase: 278.9 -> 666.0
 --------------------------------------
 | episodes                | 200      |
-| mean 100 episode reward | 589      |
-| steps                   | 1.42e+05 |
+| mean 100 episode reward | 720      |
+| steps                   | 1.23e+05 |
 --------------------------------------
-Saving model due to mean reward increase: 516.8 -> 668.7
-Saving model due to mean reward increase: 668.7 -> 760.8
+Saving model due to mean reward increase: 666.0 -> 817.7
+Saving model due to mean reward increase: 817.7 -> 857.0
 --------------------------------------
 | episodes                | 300      |
-| mean 100 episode reward | 813      |
-| steps                   | 1.69e+05 |
+| mean 100 episode reward | 846      |
+| steps                   | 1.44e+05 |
 --------------------------------------
-Saving model due to mean reward increase: 760.8 -> 815.0
-Saving model due to mean reward increase: 815.0 -> 886.6
 --------------------------------------
 | episodes                | 400      |
-| mean 100 episode reward | 890      |
-| steps                   | 1.88e+05 |
+| mean 100 episode reward | 786      |
+| steps                   | 1.69e+05 |
 --------------------------------------
-Saving model due to mean reward increase: 886.6 -> 888.6
+Saving model due to mean reward increase: 857.0 -> 901.8
 --------------------------------------
 | episodes                | 500      |
-| mean 100 episode reward | 890      |
-| steps                   | 2.07e+05 |
+| mean 100 episode reward | 904      |
+| steps                   | 1.85e+05 |
 --------------------------------------
-Saving model due to mean reward increase: 888.6 -> 892.2
-Saving model due to mean reward increase: 892.2 -> 894.6
+Saving model due to mean reward increase: 901.8 -> 905.1
+Saving model due to mean reward increase: 905.1 -> 906.2
 --------------------------------------
 | episodes                | 600      |
-| mean 100 episode reward | 898      |
-| steps                   | 2.24e+05 |
+| mean 100 episode reward | 906      |
+| steps                   | 2.02e+05 |
 --------------------------------------
-Saving model due to mean reward increase: 894.6 -> 900.3
-Saving model due to mean reward increase: 900.3 -> 902.6
+Saving model due to mean reward increase: 906.2 -> 906.5
 --------------------------------------
 | episodes                | 700      |
-| mean 100 episode reward | 902      |
-| steps                   | 2.41e+05 |
+| mean 100 episode reward | 908      |
+| steps                   | 2.17e+05 |
 --------------------------------------
+Saving model due to mean reward increase: 906.5 -> 909.5
+Saving model due to mean reward increase: 909.5 -> 913.3
 --------------------------------------
 | episodes                | 800      |
-| mean 100 episode reward | 883      |
-| steps                   | 2.6e+05  |
+| mean 100 episode reward | 914      |
+| steps                   | 2.32e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 900      |
-| mean 100 episode reward | 875      |
-| steps                   | 2.78e+05 |
+| mean 100 episode reward | 914      |
+| steps                   | 2.47e+05 |
 --------------------------------------
+Saving model due to mean reward increase: 913.3 -> 914.5
+Saving model due to mean reward increase: 914.5 -> 915.3
 --------------------------------------
 | episodes                | 1e+03    |
-| mean 100 episode reward | 859      |
-| steps                   | 2.97e+05 |
+| mean 100 episode reward | 915      |
+| steps                   | 2.61e+05 |
 --------------------------------------
+Saving model due to mean reward increase: 915.3 -> 915.9
 --------------------------------------
 | episodes                | 1.1e+03  |
-| mean 100 episode reward | 892      |
-| steps                   | 3.14e+05 |
+| mean 100 episode reward | 918      |
+| steps                   | 2.75e+05 |
 --------------------------------------
-Saving model due to mean reward increase: 902.6 -> 908.0
+Saving model due to mean reward increase: 915.9 -> 918.9
 --------------------------------------
 | episodes                | 1.2e+03  |
-| mean 100 episode reward | 875      |
-| steps                   | 3.34e+05 |
+| mean 100 episode reward | 916      |
+| steps                   | 2.9e+05  |
 --------------------------------------
+Saving model due to mean reward increase: 918.9 -> 922.0
 --------------------------------------
 | episodes                | 1.3e+03  |
-| mean 100 episode reward | 899      |
-| steps                   | 3.51e+05 |
+| mean 100 episode reward | 923      |
+| steps                   | 3.03e+05 |
 --------------------------------------
-Saving model due to mean reward increase: 908.0 -> 914.2
+Saving model due to mean reward increase: 922.0 -> 922.9
 --------------------------------------
 | episodes                | 1.4e+03  |
-| mean 100 episode reward | 913      |
-| steps                   | 3.66e+05 |
+| mean 100 episode reward | 908      |
+| steps                   | 3.17e+05 |
 --------------------------------------
-Saving model due to mean reward increase: 914.2 -> 917.2
 --------------------------------------
 | episodes                | 1.5e+03  |
-| mean 100 episode reward | 917      |
-| steps                   | 3.81e+05 |
+| mean 100 episode reward | 926      |
+| steps                   | 3.29e+05 |
 --------------------------------------
+Saving model due to mean reward increase: 922.9 -> 926.4
 --------------------------------------
 | episodes                | 1.6e+03  |
-| mean 100 episode reward | 909      |
-| steps                   | 3.95e+05 |
+| mean 100 episode reward | 925      |
+| steps                   | 3.42e+05 |
 --------------------------------------
-Saving model due to mean reward increase: 917.2 -> 925.9
+Saving model due to mean reward increase: 926.4 -> 926.7
 --------------------------------------
 | episodes                | 1.7e+03  |
 | mean 100 episode reward | 928      |
-| steps                   | 4.08e+05 |
+| steps                   | 3.55e+05 |
 --------------------------------------
-Saving model due to mean reward increase: 925.9 -> 929.1
+Saving model due to mean reward increase: 926.7 -> 927.6
 --------------------------------------
 | episodes                | 1.8e+03  |
 | mean 100 episode reward | 929      |
-| steps                   | 4.21e+05 |
+| steps                   | 3.67e+05 |
 --------------------------------------
+Saving model due to mean reward increase: 927.6 -> 928.6
 --------------------------------------
 | episodes                | 1.9e+03  |
-| mean 100 episode reward | 882      |
-| steps                   | 4.37e+05 |
+| mean 100 episode reward | 927      |
+| steps                   | 3.79e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 2e+03    |
-| mean 100 episode reward | 883      |
-| steps                   | 4.53e+05 |
+| mean 100 episode reward | 928      |
+| steps                   | 3.91e+05 |
 --------------------------------------
+Saving model due to mean reward increase: 928.6 -> 929.8
 --------------------------------------
 | episodes                | 2.1e+03  |
-| mean 100 episode reward | 930      |
-| steps                   | 4.65e+05 |
+| mean 100 episode reward | 929      |
+| steps                   | 4.04e+05 |
 --------------------------------------
-Saving model due to mean reward increase: 929.1 -> 930.4
 --------------------------------------
 | episodes                | 2.2e+03  |
-| mean 100 episode reward | 900      |
-| steps                   | 4.79e+05 |
+| mean 100 episode reward | 930      |
+| steps                   | 4.16e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 2.3e+03  |
-| mean 100 episode reward | 916      |
-| steps                   | 4.93e+05 |
+| mean 100 episode reward | 901      |
+| steps                   | 4.29e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 2.4e+03  |
-| mean 100 episode reward | 838      |
-| steps                   | 5.11e+05 |
+| mean 100 episode reward | 929      |
+| steps                   | 4.41e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 2.5e+03  |
-| mean 100 episode reward | 914      |
-| steps                   | 5.24e+05 |
+| mean 100 episode reward | 930      |
+| steps                   | 4.53e+05 |
 --------------------------------------
+Saving model due to mean reward increase: 929.8 -> 930.5
 --------------------------------------
 | episodes                | 2.6e+03  |
-| mean 100 episode reward | 876      |
-| steps                   | 5.41e+05 |
+| mean 100 episode reward | 930      |
+| steps                   | 4.65e+05 |
 --------------------------------------
+Saving model due to mean reward increase: 930.5 -> 931.7
 --------------------------------------
 | episodes                | 2.7e+03  |
-| mean 100 episode reward | 909      |
-| steps                   | 5.56e+05 |
+| mean 100 episode reward | 931      |
+| steps                   | 4.77e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 2.8e+03  |
-| mean 100 episode reward | 910      |
-| steps                   | 5.7e+05  |
+| mean 100 episode reward | 931      |
+| steps                   | 4.89e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 2.9e+03  |
-| mean 100 episode reward | 927      |
-| steps                   | 5.83e+05 |
+| mean 100 episode reward | 931      |
+| steps                   | 5e+05    |
 --------------------------------------
 --------------------------------------
 | episodes                | 3e+03    |
-| mean 100 episode reward | 925      |
-| steps                   | 5.97e+05 |
+| mean 100 episode reward | 932      |
+| steps                   | 5.12e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 3.1e+03  |
-| mean 100 episode reward | 891      |
-| steps                   | 6.13e+05 |
+| mean 100 episode reward | 931      |
+| steps                   | 5.24e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 3.2e+03  |
-| mean 100 episode reward | 923      |
-| steps                   | 6.27e+05 |
+| mean 100 episode reward | 917      |
+| steps                   | 5.36e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 3.3e+03  |
-| mean 100 episode reward | 908      |
-| steps                   | 6.42e+05 |
+| mean 100 episode reward | 934      |
+| steps                   | 5.47e+05 |
 --------------------------------------
+Saving model due to mean reward increase: 931.7 -> 933.7
 --------------------------------------
 | episodes                | 3.4e+03  |
-| mean 100 episode reward | 926      |
-| steps                   | 6.55e+05 |
+| mean 100 episode reward | 934      |
+| steps                   | 5.59e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 3.5e+03  |
-| mean 100 episode reward | 924      |
-| steps                   | 6.69e+05 |
+| mean 100 episode reward | 932      |
+| steps                   | 5.7e+05  |
 --------------------------------------
 --------------------------------------
 | episodes                | 3.6e+03  |
-| mean 100 episode reward | 926      |
-| steps                   | 6.82e+05 |
+| mean 100 episode reward | 932      |
+| steps                   | 5.82e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 3.7e+03  |
-| mean 100 episode reward | 925      |
-| steps                   | 6.96e+05 |
+| mean 100 episode reward | 932      |
+| steps                   | 5.93e+05 |
 --------------------------------------
+Saving model due to mean reward increase: 933.7 -> 934.9
 --------------------------------------
 | episodes                | 3.8e+03  |
-| mean 100 episode reward | 926      |
-| steps                   | 7.09e+05 |
+| mean 100 episode reward | 935      |
+| steps                   | 6.04e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 3.9e+03  |
-| mean 100 episode reward | 923      |
-| steps                   | 7.23e+05 |
+| mean 100 episode reward | 930      |
+| steps                   | 6.16e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 4e+03    |
-| mean 100 episode reward | 924      |
-| steps                   | 7.37e+05 |
+| mean 100 episode reward | 934      |
+| steps                   | 6.28e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 4.1e+03  |
-| mean 100 episode reward | 924      |
-| steps                   | 7.51e+05 |
+| mean 100 episode reward | 933      |
+| steps                   | 6.39e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 4.2e+03  |
-| mean 100 episode reward | 923      |
-| steps                   | 7.65e+05 |
+| mean 100 episode reward | 917      |
+| steps                   | 6.51e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 4.3e+03  |
-| mean 100 episode reward | 924      |
-| steps                   | 7.79e+05 |
+| mean 100 episode reward | 861      |
+| steps                   | 6.68e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 4.4e+03  |
 | mean 100 episode reward | 908      |
-| steps                   | 7.94e+05 |
+| steps                   | 6.83e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 4.5e+03  |
-| mean 100 episode reward | 905      |
-| steps                   | 8.09e+05 |
+| mean 100 episode reward | 892      |
+| steps                   | 6.98e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 4.6e+03  |
-| mean 100 episode reward | 922      |
-| steps                   | 8.24e+05 |
+| mean 100 episode reward | 870      |
+| steps                   | 7.13e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 4.7e+03  |
-| mean 100 episode reward | 921      |
-| steps                   | 8.38e+05 |
+| mean 100 episode reward | 903      |
+| steps                   | 7.26e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 4.8e+03  |
-| mean 100 episode reward | 894      |
-| steps                   | 8.53e+05 |
+| mean 100 episode reward | 932      |
+| steps                   | 7.38e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 4.9e+03  |
-| mean 100 episode reward | 921      |
-| steps                   | 8.68e+05 |
+| mean 100 episode reward | 887      |
+| steps                   | 7.52e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 5e+03    |
-| mean 100 episode reward | 923      |
-| steps                   | 8.82e+05 |
+| mean 100 episode reward | 825      |
+| steps                   | 7.7e+05  |
 --------------------------------------
 --------------------------------------
 | episodes                | 5.1e+03  |
-| mean 100 episode reward | 925      |
-| steps                   | 8.95e+05 |
+| mean 100 episode reward | 869      |
+| steps                   | 7.86e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 5.2e+03  |
-| mean 100 episode reward | 923      |
-| steps                   | 9.09e+05 |
+| mean 100 episode reward | 882      |
+| steps                   | 8.01e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 5.3e+03  |
-| mean 100 episode reward | 923      |
-| steps                   | 9.23e+05 |
+| mean 100 episode reward | 900      |
+| steps                   | 8.15e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 5.4e+03  |
-| mean 100 episode reward | 924      |
-| steps                   | 9.37e+05 |
+| mean 100 episode reward | 864      |
+| steps                   | 8.31e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 5.5e+03  |
-| mean 100 episode reward | 924      |
-| steps                   | 9.51e+05 |
+| mean 100 episode reward | 914      |
+| steps                   | 8.44e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 5.6e+03  |
-| mean 100 episode reward | 921      |
-| steps                   | 9.65e+05 |
+| mean 100 episode reward | 908      |
+| steps                   | 8.59e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 5.7e+03  |
-| mean 100 episode reward | 921      |
-| steps                   | 9.8e+05  |
+| mean 100 episode reward | 930      |
+| steps                   | 8.71e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 5.8e+03  |
-| mean 100 episode reward | 920      |
-| steps                   | 9.94e+05 |
+| mean 100 episode reward | 933      |
+| steps                   | 8.82e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 5.9e+03  |
-| mean 100 episode reward | 922      |
-| steps                   | 1.01e+06 |
+| mean 100 episode reward | 932      |
+| steps                   | 8.94e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 6e+03    |
-| mean 100 episode reward | 918      |
-| steps                   | 1.02e+06 |
+| mean 100 episode reward | 935      |
+| steps                   | 9.05e+05 |
 --------------------------------------
+Saving model due to mean reward increase: 934.9 -> 935.6
 --------------------------------------
 | episodes                | 6.1e+03  |
-| mean 100 episode reward | 913      |
-| steps                   | 1.04e+06 |
+| mean 100 episode reward | 935      |
+| steps                   | 9.16e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 6.2e+03  |
-| mean 100 episode reward | 917      |
-| steps                   | 1.06e+06 |
+| mean 100 episode reward | 936      |
+| steps                   | 9.27e+05 |
 --------------------------------------
+Saving model due to mean reward increase: 935.6 -> 937.7
 --------------------------------------
 | episodes                | 6.3e+03  |
-| mean 100 episode reward | 916      |
-| steps                   | 1.07e+06 |
+| mean 100 episode reward | 920      |
+| steps                   | 9.39e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 6.4e+03  |
-| mean 100 episode reward | 923      |
-| steps                   | 1.09e+06 |
+| mean 100 episode reward | 893      |
+| steps                   | 9.53e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 6.5e+03  |
-| mean 100 episode reward | 916      |
-| steps                   | 1.1e+06  |
+| mean 100 episode reward | 842      |
+| steps                   | 9.69e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 6.6e+03  |
-| mean 100 episode reward | 919      |
-| steps                   | 1.12e+06 |
+| mean 100 episode reward | 888      |
+| steps                   | 9.84e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 6.7e+03  |
-| mean 100 episode reward | 920      |
-| steps                   | 1.13e+06 |
+| mean 100 episode reward | 888      |
+| steps                   | 9.98e+05 |
 --------------------------------------
 --------------------------------------
 | episodes                | 6.8e+03  |
-| mean 100 episode reward | 921      |
-| steps                   | 1.15e+06 |
+| mean 100 episode reward | 920      |
+| steps                   | 1.01e+06 |
 --------------------------------------
+Saving model due to mean reward increase: 937.7 -> 937.9
 --------------------------------------
 | episodes                | 6.9e+03  |
-| mean 100 episode reward | 921      |
-| steps                   | 1.16e+06 |
+| mean 100 episode reward | 938      |
+| steps                   | 1.02e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 7e+03    |
-| mean 100 episode reward | 922      |
-| steps                   | 1.17e+06 |
+| mean 100 episode reward | 937      |
+| steps                   | 1.03e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 7.1e+03  |
-| mean 100 episode reward | 922      |
-| steps                   | 1.19e+06 |
+| mean 100 episode reward | 907      |
+| steps                   | 1.04e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 7.2e+03  |
-| mean 100 episode reward | 922      |
-| steps                   | 1.2e+06  |
+| mean 100 episode reward | 902      |
+| steps                   | 1.06e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 7.3e+03  |
-| mean 100 episode reward | 918      |
-| steps                   | 1.22e+06 |
+| mean 100 episode reward | 888      |
+| steps                   | 1.07e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 7.4e+03  |
-| mean 100 episode reward | 918      |
-| steps                   | 1.23e+06 |
+| mean 100 episode reward | 889      |
+| steps                   | 1.09e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 7.5e+03  |
-| mean 100 episode reward | 923      |
-| steps                   | 1.25e+06 |
+| mean 100 episode reward | 930      |
+| steps                   | 1.1e+06  |
 --------------------------------------
 --------------------------------------
 | episodes                | 7.6e+03  |
-| mean 100 episode reward | 920      |
-| steps                   | 1.26e+06 |
+| mean 100 episode reward | 938      |
+| steps                   | 1.11e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 7.7e+03  |
-| mean 100 episode reward | 925      |
-| steps                   | 1.28e+06 |
+| mean 100 episode reward | 936      |
+| steps                   | 1.12e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 7.8e+03  |
-| mean 100 episode reward | 923      |
-| steps                   | 1.29e+06 |
+| mean 100 episode reward | 888      |
+| steps                   | 1.13e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 7.9e+03  |
-| mean 100 episode reward | 910      |
-| steps                   | 1.3e+06  |
+| mean 100 episode reward | 918      |
+| steps                   | 1.15e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 8e+03    |
-| mean 100 episode reward | 924      |
-| steps                   | 1.32e+06 |
+| mean 100 episode reward | 906      |
+| steps                   | 1.16e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 8.1e+03  |
-| mean 100 episode reward | 924      |
-| steps                   | 1.33e+06 |
+| mean 100 episode reward | 891      |
+| steps                   | 1.17e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 8.2e+03  |
-| mean 100 episode reward | 919      |
-| steps                   | 1.35e+06 |
+| mean 100 episode reward | 926      |
+| steps                   | 1.18e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 8.3e+03  |
-| mean 100 episode reward | 922      |
-| steps                   | 1.36e+06 |
+| mean 100 episode reward | 935      |
+| steps                   | 1.2e+06  |
 --------------------------------------
 --------------------------------------
 | episodes                | 8.4e+03  |
-| mean 100 episode reward | 918      |
-| steps                   | 1.38e+06 |
+| mean 100 episode reward | 906      |
+| steps                   | 1.21e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 8.5e+03  |
-| mean 100 episode reward | 918      |
-| steps                   | 1.39e+06 |
+| mean 100 episode reward | 896      |
+| steps                   | 1.22e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 8.6e+03  |
-| mean 100 episode reward | 917      |
-| steps                   | 1.41e+06 |
+| mean 100 episode reward | 911      |
+| steps                   | 1.23e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 8.7e+03  |
-| mean 100 episode reward | 915      |
-| steps                   | 1.42e+06 |
+| mean 100 episode reward | 896      |
+| steps                   | 1.25e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 8.8e+03  |
-| mean 100 episode reward | 893      |
-| steps                   | 1.44e+06 |
+| mean 100 episode reward | 927      |
+| steps                   | 1.26e+06 |
 --------------------------------------
+Saving model due to mean reward increase: 937.9 -> 941.9
 --------------------------------------
 | episodes                | 8.9e+03  |
-| mean 100 episode reward | 889      |
-| steps                   | 1.46e+06 |
+| mean 100 episode reward | 911      |
+| steps                   | 1.27e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 9e+03    |
-| mean 100 episode reward | 918      |
-| steps                   | 1.47e+06 |
+| mean 100 episode reward | 912      |
+| steps                   | 1.28e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 9.1e+03  |
-| mean 100 episode reward | 920      |
-| steps                   | 1.49e+06 |
+| mean 100 episode reward | 895      |
+| steps                   | 1.3e+06  |
 --------------------------------------
 --------------------------------------
 | episodes                | 9.2e+03  |
-| mean 100 episode reward | 923      |
-| steps                   | 1.5e+06  |
+| mean 100 episode reward | 933      |
+| steps                   | 1.31e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 9.3e+03  |
-| mean 100 episode reward | 920      |
-| steps                   | 1.52e+06 |
+| mean 100 episode reward | 925      |
+| steps                   | 1.32e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 9.4e+03  |
-| mean 100 episode reward | 905      |
-| steps                   | 1.53e+06 |
+| mean 100 episode reward | 906      |
+| steps                   | 1.33e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 9.5e+03  |
-| mean 100 episode reward | 915      |
-| steps                   | 1.55e+06 |
+| mean 100 episode reward | 893      |
+| steps                   | 1.35e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 9.6e+03  |
-| mean 100 episode reward | 920      |
-| steps                   | 1.56e+06 |
+| mean 100 episode reward | 866      |
+| steps                   | 1.36e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 9.7e+03  |
-| mean 100 episode reward | 916      |
-| steps                   | 1.58e+06 |
+| mean 100 episode reward | 850      |
+| steps                   | 1.38e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 9.8e+03  |
-| mean 100 episode reward | 913      |
-| steps                   | 1.59e+06 |
+| mean 100 episode reward | 905      |
+| steps                   | 1.39e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 9.9e+03  |
-| mean 100 episode reward | 913      |
-| steps                   | 1.61e+06 |
+| mean 100 episode reward | 902      |
+| steps                   | 1.41e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1e+04    |
-| mean 100 episode reward | 916      |
-| steps                   | 1.63e+06 |
+| mean 100 episode reward | 909      |
+| steps                   | 1.42e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.01e+04 |
-| mean 100 episode reward | 858      |
-| steps                   | 1.65e+06 |
+| mean 100 episode reward | 899      |
+| steps                   | 1.43e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.02e+04 |
-| mean 100 episode reward | 905      |
-| steps                   | 1.66e+06 |
+| mean 100 episode reward | 919      |
+| steps                   | 1.45e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.03e+04 |
-| mean 100 episode reward | 900      |
-| steps                   | 1.68e+06 |
+| mean 100 episode reward | 922      |
+| steps                   | 1.46e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.04e+04 |
-| mean 100 episode reward | 850      |
-| steps                   | 1.7e+06  |
+| mean 100 episode reward | 907      |
+| steps                   | 1.47e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.05e+04 |
-| mean 100 episode reward | 888      |
-| steps                   | 1.72e+06 |
+| mean 100 episode reward | 928      |
+| steps                   | 1.48e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.06e+04 |
-| mean 100 episode reward | 883      |
-| steps                   | 1.73e+06 |
+| mean 100 episode reward | 925      |
+| steps                   | 1.49e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.07e+04 |
-| mean 100 episode reward | 835      |
-| steps                   | 1.75e+06 |
+| mean 100 episode reward | 924      |
+| steps                   | 1.51e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.08e+04 |
-| mean 100 episode reward | 915      |
-| steps                   | 1.77e+06 |
+| mean 100 episode reward | 894      |
+| steps                   | 1.52e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.09e+04 |
-| mean 100 episode reward | 920      |
-| steps                   | 1.79e+06 |
+| mean 100 episode reward | 939      |
+| steps                   | 1.53e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.1e+04  |
-| mean 100 episode reward | 907      |
-| steps                   | 1.8e+06  |
+| mean 100 episode reward | 925      |
+| steps                   | 1.54e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.11e+04 |
-| mean 100 episode reward | 917      |
-| steps                   | 1.82e+06 |
+| mean 100 episode reward | 910      |
+| steps                   | 1.55e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.12e+04 |
-| mean 100 episode reward | 922      |
-| steps                   | 1.83e+06 |
+| mean 100 episode reward | 912      |
+| steps                   | 1.57e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.13e+04 |
-| mean 100 episode reward | 907      |
-| steps                   | 1.85e+06 |
+| mean 100 episode reward | 938      |
+| steps                   | 1.58e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.14e+04 |
-| mean 100 episode reward | 909      |
-| steps                   | 1.86e+06 |
+| mean 100 episode reward | 936      |
+| steps                   | 1.59e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.15e+04 |
 | mean 100 episode reward | 926      |
-| steps                   | 1.88e+06 |
+| steps                   | 1.6e+06  |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.16e+04 |
-| mean 100 episode reward | 896      |
-| steps                   | 1.89e+06 |
+| mean 100 episode reward | 943      |
+| steps                   | 1.61e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.17e+04 |
-| mean 100 episode reward | 919      |
-| steps                   | 1.91e+06 |
+| mean 100 episode reward | 935      |
+| steps                   | 1.62e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.18e+04 |
-| mean 100 episode reward | 924      |
-| steps                   | 1.92e+06 |
+| mean 100 episode reward | 923      |
+| steps                   | 1.64e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.19e+04 |
-| mean 100 episode reward | 906      |
-| steps                   | 1.94e+06 |
+| mean 100 episode reward | 941      |
+| steps                   | 1.65e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.2e+04  |
-| mean 100 episode reward | 893      |
-| steps                   | 1.96e+06 |
+| mean 100 episode reward | 941      |
+| steps                   | 1.66e+06 |
 --------------------------------------
+Saving model due to mean reward increase: 941.9 -> 943.2
 --------------------------------------
 | episodes                | 1.21e+04 |
-| mean 100 episode reward | 908      |
-| steps                   | 1.97e+06 |
+| mean 100 episode reward | 941      |
+| steps                   | 1.67e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.22e+04 |
-| mean 100 episode reward | 912      |
-| steps                   | 1.99e+06 |
+| mean 100 episode reward | 940      |
+| steps                   | 1.68e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.23e+04 |
-| mean 100 episode reward | 906      |
-| steps                   | 2e+06    |
+| mean 100 episode reward | 938      |
+| steps                   | 1.69e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.24e+04 |
-| mean 100 episode reward | 909      |
-| steps                   | 2.02e+06 |
+| mean 100 episode reward | 942      |
+| steps                   | 1.7e+06  |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.25e+04 |
-| mean 100 episode reward | 919      |
-| steps                   | 2.04e+06 |
+| mean 100 episode reward | 927      |
+| steps                   | 1.71e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.26e+04 |
-| mean 100 episode reward | 928      |
-| steps                   | 2.05e+06 |
+| mean 100 episode reward | 940      |
+| steps                   | 1.72e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.27e+04 |
-| mean 100 episode reward | 913      |
-| steps                   | 2.06e+06 |
+| mean 100 episode reward | 922      |
+| steps                   | 1.74e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.28e+04 |
-| mean 100 episode reward | 930      |
-| steps                   | 2.08e+06 |
+| mean 100 episode reward | 946      |
+| steps                   | 1.75e+06 |
 --------------------------------------
+Saving model due to mean reward increase: 943.2 -> 944.9
 --------------------------------------
 | episodes                | 1.29e+04 |
-| mean 100 episode reward | 928      |
-| steps                   | 2.09e+06 |
+| mean 100 episode reward | 946      |
+| steps                   | 1.76e+06 |
 --------------------------------------
+Saving model due to mean reward increase: 944.9 -> 946.9
 --------------------------------------
 | episodes                | 1.3e+04  |
-| mean 100 episode reward | 928      |
-| steps                   | 2.11e+06 |
+| mean 100 episode reward | 929      |
+| steps                   | 1.77e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.31e+04 |
-| mean 100 episode reward | 924      |
-| steps                   | 2.12e+06 |
+| mean 100 episode reward | 933      |
+| steps                   | 1.78e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.32e+04 |
-| mean 100 episode reward | 932      |
-| steps                   | 2.13e+06 |
+| mean 100 episode reward | 946      |
+| steps                   | 1.79e+06 |
 --------------------------------------
-Saving model due to mean reward increase: 930.4 -> 931.0
 --------------------------------------
 | episodes                | 1.33e+04 |
-| mean 100 episode reward | 933      |
-| steps                   | 2.15e+06 |
+| mean 100 episode reward | 947      |
+| steps                   | 1.8e+06  |
 --------------------------------------
+Saving model due to mean reward increase: 946.9 -> 947.3
 --------------------------------------
 | episodes                | 1.34e+04 |
-| mean 100 episode reward | 930      |
-| steps                   | 2.16e+06 |
+| mean 100 episode reward | 942      |
+| steps                   | 1.81e+06 |
 --------------------------------------
-Saving model due to mean reward increase: 931.0 -> 933.3
+Saving model due to mean reward increase: 947.3 -> 947.7
 --------------------------------------
 | episodes                | 1.35e+04 |
-| mean 100 episode reward | 932      |
-| steps                   | 2.17e+06 |
+| mean 100 episode reward | 948      |
+| steps                   | 1.82e+06 |
 --------------------------------------
+Saving model due to mean reward increase: 947.7 -> 948.0
 --------------------------------------
 | episodes                | 1.36e+04 |
-| mean 100 episode reward | 896      |
-| steps                   | 2.19e+06 |
+| mean 100 episode reward | 947      |
+| steps                   | 1.83e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.37e+04 |
-| mean 100 episode reward | 897      |
-| steps                   | 2.21e+06 |
+| mean 100 episode reward | 946      |
+| steps                   | 1.84e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.38e+04 |
-| mean 100 episode reward | 928      |
-| steps                   | 2.22e+06 |
+| mean 100 episode reward | 927      |
+| steps                   | 1.85e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.39e+04 |
-| mean 100 episode reward | 931      |
-| steps                   | 2.23e+06 |
+| mean 100 episode reward | 936      |
+| steps                   | 1.86e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.4e+04  |
-| mean 100 episode reward | 933      |
-| steps                   | 2.25e+06 |
+| mean 100 episode reward | 945      |
+| steps                   | 1.87e+06 |
 --------------------------------------
-Saving model due to mean reward increase: 933.3 -> 933.9
 --------------------------------------
 | episodes                | 1.41e+04 |
-| mean 100 episode reward | 933      |
-| steps                   | 2.26e+06 |
+| mean 100 episode reward | 947      |
+| steps                   | 1.88e+06 |
 --------------------------------------
-Saving model due to mean reward increase: 933.9 -> 934.9
 --------------------------------------
 | episodes                | 1.42e+04 |
-| mean 100 episode reward | 935      |
-| steps                   | 2.27e+06 |
+| mean 100 episode reward | 943      |
+| steps                   | 1.89e+06 |
 --------------------------------------
+Saving model due to mean reward increase: 948.0 -> 949.3
 --------------------------------------
 | episodes                | 1.43e+04 |
-| mean 100 episode reward | 931      |
-| steps                   | 2.28e+06 |
+| mean 100 episode reward | 944      |
+| steps                   | 1.91e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.44e+04 |
-| mean 100 episode reward | 933      |
-| steps                   | 2.3e+06  |
+| mean 100 episode reward | 944      |
+| steps                   | 1.92e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.45e+04 |
-| mean 100 episode reward | 912      |
-| steps                   | 2.31e+06 |
+| mean 100 episode reward | 924      |
+| steps                   | 1.93e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.46e+04 |
-| mean 100 episode reward | 919      |
-| steps                   | 2.33e+06 |
+| mean 100 episode reward | 947      |
+| steps                   | 1.94e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.47e+04 |
-| mean 100 episode reward | 936      |
-| steps                   | 2.34e+06 |
+| mean 100 episode reward | 948      |
+| steps                   | 1.95e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.48e+04 |
-| mean 100 episode reward | 934      |
-| steps                   | 2.35e+06 |
+| mean 100 episode reward | 948      |
+| steps                   | 1.96e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.49e+04 |
-| mean 100 episode reward | 931      |
-| steps                   | 2.36e+06 |
+| mean 100 episode reward | 947      |
+| steps                   | 1.97e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.5e+04  |
-| mean 100 episode reward | 934      |
-| steps                   | 2.38e+06 |
+| mean 100 episode reward | 933      |
+| steps                   | 1.98e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.51e+04 |
-| mean 100 episode reward | 933      |
-| steps                   | 2.39e+06 |
+| mean 100 episode reward | 946      |
+| steps                   | 1.99e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.52e+04 |
-| mean 100 episode reward | 932      |
-| steps                   | 2.4e+06  |
+| mean 100 episode reward | 949      |
+| steps                   | 2e+06    |
 --------------------------------------
-Saving model due to mean reward increase: 934.9 -> 937.2
 --------------------------------------
 | episodes                | 1.53e+04 |
-| mean 100 episode reward | 937      |
-| steps                   | 2.42e+06 |
+| mean 100 episode reward | 933      |
+| steps                   | 2.01e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.54e+04 |
-| mean 100 episode reward | 931      |
-| steps                   | 2.43e+06 |
+| mean 100 episode reward | 947      |
+| steps                   | 2.02e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.55e+04 |
-| mean 100 episode reward | 936      |
-| steps                   | 2.44e+06 |
+| mean 100 episode reward | 947      |
+| steps                   | 2.03e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.56e+04 |
-| mean 100 episode reward | 936      |
-| steps                   | 2.45e+06 |
+| mean 100 episode reward | 948      |
+| steps                   | 2.04e+06 |
 --------------------------------------
-Saving model due to mean reward increase: 937.2 -> 938.5
+Saving model due to mean reward increase: 949.3 -> 950.6
 --------------------------------------
 | episodes                | 1.57e+04 |
-| mean 100 episode reward | 938      |
-| steps                   | 2.46e+06 |
+| mean 100 episode reward | 934      |
+| steps                   | 2.05e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.58e+04 |
-| mean 100 episode reward | 904      |
-| steps                   | 2.48e+06 |
+| mean 100 episode reward | -124     |
+| steps                   | 2.12e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.59e+04 |
-| mean 100 episode reward | 929      |
-| steps                   | 2.49e+06 |
+| mean 100 episode reward | 802      |
+| steps                   | 2.14e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.6e+04  |
-| mean 100 episode reward | 936      |
-| steps                   | 2.5e+06  |
+| mean 100 episode reward | 941      |
+| steps                   | 2.15e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.61e+04 |
-| mean 100 episode reward | 939      |
-| steps                   | 2.52e+06 |
+| mean 100 episode reward | 942      |
+| steps                   | 2.16e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.62e+04 |
-| mean 100 episode reward | 889      |
-| steps                   | 2.53e+06 |
+| mean 100 episode reward | 944      |
+| steps                   | 2.17e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.63e+04 |
-| mean 100 episode reward | 938      |
-| steps                   | 2.54e+06 |
+| mean 100 episode reward | 947      |
+| steps                   | 2.18e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.64e+04 |
-| mean 100 episode reward | 924      |
-| steps                   | 2.56e+06 |
+| mean 100 episode reward | 948      |
+| steps                   | 2.19e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.65e+04 |
-| mean 100 episode reward | 940      |
-| steps                   | 2.57e+06 |
+| mean 100 episode reward | 942      |
+| steps                   | 2.2e+06  |
 --------------------------------------
-Saving model due to mean reward increase: 938.5 -> 939.5
 --------------------------------------
 | episodes                | 1.66e+04 |
-| mean 100 episode reward | 939      |
-| steps                   | 2.58e+06 |
+| mean 100 episode reward | 948      |
+| steps                   | 2.21e+06 |
 --------------------------------------
-Saving model due to mean reward increase: 939.5 -> 939.6
 --------------------------------------
 | episodes                | 1.67e+04 |
-| mean 100 episode reward | 938      |
-| steps                   | 2.59e+06 |
+| mean 100 episode reward | 950      |
+| steps                   | 2.22e+06 |
 --------------------------------------
+Saving model due to mean reward increase: 950.6 -> 951.1
 --------------------------------------
 | episodes                | 1.68e+04 |
-| mean 100 episode reward | 938      |
-| steps                   | 2.6e+06  |
+| mean 100 episode reward | 952      |
+| steps                   | 2.23e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.69e+04 |
-| mean 100 episode reward | 751      |
-| steps                   | 2.63e+06 |
+| mean 100 episode reward | 947      |
+| steps                   | 2.24e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.7e+04  |
-| mean 100 episode reward | 936      |
-| steps                   | 2.64e+06 |
+| mean 100 episode reward | 950      |
+| steps                   | 2.25e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.71e+04 |
-| mean 100 episode reward | 937      |
-| steps                   | 2.65e+06 |
+| mean 100 episode reward | 952      |
+| steps                   | 2.26e+06 |
 --------------------------------------
+Saving model due to mean reward increase: 951.1 -> 952.0
 --------------------------------------
 | episodes                | 1.72e+04 |
-| mean 100 episode reward | 934      |
-| steps                   | 2.66e+06 |
+| mean 100 episode reward | 949      |
+| steps                   | 2.27e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.73e+04 |
-| mean 100 episode reward | 936      |
-| steps                   | 2.67e+06 |
+| mean 100 episode reward | 937      |
+| steps                   | 2.28e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.74e+04 |
-| mean 100 episode reward | 938      |
-| steps                   | 2.69e+06 |
+| mean 100 episode reward | 950      |
+| steps                   | 2.29e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.75e+04 |
-| mean 100 episode reward | 936      |
-| steps                   | 2.7e+06  |
+| mean 100 episode reward | 948      |
+| steps                   | 2.3e+06  |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.76e+04 |
-| mean 100 episode reward | 935      |
-| steps                   | 2.71e+06 |
+| mean 100 episode reward | 953      |
+| steps                   | 2.31e+06 |
 --------------------------------------
+Saving model due to mean reward increase: 952.0 -> 952.9
 --------------------------------------
 | episodes                | 1.77e+04 |
-| mean 100 episode reward | 936      |
-| steps                   | 2.72e+06 |
+| mean 100 episode reward | 953      |
+| steps                   | 2.31e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.78e+04 |
-| mean 100 episode reward | 938      |
-| steps                   | 2.74e+06 |
+| mean 100 episode reward | 953      |
+| steps                   | 2.32e+06 |
 --------------------------------------
+Saving model due to mean reward increase: 952.9 -> 953.8
 --------------------------------------
 | episodes                | 1.79e+04 |
-| mean 100 episode reward | 940      |
-| steps                   | 2.75e+06 |
+| mean 100 episode reward | 953      |
+| steps                   | 2.33e+06 |
 --------------------------------------
-Saving model due to mean reward increase: 939.6 -> 939.7
 --------------------------------------
 | episodes                | 1.8e+04  |
-| mean 100 episode reward | 939      |
-| steps                   | 2.76e+06 |
+| mean 100 episode reward | 954      |
+| steps                   | 2.34e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.81e+04 |
-| mean 100 episode reward | 940      |
-| steps                   | 2.77e+06 |
+| mean 100 episode reward | 956      |
+| steps                   | 2.35e+06 |
 --------------------------------------
-Saving model due to mean reward increase: 939.7 -> 940.1
+Saving model due to mean reward increase: 953.8 -> 956.3
 --------------------------------------
 | episodes                | 1.82e+04 |
-| mean 100 episode reward | 940      |
-| steps                   | 2.78e+06 |
+| mean 100 episode reward | 954      |
+| steps                   | 2.36e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.83e+04 |
-| mean 100 episode reward | 938      |
-| steps                   | 2.79e+06 |
+| mean 100 episode reward | 954      |
+| steps                   | 2.37e+06 |
 --------------------------------------
 --------------------------------------
 | episodes                | 1.84e+04 |
+| mean 100 episode reward | 956      |
+| steps                   | 2.37e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 1.85e+04 |
+| mean 100 episode reward | 952      |
+| steps                   | 2.38e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 1.86e+04 |
+| mean 100 episode reward | 955      |
+| steps                   | 2.39e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 1.87e+04 |
+| mean 100 episode reward | 938      |
+| steps                   | 2.4e+06  |
+--------------------------------------
+--------------------------------------
+| episodes                | 1.88e+04 |
+| mean 100 episode reward | 922      |
+| steps                   | 2.41e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 1.89e+04 |
+| mean 100 episode reward | 939      |
+| steps                   | 2.42e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 1.9e+04  |
+| mean 100 episode reward | 940      |
+| steps                   | 2.43e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 1.91e+04 |
+| mean 100 episode reward | 952      |
+| steps                   | 2.44e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 1.92e+04 |
+| mean 100 episode reward | 949      |
+| steps                   | 2.45e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 1.93e+04 |
+| mean 100 episode reward | 955      |
+| steps                   | 2.46e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 1.94e+04 |
+| mean 100 episode reward | 955      |
+| steps                   | 2.47e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 1.95e+04 |
+| mean 100 episode reward | 956      |
+| steps                   | 2.48e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 1.96e+04 |
+| mean 100 episode reward | 953      |
+| steps                   | 2.48e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 1.97e+04 |
+| mean 100 episode reward | 948      |
+| steps                   | 2.49e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 1.98e+04 |
+| mean 100 episode reward | 954      |
+| steps                   | 2.5e+06  |
+--------------------------------------
+--------------------------------------
+| episodes                | 1.99e+04 |
+| mean 100 episode reward | 956      |
+| steps                   | 2.51e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2e+04    |
+| mean 100 episode reward | 953      |
+| steps                   | 2.52e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.01e+04 |
+| mean 100 episode reward | 950      |
+| steps                   | 2.53e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.02e+04 |
+| mean 100 episode reward | 955      |
+| steps                   | 2.54e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.03e+04 |
+| mean 100 episode reward | 955      |
+| steps                   | 2.55e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.04e+04 |
+| mean 100 episode reward | 955      |
+| steps                   | 2.55e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.05e+04 |
+| mean 100 episode reward | 952      |
+| steps                   | 2.56e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.06e+04 |
+| mean 100 episode reward | 951      |
+| steps                   | 2.57e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.07e+04 |
+| mean 100 episode reward | 951      |
+| steps                   | 2.58e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.08e+04 |
+| mean 100 episode reward | 956      |
+| steps                   | 2.59e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.09e+04 |
+| mean 100 episode reward | 953      |
+| steps                   | 2.6e+06  |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.1e+04  |
+| mean 100 episode reward | 951      |
+| steps                   | 2.61e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.11e+04 |
+| mean 100 episode reward | 949      |
+| steps                   | 2.62e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.12e+04 |
+| mean 100 episode reward | 953      |
+| steps                   | 2.63e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.13e+04 |
+| mean 100 episode reward | 951      |
+| steps                   | 2.64e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.14e+04 |
+| mean 100 episode reward | 952      |
+| steps                   | 2.65e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.15e+04 |
+| mean 100 episode reward | 954      |
+| steps                   | 2.65e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.16e+04 |
+| mean 100 episode reward | 950      |
+| steps                   | 2.66e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.17e+04 |
+| mean 100 episode reward | 955      |
+| steps                   | 2.67e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.18e+04 |
+| mean 100 episode reward | 956      |
+| steps                   | 2.68e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.19e+04 |
+| mean 100 episode reward | 952      |
+| steps                   | 2.69e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.2e+04  |
+| mean 100 episode reward | 953      |
+| steps                   | 2.7e+06  |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.21e+04 |
+| mean 100 episode reward | 952      |
+| steps                   | 2.71e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.22e+04 |
+| mean 100 episode reward | 950      |
+| steps                   | 2.72e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.23e+04 |
+| mean 100 episode reward | 948      |
+| steps                   | 2.73e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.24e+04 |
+| mean 100 episode reward | 952      |
+| steps                   | 2.74e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.25e+04 |
+| mean 100 episode reward | 953      |
+| steps                   | 2.74e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.26e+04 |
+| mean 100 episode reward | 950      |
+| steps                   | 2.75e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.27e+04 |
+| mean 100 episode reward | 951      |
+| steps                   | 2.76e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.28e+04 |
+| mean 100 episode reward | 950      |
+| steps                   | 2.77e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.29e+04 |
+| mean 100 episode reward | 950      |
+| steps                   | 2.78e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.3e+04  |
+| mean 100 episode reward | 954      |
+| steps                   | 2.79e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.31e+04 |
 | mean 100 episode reward | 940      |
 | steps                   | 2.8e+06  |
 --------------------------------------
 --------------------------------------
-| episodes                | 1.85e+04 |
-| mean 100 episode reward | 912      |
+| episodes                | 2.32e+04 |
+| mean 100 episode reward | 955      |
+| steps                   | 2.81e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.33e+04 |
+| mean 100 episode reward | 954      |
 | steps                   | 2.82e+06 |
 --------------------------------------
-Saving model due to mean reward increase: 940.1 -> 940.5
 --------------------------------------
-| episodes                | 1.86e+04 |
-| mean 100 episode reward | 924      |
+| episodes                | 2.34e+04 |
+| mean 100 episode reward | 955      |
 | steps                   | 2.83e+06 |
 --------------------------------------
 --------------------------------------
-| episodes                | 1.87e+04 |
-| mean 100 episode reward | 940      |
+| episodes                | 2.35e+04 |
+| mean 100 episode reward | 954      |
+| steps                   | 2.83e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.36e+04 |
+| mean 100 episode reward | 953      |
 | steps                   | 2.84e+06 |
 --------------------------------------
-Saving model due to mean reward increase: 940.5 -> 940.7
 --------------------------------------
-| episodes                | 1.88e+04 |
-| mean 100 episode reward | 940      |
+| episodes                | 2.37e+04 |
+| mean 100 episode reward | 954      |
 | steps                   | 2.85e+06 |
 --------------------------------------
 --------------------------------------
-| episodes                | 1.89e+04 |
-| mean 100 episode reward | 940      |
+| episodes                | 2.38e+04 |
+| mean 100 episode reward | 956      |
 | steps                   | 2.86e+06 |
 --------------------------------------
-Saving model due to mean reward increase: 940.7 -> 941.5
 --------------------------------------
-| episodes                | 1.9e+04  |
-| mean 100 episode reward | 942      |
+| episodes                | 2.39e+04 |
+| mean 100 episode reward | 956      |
+| steps                   | 2.87e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.4e+04  |
+| mean 100 episode reward | 953      |
 | steps                   | 2.88e+06 |
 --------------------------------------
 --------------------------------------
-| episodes                | 1.91e+04 |
-| mean 100 episode reward | 932      |
+| episodes                | 2.41e+04 |
+| mean 100 episode reward | 954      |
 | steps                   | 2.89e+06 |
 --------------------------------------
 --------------------------------------
-| episodes                | 1.92e+04 |
-| mean 100 episode reward | 938      |
+| episodes                | 2.42e+04 |
+| mean 100 episode reward | 955      |
 | steps                   | 2.9e+06  |
 --------------------------------------
 --------------------------------------
-| episodes                | 1.93e+04 |
-| mean 100 episode reward | 937      |
+| episodes                | 2.43e+04 |
+| mean 100 episode reward | 956      |
+| steps                   | 2.9e+06  |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.44e+04 |
+| mean 100 episode reward | 956      |
 | steps                   | 2.91e+06 |
 --------------------------------------
 --------------------------------------
-| episodes                | 1.94e+04 |
-| mean 100 episode reward | 940      |
+| episodes                | 2.45e+04 |
+| mean 100 episode reward | 956      |
 | steps                   | 2.92e+06 |
 --------------------------------------
 --------------------------------------
-| episodes                | 1.95e+04 |
-| mean 100 episode reward | 922      |
+| episodes                | 2.46e+04 |
+| mean 100 episode reward | 956      |
+| steps                   | 2.93e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.47e+04 |
+| mean 100 episode reward | 957      |
 | steps                   | 2.94e+06 |
 --------------------------------------
+Saving model due to mean reward increase: 956.3 -> 957.3
 --------------------------------------
-| episodes                | 1.96e+04 |
-| mean 100 episode reward | 939      |
+| episodes                | 2.48e+04 |
+| mean 100 episode reward | 957      |
 | steps                   | 2.95e+06 |
 --------------------------------------
 --------------------------------------
-| episodes                | 1.97e+04 |
-| mean 100 episode reward | 938      |
+| episodes                | 2.49e+04 |
+| mean 100 episode reward | 954      |
+| steps                   | 2.95e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.5e+04  |
+| mean 100 episode reward | 956      |
 | steps                   | 2.96e+06 |
 --------------------------------------
 --------------------------------------
-| episodes                | 1.98e+04 |
-| mean 100 episode reward | 925      |
+| episodes                | 2.51e+04 |
+| mean 100 episode reward | 957      |
 | steps                   | 2.97e+06 |
 --------------------------------------
 --------------------------------------
-| episodes                | 1.99e+04 |
-| mean 100 episode reward | 938      |
+| episodes                | 2.52e+04 |
+| mean 100 episode reward | 954      |
+| steps                   | 2.98e+06 |
+--------------------------------------
+--------------------------------------
+| episodes                | 2.53e+04 |
+| mean 100 episode reward | 956      |
 | steps                   | 2.99e+06 |
 --------------------------------------
 --------------------------------------
-| episodes                | 2e+04    |
-| mean 100 episode reward | 939      |
+| episodes                | 2.54e+04 |
+| mean 100 episode reward | 940      |
 | steps                   | 3e+06    |
 --------------------------------------
-Restored model with mean reward: 941.5
+Restored model with mean reward: 957.3
+Total time: 20253.137244701385 seconds

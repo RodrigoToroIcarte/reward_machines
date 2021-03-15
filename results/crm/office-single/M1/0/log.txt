@@ -1,51 +1,52 @@
-Logging to ./results/qrm/office-single/M1/0
+Logging to ./results/crm/office-single/M1/0
 ---------------------------
-| episodes     | 110      |
+| episodes     | 88       |
 | steps        | 1e+04    |
-| total reward | 35       |
+| total reward | 17       |
 ---------------------------
 ---------------------------
-| episodes     | 435      |
+| episodes     | 258      |
 | steps        | 2e+04    |
-| total reward | 241      |
+| total reward | 88       |
 ---------------------------
 ---------------------------
-| episodes     | 853      |
+| episodes     | 668      |
 | steps        | 3e+04    |
-| total reward | 335      |
+| total reward | 328      |
 ---------------------------
 ---------------------------
-| episodes     | 1.28e+03 |
+| episodes     | 1.09e+03 |
 | steps        | 4e+04    |
-| total reward | 345      |
+| total reward | 330      |
 ---------------------------
 ---------------------------
-| episodes     | 1.71e+03 |
+| episodes     | 1.52e+03 |
 | steps        | 5e+04    |
-| total reward | 340      |
+| total reward | 344      |
 ---------------------------
 ---------------------------
-| episodes     | 2.15e+03 |
+| episodes     | 1.94e+03 |
 | steps        | 6e+04    |
-| total reward | 341      |
+| total reward | 346      |
 ---------------------------
 ---------------------------
-| episodes     | 2.57e+03 |
+| episodes     | 2.37e+03 |
 | steps        | 7e+04    |
-| total reward | 352      |
+| total reward | 351      |
 ---------------------------
 ---------------------------
-| episodes     | 3.00e+03 |
+| episodes     | 2.81e+03 |
 | steps        | 8e+04    |
-| total reward | 345      |
+| total reward | 344      |
 ---------------------------
 ---------------------------
-| episodes     | 3.43e+03 |
+| episodes     | 3.24e+03 |
 | steps        | 9e+04    |
-| total reward | 338      |
+| total reward | 350      |
 ---------------------------
 ---------------------------
-| episodes     | 3.86e+03 |
+| episodes     | 3.66e+03 |
 | steps        | 1e+05    |
 | total reward | 346      |
 ---------------------------
+Total time: 12.064915418624878 seconds
