@@ -1,5 +1,5 @@
 #!/bin/bash
-cd ../src
+cd ../reward_machines
 for i in `seq 0 59`; 
 do
 	# Multi-task

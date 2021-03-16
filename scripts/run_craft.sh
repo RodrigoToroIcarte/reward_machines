@@ -1,5 +1,5 @@
 #!/bin/bash
-cd ../src
+cd ../reward_machines
 for i in `seq 1 10`; 
 do
 	for j in `seq 0 5`; 
