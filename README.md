@@ -40,7 +40,7 @@ The code has the following requirements:
 - OpenAI Gym
 - OpenAI Baselines
 
-Note that we are using the master branch of Baselines, which only supports Tensorflow from version 1.4 to 1.14. We included a `requirements.txt` file as a reference, but note that such a file includes more libraries than the ones strictly needed to run our code.
+Note that we are using the master branch of Baselines, which only supports Tensorflow from version 1.4 to 1.14. We included a [requirements.txt](requirements.txt) file as a reference, but note that such a file includes more libraries than the ones strictly needed to run our code.
 
 
 ## How to run the code
@@ -59,7 +59,9 @@ However, we included the following (additional) RM-tailored algorithms (which ar
 
 - **Automated Reward Shaping (RS)**: RS is an RM-tailored approach that changes the reward from a *simple RM* such that the optimal policies remain the same but the overall reward becomes less sparse. RS can be used with tabular Q-learning (`--alg=qlearning`), deep Q-networks (`--alg=deepq`), deep deterministic policy gradient (`--alg=ddpg`), tabular HRM (`--alg=hrm`), and deep HRM (`--alg=dhrm`). To use RS, include the flag `--use_rs` when running an experiment. Note that RS uses two hyperparameters that you can set manually when running an experiment. These parameters include the discount factor for the environment (e.g., `--gamma=0.9`) and the discount factor used in calculating the potential function that determines the shaped rewards (e.g., `--rs_gamma=0.9`). 
 
-Note that RM-tailored algorithms assume that the environment is a *RewardMachineEnv* (see `reward_machines/reward_machines/rm_environment.py`). These environments define their reward function using a reward machine. We included the following RM environments in our code:
+Default values for the hyperparameters for each of the different algorithms in various domains are specified in `reward_machines/rl_agents/<name of the algorithm>/defaults.py`. For example, there are hyperparameters for deep HRM in [reward_machines/rl_agents/dhrm/defaults.py](reward_machines/rl_agents/dhrm/defaults.py), which specify (among other things) that the option polices are learned using DQN in the water domain and DDPG in the half-cheetah domain.
+
+Note that RM-tailored algorithms assume that the environment is a *RewardMachineEnv* (see [reward_machines/reward_machines/rm_environment.py](reward_machines/reward_machines/rm_environment.py)). These environments define their reward function using a reward machine. We included the following RM environments in our code:
 
 - **Office domain**: The office domain includes single and multi task versions (`--env=Office-single-v0` and `--env=Office-v0`, respectively).
 
@@ -69,7 +71,7 @@ Note that RM-tailored algorithms assume that the environment is a *RewardMachine
 
 - **Half-Cheetah**: The half-cheetah domain only includes single task settings and 2 different tasks. Use `--env=Half-Cheetah-RM1-v0` to run the first task and `--env=Half-Cheetah-RM2-v0` to run the second task. Both tasks are discussed in the paper.
 
-Finally, note that adding more RM environments is farily straightforward. The *RewardMachineEnv* interface receives any gym environment (*gym.Env*) and paths to files that define the reward machines. It also requires implementing the `get_events(...)` function. That function returns the events that currently hold in the environment. If you would like to include a new RM environment, we recommend you to follow a similar structure as `reward_machines/envs/mujoco_rm/half_cheetah_environment.py`. That is a lean example where we adapt the well-known *HalfCheetahEnv* environment to solve tasks using RMs.
+Finally, note that adding more RM environments is farily straightforward. The *RewardMachineEnv* interface receives any gym environment (*gym.Env*) and paths to files that define the reward machines. It also requires implementing the `get_events(...)` function. That function returns the events that currently hold in the environment. If you would like to include a new RM environment, we recommend you to follow a similar structure to [reward_machines/envs/mujoco_rm/half_cheetah_environment.py](reward_machines/envs/mujoco_rm/half_cheetah_environment.py). That is a lean example where we adapt the well-known *HalfCheetahEnv* environment to solve tasks using RMs.
 
 ## Running examples and raw results
 
