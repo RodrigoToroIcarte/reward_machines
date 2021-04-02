@@ -107,9 +107,9 @@ class OfficeWorld:
         # Creating the map
         self.objects = {}
         self.objects[(1,1)] = "a"
-        self.objects[(10,1)] = "b"
+        self.objects[(1,7)] = "b"
         self.objects[(10,7)] = "c"
-        self.objects[(1,7)] = "d"
+        self.objects[(10,1)] = "d"
         self.objects[(7,4)] = "e"  # MAIL
         self.objects[(8,2)] = "f"  # COFFEE
         self.objects[(3,6)] = "f"  # COFFEE

@@ -2,9 +2,9 @@
 [4] # terminal state
 (0,0,'!a&!n',ConstantRewardFunction(0))
 (0,1,'a&!n',ConstantRewardFunction(0))
-(1,1,'!d&!n',ConstantRewardFunction(0))
-(1,2,'d&!n',ConstantRewardFunction(0))
+(1,1,'!b&!n',ConstantRewardFunction(0))
+(1,2,'b&!n',ConstantRewardFunction(0))
 (2,2,'!c&!n',ConstantRewardFunction(0))
 (2,3,'c&!n',ConstantRewardFunction(0))
-(3,3,'!b&!n',ConstantRewardFunction(0))
-(3,4,'b&!n',ConstantRewardFunction(1))
+(3,3,'!d&!n',ConstantRewardFunction(0))
+(3,4,'d&!n',ConstantRewardFunction(1))
