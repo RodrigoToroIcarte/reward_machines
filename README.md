@@ -35,12 +35,12 @@ This code is meant to be a clean and usable version of our approach. If you find
 
 The code has the following requirements: 
 
-- Python 3.6+
+- Python 3.6 or 3.7
 - NumPy
 - OpenAI Gym
-- OpenAI Baselines
+- [OpenAI Baselines](https://github.com/openai/baselines)
 
-Note that we are using the master branch of Baselines, which only supports Tensorflow from version 1.4 to 1.14. We included a [requirements.txt](requirements.txt) file as a reference, but note that such a file includes more libraries than the ones strictly needed to run our code.
+However, the only *real* requirement is to have installed the master branch of Baselines (installing baselines would install all the other libraries that we use). Installing baselines is not trivial, though. Their master branch only supports Tensorflow from version 1.4 to 1.14. These versions of Tensorflow seem to work fine with Python 3.6 and 3.7, but they **do not** work with Python 3.8+. We also included a [requirements.txt](requirements.txt) file as a reference, but note that such a file includes more libraries than the ones strictly needed to run our code.
 
 
 ## How to run the code
