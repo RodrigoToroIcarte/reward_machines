@@ -42,7 +42,7 @@ cryptography==2.7
 cycler==0.10.0
 Cython==0.29.21
 cytoolz==0.10.0
-dask==2.1.0
+dask==2021.10.0
 datashape==0.5.4
 decorator==4.4.0
 defusedxml==0.6.0
