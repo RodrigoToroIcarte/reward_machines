@@ -24,6 +24,7 @@ def evaluate_dnf(formula,true_props):
     if formula == "False": return False
     return formula in true_props
 
+
 def value_iteration(U, delta_u, delta_r, terminal_u, gamma):
     """
     Standard value iteration approach. 
@@ -36,9 +37,9 @@ def value_iteration(U, delta_u, delta_r, terminal_u, gamma):
         V_error = 0
         for u1 in U:
             q_u2 = []
-            for u2 in delta_u[u1]:
-                if delta_r[u1][u2].get_type() == "constant": 
-                    r = delta_r[u1][u2].get_reward(None)
+            for phi, u2 in delta_u[u1].items():
+                if delta_r[u1][phi].get_type() == "constant":
+                    r = delta_r[u1][phi].get_reward(None)
                 else:
                     r = 0 # If the reward function is not constant, we assume it returns a reward of zero
                 q_u2.append(r+gamma*V[u2])
@@ -46,4 +47,3 @@ def value_iteration(U, delta_u, delta_r, terminal_u, gamma):
             V_error = max([V_error, abs(v_new-V[u1])])
             V[u1] = v_new
     return V
-

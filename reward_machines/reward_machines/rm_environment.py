@@ -225,10 +225,10 @@ class HierarchicalRMWrapper(gym.Wrapper):
         # Extracting the set of options available (one per edge in the RM)
         if use_self_loops:
             # This version includes options for self-loops!
-            self.options = [(rm_id,u1,u2) for rm_id, rm in enumerate(env.reward_machines) for u1 in rm.delta_u for u2 in rm.delta_u[u1]]
+            self.options = [(rm_id,u1,u2) for rm_id, rm in enumerate(env.reward_machines) for u1 in rm.delta_u for u2 in rm.delta_u[u1].values()]
         else:
             # This version does not include options for the self-loops!
-            self.options = [(rm_id,u1,u2) for rm_id, rm in enumerate(env.reward_machines) for u1 in rm.delta_u for u2 in rm.delta_u[u1] if u1 != u2]
+            self.options = [(rm_id,u1,u2) for rm_id, rm in enumerate(env.reward_machines) for u1 in rm.delta_u for u2 in rm.delta_u[u1].values() if u1 != u2]
         self.num_options = len(self.options)
         self.valid_options   = {}
         self.option_features = {}
