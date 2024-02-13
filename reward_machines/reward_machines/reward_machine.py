@@ -33,7 +33,7 @@ class RewardMachine:
 
     def _compute_next_state(self, u1, true_props):
         """ Given the current state u1 and a proposition valuation, it returns the next state """
-        for phi, next_state in self.delta_u[u1]:
+        for phi, next_state in self.delta_u[u1].items():
             if evaluate_dnf(phi, true_props):
                 # at most one formula should be satisfied by the valuation
                 return next_state, phi
