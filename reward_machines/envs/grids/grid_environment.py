@@ -120,9 +120,9 @@ class OfficeRMEnv(GridRMEnv):
         env = OfficeWorld()
         super().__init__(GridEnv(env),rm_files)
 
-class OfficeRM3Env(GridRMEnv):
+class OfficeRM1Env(GridRMEnv):
     def __init__(self):
-        rm_files = ["./envs/grids/reward_machines/office/t3.txt"]
+        rm_files = ["./envs/grids/reward_machines/office/t1.txt"]
         env = OfficeWorld()
         super().__init__(GridEnv(env),rm_files)
 

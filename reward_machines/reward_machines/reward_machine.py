@@ -32,15 +32,17 @@ class RewardMachine:
         return self.u0
 
     def _compute_next_state(self, u1, true_props):
-        for u2 in self.delta_u[u1]:
-            if evaluate_dnf(self.delta_u[u1][u2], true_props):
-                return u2
-        return self.terminal_u # no transition is defined for true_props
+        """ Given the current state u1 and a proposition valuation, it returns the next state """
+        for phi, next_state in self.delta_u[u1].items():
+            if evaluate_dnf(phi, true_props):
+                # at most one formula should be satisfied by the valuation
+                return next_state, phi
+        return self.terminal_u, "no formula"
 
     def get_next_state(self, u1, true_props):
         if (u1,true_props) not in self.known_transitions:
-            u2 = self._compute_next_state(u1, true_props)
-            self.known_transitions[(u1,true_props)] = u2
+            u2, phi = self._compute_next_state(u1, true_props)
+            self.known_transitions[(u1,true_props)] = u2, phi
         return self.known_transitions[(u1,true_props)]
 
     def step(self, u1, true_props, s_info, add_rs=False, env_done=False):
@@ -51,10 +53,10 @@ class RewardMachine:
 
         # Computing the next state in the RM and checking if the episode is done
         assert u1 != self.terminal_u, "the RM was set to a terminal state!"
-        u2 = self.get_next_state(u1, true_props)
+        u2, phi = self.get_next_state(u1, true_props)
         done = (u2 == self.terminal_u)
         # Getting the reward
-        rew = self._get_reward(u1,u2,s_info,add_rs, env_done)
+        rew = self._get_reward(u1, phi, u2, s_info, add_rs, env_done)
 
         return u2, rew, done
 
@@ -64,19 +66,21 @@ class RewardMachine:
 
     def get_useful_transitions(self, u1):
         # This is an auxiliary method used by the HRL baseline to prune "useless" options
-        return [self.delta_u[u1][u2].split("&") for u2 in self.delta_u[u1] if u1 != u2]
+        return [phi.split("&") for phi, u2 in self.delta_u[u1].items() if u1 != u2]
 
 
     # Private methods -----------------------------------
 
-    def _get_reward(self,u1,u2,s_info,add_rs,env_done):
+    def _get_reward(self, u1, phi, u2, s_info, add_rs, env_done):
         """
         Returns the reward associated to this transition.
         """
         # Getting reward from the RM
-        reward = 0 # NOTE: if the agent falls from the reward machine it receives reward of zero
-        if u1 in self.delta_r and u2 in self.delta_r[u1]:
-            reward += self.delta_r[u1][u2].get_reward(s_info)
+        reward = 0
+        # NOTE: if the agent falls from the reward machine, phi == "no formula" and it receives reward of zero.
+        if u1 in self.delta_r and phi in self.delta_r[u1]:
+            assert u1 in self.delta_u and phi in self.delta_u[u1] and self.delta_u[u1][phi] == u2
+            reward += self.delta_r[u1][phi].get_reward(s_info)
         # Adding the reward shaping (if needed)
         rs = 0.0
         if add_rs:
@@ -118,11 +122,11 @@ class RewardMachine:
             # Adding state-transition to delta_u
             if u1 not in self.delta_u:
                 self.delta_u[u1] = {}
-            self.delta_u[u1][u2] = dnf_formula
+            self.delta_u[u1][dnf_formula] = u2
             # Adding reward-transition to delta_r
             if u1 not in self.delta_r:
                 self.delta_r[u1] = {}
-            self.delta_r[u1][u2] = reward_function
+            self.delta_r[u1][dnf_formula] = reward_function
         # Sorting self.U... just because... 
         self.U = sorted(self.U)
 
