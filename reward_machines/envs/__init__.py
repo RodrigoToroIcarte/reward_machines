@@ -43,7 +43,7 @@ register(
 
 register(
     id='Office-single-v0',
-    entry_point='envs.grids.grid_environment:OfficeRM3Env',
+    entry_point='envs.grids.grid_environment:OfficeRM1Env',
     max_episode_steps=1000
 )
 
