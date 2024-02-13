@@ -9,7 +9,8 @@ class RewardMachine:
         self.u0 = None       # initial state
         self.delta_u    = {} # state-transition function
         self.delta_r    = {} # reward-transition function
-        self.terminal_u = -1  # All terminal states are sent to the same terminal state with id *-1*
+        self.terminal_u = -1
+        self.terminal_states = [self.terminal_u]
         self._load_reward_machine(file)
         self.known_transitions = {} # Auxiliary variable to speed up computation of the next RM state
 
@@ -22,10 +23,9 @@ class RewardMachine:
             - rs_gamma(float): this gamma that is used in the value iteration that compute the shaping potentials
         """
         self.gamma    = gamma
-        self.potentials = value_iteration(self.U, self.delta_u, self.delta_r, self.terminal_u, rs_gamma)
+        self.potentials = value_iteration(self.U, self.delta_u, self.delta_r, self.terminal_states, rs_gamma)
         for u in self.potentials:
             self.potentials[u] = -self.potentials[u]
-
 
     def reset(self):
         # Returns the initial state
@@ -52,9 +52,9 @@ class RewardMachine:
         """
 
         # Computing the next state in the RM and checking if the episode is done
-        assert u1 != self.terminal_u, "the RM was set to a terminal state!"
+        assert u1 not in self.terminal_states, f"the RM was set to a terminal state! {u1}"
         u2, phi = self.get_next_state(u1, true_props)
-        done = (u2 == self.terminal_u)
+        done = u2 in self.terminal_states
         # Getting the reward
         rew = self._get_reward(u1, phi, u2, s_info, add_rs, env_done)
 
@@ -84,7 +84,7 @@ class RewardMachine:
         # Adding the reward shaping (if needed)
         rs = 0.0
         if add_rs:
-            un = self.terminal_u if env_done else u2 # If the env reached a terminal state, we have to use the potential from the terminal RM state to keep RS optimality guarantees
+            un = self.terminal_u if env_done else u2  # If the env reached a terminal state, we have to use the potential from the terminal RM state to keep RS optimality guarantees
             rs = self.gamma * self.potentials[un] - self.potentials[u1]
         # Returning final reward
         return reward + rs
@@ -107,16 +107,14 @@ class RewardMachine:
         f.close()
         # setting the DFA
         self.u0 = eval(lines[0])
-        terminal_states = eval(lines[1])
+        self.terminal_states += eval(lines[1])
         # adding transitions
         for e in lines[2:]:
             # Reading the transition
             u1, u2, dnf_formula, reward_function = eval(e)
             # terminal states
-            if u1 in terminal_states:
+            if u1 in self.terminal_states:
                 continue
-            if u2 in terminal_states:
-                u2  = self.terminal_u
             # Adding machine state
             self._add_state([u1,u2])
             # Adding state-transition to delta_u
@@ -132,5 +130,5 @@ class RewardMachine:
 
     def _add_state(self, u_list):
         for u in u_list:
-            if u not in self.U and u != self.terminal_u:
+            if u not in self.U and u not in self.terminal_states:
                 self.U.append(u)

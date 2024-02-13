@@ -24,13 +24,14 @@ def evaluate_dnf(formula,true_props):
     if formula == "False": return False
     return formula in true_props
 
-def value_iteration(U, delta_u, delta_r, terminal_u, gamma):
+def value_iteration(U, delta_u, delta_r, terminal_states, gamma):
     """
     Standard value iteration approach. 
     We use it to compute the potential function for the automated reward shaping
     """
     V = dict([(u,0) for u in U])
-    V[terminal_u] = 0
+    for s in terminal_states:
+        V[s] = 0
     V_error = 1
     while V_error > 0.0000001:
         V_error = 0
