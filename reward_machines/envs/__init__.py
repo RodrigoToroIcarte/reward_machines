@@ -41,11 +41,12 @@ register(
     max_episode_steps=1000
 )
 
-register(
-    id='Office-single-v0',
-    entry_point='envs.grids.grid_environment:OfficeRM3Env',
-    max_episode_steps=1000
-)
+for i in range(1, 5):
+    register(
+        id=f'Office-single-T{i}-v0',
+        entry_point=f'envs.grids.grid_environment:OfficeRM{i}Env',
+        max_episode_steps=1000
+    )
 
 # ----------------------------------------- CRAFT
 for i in range(11):
