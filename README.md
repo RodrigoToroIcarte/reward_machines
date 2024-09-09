@@ -119,3 +119,7 @@ python3 play.py --env <environment_id>
 ```
 
 where `<environment_id>` can be any of the office, craft, or water domains. To control the agent, use the WASD keys. The environments are described in the paper.
+
+## Note: Bug fix
+
+There was a bug in the way that environment terminal states were handled which is now fixed (see PR-51). The bug only affected tasks in which there are two ways to reach a terminal state with different rewards. Namely, some tasks in Office World and some in Water World (Craft World and Half-Cheetah shouldn't be affected). The results after the fix are consistent with the conclusions of the paper in the Office World domain (Water World hasn't been re-run yet).
