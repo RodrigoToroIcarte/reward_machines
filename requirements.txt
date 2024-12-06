@@ -83,7 +83,7 @@ itsdangerous==1.1.0
 jdcal==1.4.1
 jedi==0.13.3
 jeepney==0.4
-Jinja2==2.10.1
+Jinja2==2.11.3
 joblib==0.14.1
 json5==0.8.4
 jsonschema==3.0.1
